@@ -86,7 +86,7 @@ const items = [
       rear: "axolo001r.jpg",
       size: "siz_jam001.jpg",
     },
-    tags: ["amphibians, salamanders"],
+    tags: ["amphibians", "salamanders"],
     stock: [
       { size: "S", units: 2 },
       { size: "M", units: 0 },
@@ -1053,9 +1053,8 @@ const items = [
       front: "seagu001f.jpg",
       rear: "seagu001r.jpg",
       size: "siz_jam001.jpg",
-      tags: ["birds"],
     },
-
+    tags: ["birds"],
     stock: [
       { size: "S", units: 2 },
       { size: "M", units: 3 },
@@ -1351,7 +1350,6 @@ const items = [
   },
 ];
 
-
 async function main() {
   console.log("Seeding products...");
 
@@ -1364,6 +1362,61 @@ async function main() {
   });
 
   await client.connect();
+
+  await client.query(`
+  CREATE TABLE IF NOT EXISTS products (
+    id SERIAL PRIMARY KEY,
+    animal_type TEXT,
+    item_type TEXT,
+    brand TEXT,
+    price_unit NUMERIC(10,2),
+    cost_unit NUMERIC(10,2),
+    base_sku TEXT,
+    rating NUMERIC(2,1),
+    review_count INT
+  );
+`);
+
+  await client.query(`
+  CREATE TABLE IF NOT EXISTS product_images (
+    id SERIAL PRIMARY KEY,
+    product_id INT REFERENCES products(id),
+    type TEXT,
+    filename TEXT
+  );
+`);
+
+  await client.query(`
+  CREATE TABLE IF NOT EXISTS tags (
+    id SERIAL PRIMARY KEY,
+    name TEXT UNIQUE
+  );
+`);
+
+  await client.query(`
+  CREATE TABLE IF NOT EXISTS product_tags (
+    product_id INT REFERENCES products(id),
+    tag_id INT REFERENCES tags(id),
+    PRIMARY KEY (product_id, tag_id)
+  );
+`);
+
+  await client.query(`
+  CREATE TABLE IF NOT EXISTS sizes (
+    id SERIAL PRIMARY KEY,
+    code TEXT UNIQUE
+  );
+`);
+
+  await client.query(`
+  CREATE TABLE IF NOT EXISTS inventory (
+    id SERIAL PRIMARY KEY,
+    product_id INT REFERENCES products(id),
+    size_id INT REFERENCES sizes(id),
+    sku TEXT UNIQUE,
+    units INT
+  );
+`);
 
   for (const item of items) {
     /* 1️⃣ Insert product */
@@ -1446,10 +1499,23 @@ async function main() {
       const sizeId = sizeRes.rows[0].id;
       const sku = `${item.base_sku}${size}`;
 
+      //   await client.query(
+      //     `
+      //     INSERT INTO inventory (product_id, size_id, sku, units)
+      //     VALUES ($1, $2, $3, $4);
+      //     `,
+      //     [productId, sizeId, sku, units]
+      //   );
+
+      // comment out above/try below ... ERROR happens if you run it multiple times without cleaning the table, or if item.base_sku + size produces the same SKU more than once.
       await client.query(
         `
         INSERT INTO inventory (product_id, size_id, sku, units)
-        VALUES ($1, $2, $3, $4);
+        VALUES ($1, $2, $3, $4)
+        ON CONFLICT (sku) DO UPDATE
+        SET units = EXCLUDED.units,
+            product_id = EXCLUDED.product_id,
+            size_id = EXCLUDED.size_id;
         `,
         [productId, sizeId, sku, units]
       );
@@ -1463,4 +1529,3 @@ async function main() {
 main().catch((err) => {
   console.error("Error seeding DB:", err);
 });
-
