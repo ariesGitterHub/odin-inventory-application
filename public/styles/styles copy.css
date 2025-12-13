@@ -1,0 +1,506 @@
+:root {
+  --frog-dk: #313d25;
+  --frog-lt: #bfcb99;
+  --frog-lt-trans: #bfcb99a9;
+  --frog-black: #060700;
+  --frog-white: #dadcd1;
+  --rose-dk: #be3b65;
+  --rose-lt: #eda1ae;
+  --gold-lt: #ffe463;
+  --gold: #eec144;
+  --white: #ffffff;
+  --focus-blue: #4d90fe;
+
+  --font-title: "Slackey", sans-serif;
+  --font-text: "Rubik", sans-serif;
+  /* --font-dinojama: "Barrio", system-ui;
+  --font-jammy-mart: "Mystery Quest", system-ui;
+  --font-mooshiDoo: "Hanalei Fill", system-ui;
+  --font-plushies: "Matemasie", sans-serif;
+  --font-spanko: "Bangers", system-ui; */
+
+  --border-radius-outer: 1rem;
+  --border-radius-inner: 0.5rem;
+
+  /* --navbar-image-size: 3rem;
+  --navbar-font-size: 1rem;
+  --navbar-cart-num-circle-size: 1.75rem;
+  --navbar-search-width: 35ch;
+  --width-card: 90vw;
+  --width-main: auto;
+  --image-circles-main: 15rem; */
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+}
+
+/* Generic focus-visible outline for accessibility */
+:focus-visible {
+  outline: 4px dashed var(--focus-blue);
+  outline-offset: 2px;
+}
+
+/* Optional: Add a border or change color for specific elements (like buttons) */
+button:focus-visible,
+a:focus-visible {
+  outline: 4px dashed var(--focus-blue);
+  outline-offset: 2px;
+}
+
+/* Optional: A subtle shadow to provide a nice effect */
+input:focus-visible {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 4px var(--gold);
+}
+
+/* Optional: Focus on links */
+a:focus-visible {
+  outline: 4px dashed var(--focus-blue);
+  outline-offset: 4px;
+}
+
+html,
+body {
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+a,
+button {
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--frog-white);
+  border: 2px solid red;
+  border-radius: var(--border-radius-outer);
+  box-shadow: inset 0 0.125rem 0.5rem var(--frog-black);
+  color: black;
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  padding: 0.5rem 0.8rem;
+    white-space: nowrap;
+}
+
+a:hover,
+button:hover {
+  background-color: violet;
+  border: 2px solid violet;
+}
+
+.card-button {
+  width: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid black;
+  border-radius: var(--border-radius-inner);
+  font-family: var(--font-text);
+  font-size: 1rem;
+  text-transform: uppercase;
+  /* margin-top: 0.5rem; */
+  padding: 0.25rem 1rem;
+    white-space: wrap;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  background-color: var(--rose-dk);
+  font-family: var(--font-text);
+  line-height: 1.5;
+  padding: 1rem;
+}
+
+li {
+  list-style: none;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  background-color: lightseagreen;
+  border-radius: var(--border-radius-outer);
+  margin-bottom: 1rem;
+}
+
+.logo {
+  height: 4rem;
+  width: 4rem;
+  margin: 0.25rem;
+}
+
+.title-text-container {
+  padding: 0.25rem;
+}
+
+.fun-title {
+  font-family: var(--font-title);
+  font-size: 1.85rem;
+}
+
+.text-title {
+  font-family: var(--font-text);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: start;
+  gap: 1rem;
+}
+
+nav {
+  height: fit-content;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 1rem;
+  background-color: gold;
+  border-radius: var(--border-radius-outer);
+  padding: 1rem;
+}
+
+.centering-container{
+  width: fit-content;
+display: flex;
+align-items: center;
+}
+
+nav h1 {
+  font-size: 1.25rem;
+}
+
+.quick-view {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  /* background-color: pink; */
+  border: 2px solid pink;
+  border-radius: var(--border-radius-outer);
+  padding: 1rem;
+}
+
+.quick-view-details-row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  /* gap: 1rem; */
+      background-color: pink;
+
+  border-top-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.quick-view-details-col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+ /* padding: 0.25rem; */
+}
+
+.quick-view-details-col h1, .quick-view-details-col h2 {
+  margin-bottom: -0.875rem;
+text-transform: uppercase;
+}
+.quick-view-details-col h1 {
+font-size: 1rem;
+}
+.quick-view-details-col h2 {
+font-size: 0.95rem;
+}
+
+.file-tab {
+  background-color: pink;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  padding: 0.25rem;
+}
+
+.variant-details {
+  width: 100%;
+  background-color: white;
+  border-radius: var(--border-radius-inner);
+   padding: 0.5rem;
+}
+
+.quick-view-messages {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+background-color: white;
+  border-radius: var(--border-radius-inner);
+/* margin-top:1rem; */
+padding: 0.5rem;
+}
+
+.quick-view-button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.quick-view-image {
+  height: 9rem;
+  width: 5.5rem;
+  border-radius: var(--border-radius-inner);
+    /* margin-bottom: 1rem; */
+}
+
+.quick-view-category, .quick-view-data {
+/* padding-left: 0.5rem; */
+}
+
+.quick-view-category {
+  width: 7.5rem;
+  padding-left: 1rem;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+
+.quick-view-data {
+  font-weight: 600;
+    padding-left: 0.25rem;
+text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.quick-view-money2 {
+  background-color: lightgreen;
+  border-radius: var(--border-radius-inner);
+padding-right: 0.25rem;
+  text-align: right;
+}
+
+.quick-view-profit1, .quick-view-profit2 {
+  border-top: 1px solid black;
+}
+
+
+
+.card {
+  /* width: fit-content; */
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background-color: lightskyblue;
+  border-radius: var(--border-radius-outer);
+  padding: 1rem;
+}
+
+.inner-container {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.button-container {
+  /* width: 100%; */
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: space-around;
+  justify-content: space-around;
+  gap: 0.5rem;
+}
+
+.row {
+  height: fit-content;
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* gap: 1rem; */
+}
+
+.item-details-container {
+  /* height: fit-content; */
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  /* gap: 1rem; */
+  border: 2px solid white;
+  border-radius: var(--border-radius-outer);
+}
+
+.category {
+  /* width: 7.85rem; */
+  /* width: fit-content; */
+  min-width: 125px;
+  /* border: 2px solid white;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem; */
+  font-style: italic;
+  padding: 0.5rem;
+}
+
+.data {
+  /* min-width: 125px;
+  max-width: 300px; */
+  /* width: fit-content; */
+  width: 200px;
+  /* display: flex;
+  flex-wrap: wrap; */
+  background-color: white;
+  border-bottom: 2px solid lightgrey;
+  font-weight: 600;
+  padding: 0.5rem;
+  /* border: 2px solid white;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem; */
+}
+
+.name, .brand {
+  font-weight: 600;
+}
+
+.name {
+    border-top-right-radius: 0.5rem;
+  text-transform: uppercase;
+}
+
+.tags {
+/* TODO - I need this to wrap and break */
+}
+
+.profit1,
+.profit2 {
+  border-top: 2px solid white;
+  border-bottom: none;
+  border-bottom-right-radius: 0.5rem;
+  padding-top: 2px;
+}
+
+.profit1 {
+  border-color: white;
+}
+.profit2 {
+  border-color: black;
+    color: green;
+}
+
+.money {
+  border-bottom: none;
+  text-align: right;
+}
+
+.barcode, .sku, .units, .storage {
+/* TODO - use this? */
+}
+
+.storage {
+border: none;
+border-bottom-right-radius: 0.5rem;
+}
+
+/* .unit-message {
+  color: red;
+} */
+
+.variant-details-section {
+  width: fit-content;
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ gap: 1rem;
+}
+
+.additional-data {
+ display: none;
+}
+
+/* .additional-data {
+ display: flex;
+} */
+
+.hidden {
+  display: flex;
+}
+
+/* .hidden {
+  display: none;
+} */
+
+@media (min-width: 420px) {
+  :root {
+    --width-card: 20rem;
+  }
+}
+
+@media (min-width: 500px) {
+  :root {
+    --image-circles-main: 20rem;
+  }
+}
+
+@media (min-width: 600px) {
+  :root {
+    --navbar-image-size: 3.5rem;
+    --navbar-font-size: 1.25rem;
+    --navbar-search-width: 40ch;
+    --navbar-cart-num-circle-size: 2rem;
+    --image-circles-main: 25rem;
+  }
+}
