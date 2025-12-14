@@ -159,7 +159,8 @@ li {
   list-style: none;
 }
 
-header, footer {
+header,
+footer {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -461,7 +462,8 @@ nav h1 {
 }
 
 @media (max-width: 464px) {
-  header, footer {
+  header,
+  footer {
     /* width: 100%; */
     min-width: 406px;
     /* align-items: start; */

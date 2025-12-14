@@ -1,6 +1,9 @@
 <div class="quick-view">
   <div class="quick-view-details-col">
-    <h1><span class="file-tab">quick view: flying squirrel</span></h1>
+
+    <%# if (local.users) {%> <%# users.forEach(function(user) { %>
+
+    <h1><span class="file-tab">quick view: flying squirrel<%# product.animal_type%></span></h1>
     <div class="quick-view-details-row">
       <img
         class="quick-view-image"
@@ -140,6 +143,7 @@
         <p>sizeSKU</p>
         <p>27 <span class="quick-view-unit-message">(okay)</span></p>
         <p>atLocation</p>
+       <%# } %>
       </div>
     </div>
   </div>

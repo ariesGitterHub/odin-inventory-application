@@ -3,7 +3,7 @@ require('dotenv').config(); // Load environment variables
 // 1. Imports at the top
 const express = require("express");
 const path = require("node:path");
-const usersRouter = require("./routes/usersRouter");
+const productRouter = require("./routes/productRouter");
 
 // 2. Create the app
 const app = express();
@@ -17,7 +17,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
 // 5. Routers (mount here)
-app.use("/", usersRouter);
+app.use("/", productRouter);
 
 
 // 6. Server startup

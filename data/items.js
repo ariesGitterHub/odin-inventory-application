@@ -1,53 +1,4 @@
-require("dotenv").config();
-const { Client } = require("pg");
-
-// const items = [
-//   {
-//     animal_type: "alpaca",
-//     item_type: "adult onesie"
-//     brand: "jammy mart",
-//     price_unit: 32.99,
-//     cost_unit: 17.99,
-//     base_sku: "alpac001jam-",
-//     rating: 4.1,
-//     number_reviews: 13,
-//     img_front_url: "alpac001f.jpg",
-//     img_rear_url: "alpac001r.jpg",
-//     img_size_url: "siz_jam001.jpg",
-//     tags: ["mammals, camelids"],
-//     stock: [
-//       { size: "S", units: 1 },
-//       { size: "M", units: 0 },
-//       { size: "L", units: 2 },
-//       { size: "XL", units: 2 },
-//     ],
-//   },
-// ]
-
-// const items = [
-//   {
-//     animal_type: "alpaca",
-//     item_type: "adult onesie",
-//     brand: "jammy mart",
-//     price_unit: 32.99,
-//     cost_unit: 17.99,
-//     base_sku: "ALPAC001JAM-",
-//     rating: 4.1,
-//     number_reviews: 13,
-//     images: {
-//       front: "alpac001f.jpg",
-//       rear: "alpac001r.jpg",
-//       size: "siz_jam001.jpg",
-//     },
-//     tags: ["mammals", "camelids"],
-//     stock: [
-//       { size: "S", units: 1 },
-//       { size: "M", units: 0 },
-//       { size: "L", units: 2 },
-//       { size: "XL", units: 2 },
-//     ],
-//   },
-// ];
+// The actual seed data that will will seeded in seedData.js
 
 const items = [
   {
@@ -66,10 +17,10 @@ const items = [
     },
     tags: ["mammals", "camelids"],
     stock: [
-      { size: "S", units: 1 },
-      { size: "M", units: 0 },
-      { size: "L", units: 2 },
-      { size: "XL", units: 2 },
+      { size: "S", units: 1, storage: "jam-01-s" },
+      { size: "M", units: 0, storage: "jam-01-m" },
+      { size: "L", units: 2, storage: "jam-01-l" },
+      { size: "XL", units: 2, storage: "jam-01-xl" },
     ],
   },
   {
@@ -78,7 +29,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "AXOLO001JAM",
+    base_sku: "AXOLO001JAM-",
     rating: 4.1,
     number_reviews: 9,
     images: {
@@ -88,10 +39,10 @@ const items = [
     },
     tags: ["amphibians", "salamanders"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 0 },
-      { size: "L", units: 2 },
-      { size: "XL", units: 1 },
+      { size: "S", units: 2, storage: "jam-02-s" },
+      { size: "M", units: 0, storage: "jam-02-m" },
+      { size: "L", units: 2, storage: "jam-02-l" },
+      { size: "XL", units: 1, storage: "jam-02-xl" },
     ],
   },
   {
@@ -100,7 +51,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "BEARX001JAM",
+    base_sku: "BEARX001JAM-",
     rating: 4.2,
     number_reviews: 19,
     images: {
@@ -110,10 +61,10 @@ const items = [
     },
     tags: ["mammals", "ursines"],
     stock: [
-      { size: "S", units: 0 },
-      { size: "M", units: 2 },
-      { size: "L", units: 1 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 0, storage: "jam-03-s" },
+      { size: "M", units: 2, storage: "jam-03-m" },
+      { size: "L", units: 1, storage: "jam-03-l" },
+      { size: "XL", units: 0, storage: "jam-03-xl" },
     ],
   },
   {
@@ -122,7 +73,7 @@ const items = [
     brand: "spanko",
     price_unit: 32.99,
     cost_unit: 17.99,
-    base_sku: "BEEXX001SPA",
+    base_sku: "BEEXX001SPA-",
     rating: 3.1,
     number_reviews: 6,
     images: {
@@ -132,10 +83,10 @@ const items = [
     },
     tags: ["bugs", "insects"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 2 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 2, storage: "spa-01-s" },
+      { size: "M", units: 2, storage: "spa-01-m" },
+      { size: "L", units: 0, storage: "spa-01-l" },
+      { size: "XL", units: 0, storage: "spa-01-xl" },
     ],
   },
   {
@@ -144,7 +95,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "BLABE001JAM",
+    base_sku: "BLABE001JAM-",
     rating: 4.5,
     number_reviews: 29,
     images: {
@@ -154,10 +105,10 @@ const items = [
     },
     tags: ["mammals", "ursines"],
     stock: [
-      { size: "S", units: 1 },
-      { size: "M", units: 1 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 1, storage: "jam-04-s" },
+      { size: "M", units: 1, storage: "jam-04-m" },
+      { size: "L", units: 0, storage: "jam-04-l" },
+      { size: "XL", units: 0, storage: "jam-04-xl" },
     ],
   },
   {
@@ -166,7 +117,7 @@ const items = [
     brand: "dinojama",
     price_unit: 36.99,
     cost_unit: 20.91,
-    base_sku: "BLADR001DIN",
+    base_sku: "BLADR001DIN-",
     rating: 4.5,
     number_reviews: 6,
     images: {
@@ -176,10 +127,10 @@ const items = [
     },
     tags: ["reptiles", "mythical", "lizards"],
     stock: [
-      { size: "S", units: 1 },
-      { size: "M", units: 0 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 1 },
+      { size: "S", units: 1, storage: "din-01-s" },
+      { size: "M", units: 0, storage: "din-01-m" },
+      { size: "L", units: 0, storage: "din-01-l" },
+      { size: "XL", units: 1, storage: "din-01-xl" },
     ],
   },
   {
@@ -188,7 +139,7 @@ const items = [
     brand: "dinojama",
     price_unit: 36.99,
     cost_unit: 20.91,
-    base_sku: "BLUDR001DIN",
+    base_sku: "BLUDR001DIN-",
     rating: 4.7,
     number_reviews: 5,
     images: {
@@ -198,10 +149,10 @@ const items = [
     },
     tags: ["reptiles", "mythical", "lizards"],
     stock: [
-      { size: "S", units: 0 },
-      { size: "M", units: 0 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 0, storage: "din-02-s" },
+      { size: "M", units: 0, storage: "din-02-m" },
+      { size: "L", units: 0, storage: "din-02-l" },
+      { size: "XL", units: 0, storage: "din-02-xl" },
     ],
   },
   {
@@ -210,7 +161,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 36.99,
     cost_unit: 20.91,
-    base_sku: "BULLX001JAM",
+    base_sku: "BULLX001JAM-",
     rating: 4.3,
     number_reviews: 24,
     images: {
@@ -220,10 +171,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 1 },
-      { size: "M", units: 3 },
-      { size: "L", units: 3 },
-      { size: "XL", units: 2 },
+      { size: "S", units: 1, storage: "jam-05-s" },
+      { size: "M", units: 3, storage: "jam-05-m" },
+      { size: "L", units: 3, storage: "jam-05-l" },
+      { size: "XL", units: 2, storage: "jam-05-xl" },
     ],
   },
   {
@@ -232,7 +183,7 @@ const items = [
     brand: "mooshi-doo",
     price_unit: 38.99,
     cost_unit: 23.99,
-    base_sku: "BUTFL001MOO",
+    base_sku: "BUTFL001MOO-",
     rating: 3.9,
     number_reviews: 15,
     images: {
@@ -242,10 +193,10 @@ const items = [
     },
     tags: ["bugs", "insects"],
     stock: [
-      { size: "S", units: 1 },
-      { size: "M", units: 2 },
-      { size: "L", units: 3 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 1, storage: "moo-01-s" },
+      { size: "M", units: 2, storage: "moo-01-m" },
+      { size: "L", units: 3, storage: "moo-01-l" },
+      { size: "XL", units: 0, storage: "moo-01-xl" },
     ],
   },
   {
@@ -254,7 +205,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "CARAC001JAM",
+    base_sku: "CARAC001JAM-",
     rating: 3.7,
     number_reviews: 14,
     images: {
@@ -264,10 +215,10 @@ const items = [
     },
     tags: ["mammals", "felines", "cats"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 2 },
-      { size: "L", units: 1 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 2, storage: "jam-06-s" },
+      { size: "M", units: 2, storage: "jam-06-m" },
+      { size: "L", units: 1, storage: "jam-06-l" },
+      { size: "XL", units: 0, storage: "jam-06-xl" },
     ],
   },
   {
@@ -276,7 +227,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 38.99,
     cost_unit: 23.99,
-    base_sku: "CARDI001JAM",
+    base_sku: "CARDI001JAM-",
     rating: 4.9,
     number_reviews: 10,
     images: {
@@ -286,10 +237,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 1 },
-      { size: "M", units: 0 },
-      { size: "L", units: 2 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 1, storage: "jam-07-s" },
+      { size: "M", units: 0, storage: "jam-07-m" },
+      { size: "L", units: 2, storage: "jam-07-l" },
+      { size: "XL", units: 0, storage: "jam-07-xl" },
     ],
   },
   {
@@ -298,7 +249,7 @@ const items = [
     brand: "plushies",
     price_unit: 42.99,
     cost_unit: 23.45,
-    base_sku: "CHAME001PLU",
+    base_sku: "CHAME001PLU-",
     rating: 4.7,
     number_reviews: 5,
     images: {
@@ -308,10 +259,10 @@ const items = [
     },
     tags: ["reptiles", "lizards"],
     stock: [
-      { size: "S", units: 0 },
-      { size: "M", units: 0 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 2 },
+      { size: "S", units: 0, storage: "plu-01-s" },
+      { size: "M", units: 0, storage: "plu-01-m" },
+      { size: "L", units: 0, storage: "plu-01-ls" },
+      { size: "XL", units: 2, storage: "plu-01-xl" },
     ],
   },
   {
@@ -320,7 +271,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 36.99,
     cost_unit: 20.91,
-    base_sku: "CROWX001JAM",
+    base_sku: "CROWX001JAM-",
     rating: 4.1,
     number_reviews: 7,
     images: {
@@ -330,10 +281,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 1 },
-      { size: "M", units: 3 },
-      { size: "L", units: 2 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 1, storage: "jam-08-s" },
+      { size: "M", units: 3, storage: "jam-08-m" },
+      { size: "L", units: 2, storage: "jam-08-l" },
+      { size: "XL", units: 0, storage: "jam-08-xl" },
     ],
   },
   {
@@ -342,7 +293,7 @@ const items = [
     brand: "spanko",
     price_unit: 32.99,
     cost_unit: 17.99,
-    base_sku: "DALMA001SPA",
+    base_sku: "DALMA001SPA-",
     rating: 2.1,
     number_reviews: 11,
     images: {
@@ -352,10 +303,10 @@ const items = [
     },
     tags: ["mammals", "canines", "doggos"],
     stock: [
-      { size: "S", units: 1 },
-      { size: "M", units: 2 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 1, storage: "spa-02-s" },
+      { size: "M", units: 2, storage: "spa-02-m" },
+      { size: "L", units: 0, storage: "spa-02-l" },
+      { size: "XL", units: 0, storage: "spa-02-xl" },
     ],
   },
   {
@@ -364,7 +315,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 32.99,
     cost_unit: 17.99,
-    base_sku: "DEERX001JAM",
+    base_sku: "DEERX001JAM-",
     rating: 4.6,
     number_reviews: 13,
     images: {
@@ -374,10 +325,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 6 },
-      { size: "L", units: 3 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 2, storage: "jam-09-s" },
+      { size: "M", units: 6, storage: "jam-09-m" },
+      { size: "L", units: 3, storage: "jam-09-l" },
+      { size: "XL", units: 0, storage: "jam-09-xl" },
     ],
   },
   {
@@ -386,7 +337,7 @@ const items = [
     brand: "dinojama",
     price_unit: 36.99,
     cost_unit: 20.91,
-    base_sku: "DINOS001DIN",
+    base_sku: "DINOS001DIN-",
     rating: 4.7,
     number_reviews: 4,
     images: {
@@ -396,10 +347,10 @@ const items = [
     },
     tags: ["reptiles", "dinosaurs", "lizards"],
     stock: [
-      { size: "S", units: 0 },
-      { size: "M", units: 1 },
-      { size: "L", units: 2 },
-      { size: "XL", units: 1 },
+      { size: "S", units: 0, storage: "din-03-s" },
+      { size: "M", units: 1, storage: "din-03-m" },
+      { size: "L", units: 2, storage: "din-03-l" },
+      { size: "XL", units: 1, storage: "din-03-xl" },
     ],
   },
   {
@@ -408,7 +359,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "DONKE001JAM",
+    base_sku: "DONKE001JAM-",
     rating: 4.3,
     number_reviews: 7,
     images: {
@@ -418,10 +369,10 @@ const items = [
     },
     tags: ["mammals", "horseys"],
     stock: [
-      { size: "S", units: 3 },
-      { size: "M", units: 2 },
-      { size: "L", units: 2 },
-      { size: "XL", units: 1 },
+      { size: "S", units: 3, storage: "jam-10-s" },
+      { size: "M", units: 2, storage: "jam-10-m" },
+      { size: "L", units: 2, storage: "jam-10-l" },
+      { size: "XL", units: 1, storage: "jam-10-xl" },
     ],
   },
   {
@@ -430,7 +381,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 36.99,
     cost_unit: 20.91,
-    base_sku: "EAGLE001JAM",
+    base_sku: "EAGLE001JAM-",
     rating: 4.2,
     number_reviews: 5,
     images: {
@@ -440,10 +391,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 2 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 2, storage: "jam-11-s" },
+      { size: "M", units: 2, storage: "jam-11-m" },
+      { size: "L", units: 0, storage: "jam-11-l" },
+      { size: "XL", units: 0, storage: "jam-11-xl" },
     ],
   },
   {
@@ -452,7 +403,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 36.99,
     cost_unit: 20.91,
-    base_sku: "FLAMI001JAM",
+    base_sku: "FLAMI001JAM-",
     rating: 4.1,
     number_reviews: 5,
     images: {
@@ -462,10 +413,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 0 },
-      { size: "M", units: 0 },
-      { size: "L", units: 2 },
-      { size: "XL", units: 1 },
+      { size: "S", units: 0, storage: "jam-12-s" },
+      { size: "M", units: 0, storage: "jam-12-ms" },
+      { size: "L", units: 2, storage: "jam-12-l" },
+      { size: "XL", units: 1, storage: "jam-12-xl" },
     ],
   },
   {
@@ -474,7 +425,7 @@ const items = [
     brand: "plushies",
     price_unit: 42.99,
     cost_unit: 23.45,
-    base_sku: "FLYSQ001PLU",
+    base_sku: "FLYSQ001PLU-",
     rating: 3.0,
     number_reviews: 2,
     images: {
@@ -484,10 +435,10 @@ const items = [
     },
     tags: ["mammals", "rodents"],
     stock: [
-      { size: "S", units: 1 },
-      { size: "M", units: 2 },
-      { size: "L", units: 3 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 1, storage: "plu-02-s" },
+      { size: "M", units: 2, storage: "plu-02-m" },
+      { size: "L", units: 3, storage: "plu-02-l" },
+      { size: "XL", units: 0, storage: "plu-02-xl" },
     ],
   },
   {
@@ -496,7 +447,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "FOXXX001JAM",
+    base_sku: "FOXXX001JAM-",
     rating: 4.2,
     number_reviews: 16,
     images: {
@@ -506,10 +457,10 @@ const items = [
     },
     tags: ["mammals", "canines", "doggos"],
     stock: [
-      { size: "S", units: 3 },
-      { size: "M", units: 2 },
-      { size: "L", units: 1 },
-      { size: "XL", units: 2 },
+      { size: "S", units: 3, storage: "jam-13-s" },
+      { size: "M", units: 2, storage: "jam-13-m" },
+      { size: "L", units: 1, storage: "jam-13-l" },
+      { size: "XL", units: 2, storage: "jam-13-xl" },
     ],
   },
   {
@@ -518,7 +469,7 @@ const items = [
     brand: "plushies",
     price_unit: 42.99,
     cost_unit: 23.45,
-    base_sku: "FROGX001PLU",
+    base_sku: "FROGX001PLU-",
     rating: 3.8,
     number_reviews: 12,
     images: {
@@ -528,10 +479,10 @@ const items = [
     },
     tags: ["amphibians"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 2 },
-      { size: "L", units: 2 },
-      { size: "XL", units: 1 },
+      { size: "S", units: 2, storage: "plu-03-s" },
+      { size: "M", units: 2, storage: "plu-03-m" },
+      { size: "L", units: 2, storage: "plu-03-l" },
+      { size: "XL", units: 1, storage: "plu-03-xl" },
     ],
   },
   {
@@ -540,7 +491,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "GIRAF001JAM",
+    base_sku: "GIRAF001JAM-",
     rating: 4.1,
     number_reviews: 7,
     images: {
@@ -550,10 +501,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 3 },
-      { size: "M", units: 1 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 1 },
+      { size: "S", units: 3, storage: "jam-14-s" },
+      { size: "M", units: 1, storage: "jam-14-m" },
+      { size: "L", units: 0, storage: "jam-14-l" },
+      { size: "XL", units: 1, storage: "jam-14-xl" },
     ],
   },
   {
@@ -562,7 +513,7 @@ const items = [
     brand: "spanko",
     price_unit: 32.99,
     cost_unit: 17.99,
-    base_sku: "HOUFL001SPA",
+    base_sku: "HOUFL001SPA-",
     rating: 2.4,
     number_reviews: 6,
     images: {
@@ -572,10 +523,10 @@ const items = [
     },
     tags: ["bugs", "insects"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 0 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 2, storage: "spa-03-s" },
+      { size: "M", units: 0, storage: "spa-03-m" },
+      { size: "L", units: 0, storage: "spa-03-l" },
+      { size: "XL", units: 0, storage: "spa-03-xl" },
     ],
   },
   {
@@ -584,7 +535,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 36.99,
     cost_unit: 20.91,
-    base_sku: "KANGA001JAM",
+    base_sku: "KANGA001JAM-",
     rating: 4.6,
     number_reviews: 22,
     images: {
@@ -594,10 +545,10 @@ const items = [
     },
     tags: ["mammals", "marsupials"],
     stock: [
-      { size: "S", units: 3 },
-      { size: "M", units: 3 },
-      { size: "L", units: 1 },
-      { size: "XL", units: 1 },
+      { size: "S", units: 3, storage: "jam-15-s" },
+      { size: "M", units: 3, storage: "jam-15-m" },
+      { size: "L", units: 1, storage: "jam-15-l" },
+      { size: "XL", units: 1, storage: "jam-15-xl" },
     ],
   },
   {
@@ -606,7 +557,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "KOALA001JAM",
+    base_sku: "KOALA001JAM-",
     rating: 3.9,
     number_reviews: 15,
     images: {
@@ -616,10 +567,10 @@ const items = [
     },
     tags: ["mammals", "marsupials"],
     stock: [
-      { size: "S", units: 1 },
-      { size: "M", units: 1 },
-      { size: "L", units: 3 },
-      { size: "XL", units: 3 },
+      { size: "S", units: 1, storage: "jam-16-s" },
+      { size: "M", units: 1, storage: "jam-16-m" },
+      { size: "L", units: 3, storage: "jam-16-l" },
+      { size: "XL", units: 3, storage: "jam-16-xl" },
     ],
   },
   {
@@ -628,7 +579,7 @@ const items = [
     brand: "spanko",
     price_unit: 32.99,
     cost_unit: 17.99,
-    base_sku: "LEOPA001SPA",
+    base_sku: "LEOPA001SPA-",
     rating: 3.5,
     number_reviews: 14,
     images: {
@@ -638,10 +589,10 @@ const items = [
     },
     tags: ["mammals", "felines", "cats"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 1 },
-      { size: "L", units: 4 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 2, storage: "spa-04-s" },
+      { size: "M", units: 1, storage: "spa-04-m" },
+      { size: "L", units: 4, storage: "spa-04-l" },
+      { size: "XL", units: 0, storage: "spa-04-xl" },
     ],
   },
   {
@@ -650,7 +601,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "LIONX001JAM",
+    base_sku: "LIONX001JAM-",
     rating: 3.9,
     number_reviews: 18,
     images: {
@@ -660,10 +611,10 @@ const items = [
     },
     tags: ["mammals", "felines", "cats"],
     stock: [
-      { size: "S", units: 0 },
-      { size: "M", units: 2 },
-      { size: "L", units: 3 },
-      { size: "XL", units: 2 },
+      { size: "S", units: 0, storage: "jam-17-s" },
+      { size: "M", units: 2, storage: "jam-17-m" },
+      { size: "L", units: 3, storage: "jam-17-l" },
+      { size: "XL", units: 2, storage: "jam-17-xl" },
     ],
   },
   {
@@ -672,7 +623,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 36.99,
     cost_unit: 20.91,
-    base_sku: "MACAW001JAM",
+    base_sku: "MACAW001JAM-",
     rating: 4.1,
     number_reviews: 6,
     images: {
@@ -682,10 +633,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 3 },
-      { size: "M", units: 1 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 3, storage: "jam-18-s" },
+      { size: "M", units: 1, storage: "jam-18-m" },
+      { size: "L", units: 0, storage: "jam-18-l" },
+      { size: "XL", units: 0, storage: "jam-18-xl" },
     ],
   },
   {
@@ -694,7 +645,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 36.99,
     cost_unit: 20.91,
-    base_sku: "MALLA001JAM",
+    base_sku: "MALLA001JAM-",
     rating: 4.0,
     number_reviews: 4,
     images: {
@@ -704,10 +655,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 0 },
-      { size: "M", units: 0 },
-      { size: "L", units: 1 },
-      { size: "XL", units: 1 },
+      { size: "S", units: 0, storage: "jam-19-s" },
+      { size: "M", units: 0, storage: "jam-19-m" },
+      { size: "L", units: 1, storage: "jam-19-l" },
+      { size: "XL", units: 1, storage: "jam-19-xl" },
     ],
   },
   {
@@ -716,7 +667,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "MONKE001JAM",
+    base_sku: "MONKE001JAM-",
     rating: 4.0,
     number_reviews: 11,
     images: {
@@ -726,10 +677,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 3 },
-      { size: "L", units: 2 },
-      { size: "XL", units: 2 },
+      { size: "S", units: 2, storage: "jam-20-s" },
+      { size: "M", units: 3, storage: "jam-20-m" },
+      { size: "L", units: 2, storage: "jam-20-l" },
+      { size: "XL", units: 2, storage: "jam-20-xl" },
     ],
   },
   {
@@ -738,7 +689,7 @@ const items = [
     brand: "plushies",
     price_unit: 42.99,
     cost_unit: 23.45,
-    base_sku: "MOOSE001PLU",
+    base_sku: "MOOSE001PLU-",
     rating: 4.7,
     number_reviews: 4,
     images: {
@@ -748,10 +699,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 1 },
-      { size: "M", units: 2 },
-      { size: "L", units: 1 },
-      { size: "XL", units: 1 },
+      { size: "S", units: 1, storage: "plu-04-s" },
+      { size: "M", units: 2, storage: "plu-04-m" },
+      { size: "L", units: 1, storage: "plu-04-l" },
+      { size: "XL", units: 1, storage: "plu-04-xl" },
     ],
   },
   {
@@ -760,7 +711,7 @@ const items = [
     brand: "mooshi-doo",
     price_unit: 38.99,
     cost_unit: 23.99,
-    base_sku: "MOTHX001MOO",
+    base_sku: "MOTHX001MOO-",
     rating: 3.4,
     number_reviews: 1,
     images: {
@@ -770,10 +721,10 @@ const items = [
     },
     tags: ["bugs", "insects"],
     stock: [
-      { size: "S", units: 0 },
-      { size: "M", units: 1 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 2 },
+      { size: "S", units: 0, storage: "moo-02-s" },
+      { size: "M", units: 1, storage: "moo-02-m" },
+      { size: "L", units: 0, storage: "moo-02-l" },
+      { size: "XL", units: 2, storage: "moo-02-xl" },
     ],
   },
   {
@@ -782,7 +733,7 @@ const items = [
     brand: "spanko",
     price_unit: 32.99,
     cost_unit: 17.99,
-    base_sku: "MOUSE001SPA",
+    base_sku: "MOUSE001SPA-",
     rating: 3.1,
     number_reviews: 16,
     images: {
@@ -792,10 +743,10 @@ const items = [
     },
     tags: ["mammals", "rodents"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 1 },
-      { size: "L", units: 3 },
-      { size: "XL", units: 2 },
+      { size: "S", units: 2, storage: "spa-05-s" },
+      { size: "M", units: 1, storage: "spa-05-m" },
+      { size: "L", units: 3, storage: "spa-05-l" },
+      { size: "XL", units: 2, storage: "spa-05-xl" },
     ],
   },
   {
@@ -804,7 +755,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "PANDA001JAM",
+    base_sku: "PANDA001JAM-",
     rating: 3.9,
     number_reviews: 7,
     images: {
@@ -814,10 +765,10 @@ const items = [
     },
     tags: ["mammals", "ursines"],
     stock: [
-      { size: "S", units: 1 },
-      { size: "M", units: 2 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 1, storage: "jam-21-s" },
+      { size: "M", units: 2, storage: "jam-21-m" },
+      { size: "L", units: 0, storage: "jam-21-l" },
+      { size: "XL", units: 0, storage: "jam-21-xl" },
     ],
   },
   {
@@ -826,7 +777,7 @@ const items = [
     brand: "spanko",
     price_unit: 32.99,
     cost_unit: 17.99,
-    base_sku: "PENGU001SPA",
+    base_sku: "PENGU001SPA-",
     rating: 4.3,
     number_reviews: 11,
     images: {
@@ -836,10 +787,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 0 },
-      { size: "L", units: 1 },
-      { size: "XL", units: 2 },
+      { size: "S", units: 2, storage: "spa-06-s" },
+      { size: "M", units: 0, storage: "spa-06-m" },
+      { size: "L", units: 1, storage: "spa-06-l" },
+      { size: "XL", units: 2, storage: "spa-06-xl" },
     ],
   },
   {
@@ -848,7 +799,7 @@ const items = [
     brand: "spanko",
     price_unit: 32.99,
     cost_unit: 17.99,
-    base_sku: "PIGXX001SPA",
+    base_sku: "PIGXX001SPA-",
     rating: 4.6,
     number_reviews: 17,
     images: {
@@ -858,10 +809,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 3 },
-      { size: "L", units: 3 },
-      { size: "XL", units: 2 },
+      { size: "S", units: 2, storage: "spa-07-s" },
+      { size: "M", units: 3, storage: "spa-07-m" },
+      { size: "L", units: 3, storage: "spa-07-l" },
+      { size: "XL", units: 2, storage: "spa-07-xl" },
     ],
   },
   {
@@ -870,7 +821,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 36.99,
     cost_unit: 20.91,
-    base_sku: "PIGEO001JAM",
+    base_sku: "PIGEO001JAM-",
     rating: 4.2,
     number_reviews: 4,
     images: {
@@ -880,10 +831,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 1 },
-      { size: "M", units: 1 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 3 },
+      { size: "S", units: 1, storage: "jam-22-s" },
+      { size: "M", units: 1, storage: "jam-22-m" },
+      { size: "L", units: 0, storage: "jam-22-l" },
+      { size: "XL", units: 3, storage: "jam-22-xl" },
     ],
   },
   {
@@ -892,7 +843,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "RABBI001JAM",
+    base_sku: "RABBI001JAM-",
     rating: 4.3,
     number_reviews: 7,
     images: {
@@ -902,10 +853,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 0 },
-      { size: "M", units: 5 },
-      { size: "L", units: 2 },
-      { size: "XL", units: 1 },
+      { size: "S", units: 0, storage: "jam-23-s" },
+      { size: "M", units: 5, storage: "jam-23-m" },
+      { size: "L", units: 2, storage: "jam-23-l" },
+      { size: "XL", units: 1, storage: "jam-23-xl" },
     ],
   },
   {
@@ -914,7 +865,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 36.99,
     cost_unit: 20.91,
-    base_sku: "RACCO001JAM",
+    base_sku: "RACCO001JAM-",
     rating: 4.1,
     number_reviews: 9,
     images: {
@@ -924,10 +875,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 0 },
-      { size: "M", units: 3 },
-      { size: "L", units: 1 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 0, storage: "jam-24-s" },
+      { size: "M", units: 3, storage: "jam-24-m" },
+      { size: "L", units: 1, storage: "jam-24-l" },
+      { size: "XL", units: 0, storage: "jam-24-xl" },
     ],
   },
   {
@@ -936,7 +887,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "RATXX001JAM",
+    base_sku: "RATXX001JAM-",
     rating: 3.9,
     number_reviews: 5,
     images: {
@@ -946,10 +897,10 @@ const items = [
     },
     tags: ["mammals", "rodents"],
     stock: [
-      { size: "S", units: 3 },
-      { size: "M", units: 0 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 2 },
+      { size: "S", units: 3, storage: "jam-25-s" },
+      { size: "M", units: 0, storage: "jam-25-m" },
+      { size: "L", units: 0, storage: "jam-25-l" },
+      { size: "XL", units: 2, storage: "jam-25-xl" },
     ],
   },
   {
@@ -958,7 +909,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "REDPA001JAM",
+    base_sku: "REDPA001JAM-",
     rating: 3.5,
     number_reviews: 12,
     images: {
@@ -968,10 +919,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 0 },
-      { size: "M", units: 0 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 4 },
+      { size: "S", units: 0, storage: "jam-26-s" },
+      { size: "M", units: 0, storage: "jam-26-m" },
+      { size: "L", units: 0, storage: "jam-26-l" },
+      { size: "XL", units: 4, storage: "jam-26-xl" },
     ],
   },
   {
@@ -980,7 +931,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "RHINO001JAM",
+    base_sku: "RHINO001JAM-",
     rating: 4.0,
     number_reviews: 7,
     images: {
@@ -990,10 +941,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 0 },
-      { size: "M", units: 2 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 0, storage: "jam-27-s" },
+      { size: "M", units: 2, storage: "jam-27-m" },
+      { size: "L", units: 0, storage: "jam-27-l" },
+      { size: "XL", units: 0, storage: "jam-27-xl" },
     ],
   },
   {
@@ -1002,7 +953,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 36.99,
     cost_unit: 20.91,
-    base_sku: "ROOST001JAM",
+    base_sku: "ROOST001JAM-",
     rating: 3.9,
     number_reviews: 6,
     images: {
@@ -1012,10 +963,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 1 },
-      { size: "L", units: 1 },
-      { size: "XL", units: 1 },
+      { size: "S", units: 2, storage: "jam-28-s" },
+      { size: "M", units: 1, storage: "jam-28-m" },
+      { size: "L", units: 1, storage: "jam-28-l" },
+      { size: "XL", units: 1, storage: "jam-28-xl" },
     ],
   },
   {
@@ -1024,7 +975,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "SANCA001JAM",
+    base_sku: "SANCA001JAM-",
     rating: 2.7,
     number_reviews: 3,
     images: {
@@ -1034,10 +985,10 @@ const items = [
     },
     tags: ["mammals", "felines", "cats"],
     stock: [
-      { size: "S", units: 0 },
-      { size: "M", units: 0 },
-      { size: "L", units: 1 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 0, storage: "jam-29-s" },
+      { size: "M", units: 0, storage: "jam-29-m" },
+      { size: "L", units: 1, storage: "jam-29-l" },
+      { size: "XL", units: 0, storage: "jam-29-xl" },
     ],
   },
   {
@@ -1046,7 +997,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 38.99,
     cost_unit: 23.99,
-    base_sku: "SEAGU001JAM",
+    base_sku: "SEAGU001JAM-",
     rating: 4.3,
     number_reviews: 9,
     images: {
@@ -1056,10 +1007,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 3 },
-      { size: "L", units: 1 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 2, storage: "jam-30-s" },
+      { size: "M", units: 3, storage: "jam-30-m" },
+      { size: "L", units: 1, storage: "jam-30-l" },
+      { size: "XL", units: 0, storage: "jam-30-xl" },
     ],
   },
   {
@@ -1068,7 +1019,7 @@ const items = [
     brand: "plushies",
     price_unit: 42.99,
     cost_unit: 23.45,
-    base_sku: "SEAOT001PLU",
+    base_sku: "SEAOT001PLU-",
     rating: 5.0,
     number_reviews: 11,
     images: {
@@ -1078,10 +1029,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 2 },
-      { size: "L", units: 1 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 2, storage: "plu-05-s" },
+      { size: "M", units: 2, storage: "plu-05-m" },
+      { size: "L", units: 1, storage: "plu-05-l" },
+      { size: "XL", units: 0, storage: "plu-05-xl" },
     ],
   },
   {
@@ -1090,7 +1041,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "SLOTH001JAM",
+    base_sku: "SLOTH001JAM-",
     rating: 4.2,
     number_reviews: 8,
     images: {
@@ -1100,10 +1051,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 0 },
-      { size: "M", units: 3 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 1 },
+      { size: "S", units: 0, storage: "jam-31-s" },
+      { size: "M", units: 3, storage: "jam-31-m" },
+      { size: "L", units: 0, storage: "jam-31-l" },
+      { size: "XL", units: 1, storage: "jam-31-xl" },
     ],
   },
   {
@@ -1112,7 +1063,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "SPIDE001JAM",
+    base_sku: "SPIDE001JAM-",
     rating: 3.9,
     number_reviews: 2,
     images: {
@@ -1122,10 +1073,10 @@ const items = [
     },
     tags: ["bugs", "arachnids"],
     stock: [
-      { size: "S", units: 0 },
-      { size: "M", units: 0 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 4 },
+      { size: "S", units: 0, storage: "jam-32-s" },
+      { size: "M", units: 0, storage: "jam-32-m" },
+      { size: "L", units: 0, storage: "jam-32-ls" },
+      { size: "XL", units: 4, storage: "jam-32-xl" },
     ],
   },
   {
@@ -1134,7 +1085,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "SQUIR001JAM",
+    base_sku: "SQUIR001JAM-",
     rating: 4.1,
     number_reviews: 12,
     images: {
@@ -1144,10 +1095,10 @@ const items = [
     },
     tags: ["mammals", "rodents"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 0 },
-      { size: "L", units: 1 },
-      { size: "XL", units: 2 },
+      { size: "S", units: 2, storage: "jam-33-s" },
+      { size: "M", units: 0, storage: "jam-33-m" },
+      { size: "L", units: 1, storage: "jam-33-l" },
+      { size: "XL", units: 2, storage: "jam-33-xl" },
     ],
   },
   {
@@ -1156,7 +1107,7 @@ const items = [
     brand: "dinojama",
     price_unit: 42.99,
     cost_unit: 23.45,
-    base_sku: "STEGO001DIN",
+    base_sku: "STEGO001DIN-",
     rating: 4.5,
     number_reviews: 7,
     images: {
@@ -1166,10 +1117,10 @@ const items = [
     },
     tags: ["reptiles", "dinosaurs", "lizards"],
     stock: [
-      { size: "S", units: 0 },
-      { size: "M", units: 1 },
-      { size: "L", units: 1 },
-      { size: "XL", units: 1 },
+      { size: "S", units: 0, storage: "din-04-s" },
+      { size: "M", units: 1, storage: "din-04-m" },
+      { size: "L", units: 1, storage: "din-04-l" },
+      { size: "XL", units: 1, storage: "din-04-xl" },
     ],
   },
   {
@@ -1178,7 +1129,7 @@ const items = [
     brand: "spanko",
     price_unit: 32.99,
     cost_unit: 17.99,
-    base_sku: "TIGER001SPA",
+    base_sku: "TIGER001SPA-",
     rating: 3.3,
     number_reviews: 15,
     images: {
@@ -1188,10 +1139,10 @@ const items = [
     },
     tags: ["mammals", "felines", "cats"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 3 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 3 },
+      { size: "S", units: 2, storage: "spa-08-s" },
+      { size: "M", units: 3, storage: "spa-08-m" },
+      { size: "L", units: 0, storage: "spa-08-l" },
+      { size: "XL", units: 3, storage: "spa-08-xl" },
     ],
   },
   {
@@ -1200,7 +1151,7 @@ const items = [
     brand: "dinojama",
     price_unit: 42.99,
     cost_unit: 23.45,
-    base_sku: "TRICE001DIN",
+    base_sku: "TRICE001DIN-",
     rating: 4.3,
     number_reviews: 5,
     images: {
@@ -1210,10 +1161,10 @@ const items = [
     },
     tags: ["reptiles", "dinosaurs", "lizards"],
     stock: [
-      { size: "S", units: 1 },
-      { size: "M", units: 1 },
-      { size: "L", units: 1 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 1, storage: "din-05-s" },
+      { size: "M", units: 1, storage: "din-05-m" },
+      { size: "L", units: 1, storage: "din-05-l" },
+      { size: "XL", units: 0, storage: "din-05-xl" },
     ],
   },
   {
@@ -1222,7 +1173,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 38.99,
     cost_unit: 23.99,
-    base_sku: "TURKE001JAM",
+    base_sku: "TURKE001JAM-",
     rating: 3.8,
     number_reviews: 19,
     images: {
@@ -1232,10 +1183,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 4 },
-      { size: "M", units: 3 },
-      { size: "L", units: 2 },
-      { size: "XL", units: 2 },
+      { size: "S", units: 4, storage: "jam-34-s" },
+      { size: "M", units: 3, storage: "jam-34-m" },
+      { size: "L", units: 2, storage: "jam-34-l" },
+      { size: "XL", units: 2, storage: "jam-34-xl" },
     ],
   },
   {
@@ -1244,7 +1195,7 @@ const items = [
     brand: "dinojama",
     price_unit: 39.99,
     cost_unit: 23.33,
-    base_sku: "TREXX001DIN",
+    base_sku: "TREXX001DIN-",
     rating: 4.9,
     number_reviews: 6,
     images: {
@@ -1254,10 +1205,10 @@ const items = [
     },
     tags: ["reptiles", "dinosaurs", "lizards"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 1 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 2 },
+      { size: "S", units: 2, storage: "din-06-s" },
+      { size: "M", units: 1, storage: "din-06-m" },
+      { size: "L", units: 0, storage: "din-06-l" },
+      { size: "XL", units: 2, storage: "din-06-xl" },
     ],
   },
   {
@@ -1266,7 +1217,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "UNICO001JAM",
+    base_sku: "UNICO001JAM-",
     rating: 4.2,
     number_reviews: 23,
     images: {
@@ -1276,10 +1227,10 @@ const items = [
     },
     tags: ["mammals", "horseys", "mythical"],
     stock: [
-      { size: "S", units: 5 },
-      { size: "M", units: 2 },
-      { size: "L", units: 4 },
-      { size: "XL", units: 4 },
+      { size: "S", units: 5, storage: "jam-35-s" },
+      { size: "M", units: 2, storage: "jam-35-m" },
+      { size: "L", units: 4, storage: "jam-35-l" },
+      { size: "XL", units: 4, storage: "jam-35-xl" },
     ],
   },
   {
@@ -1288,7 +1239,7 @@ const items = [
     brand: "spanko",
     price_unit: 32.99,
     cost_unit: 17.99,
-    base_sku: "WENDI001SPA",
+    base_sku: "WENDI001SPA-",
     rating: 2.3,
     number_reviews: 4,
     images: {
@@ -1298,10 +1249,10 @@ const items = [
     },
     tags: ["mythical"],
     stock: [
-      { size: "S", units: 0 },
-      { size: "M", units: 1 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 2 },
+      { size: "S", units: 0, storage: "spa-09-s" },
+      { size: "M", units: 1, storage: "spa-09-m" },
+      { size: "L", units: 0, storage: "spa-09-l" },
+      { size: "XL", units: 2, storage: "spa-09-xl" },
     ],
   },
   {
@@ -1310,7 +1261,7 @@ const items = [
     brand: "jammy mart",
     price_unit: 34.99,
     cost_unit: 19.09,
-    base_sku: "WOLFX001JAM",
+    base_sku: "WOLFX001JAM-",
     rating: 4.3,
     number_reviews: 9,
     images: {
@@ -1320,10 +1271,10 @@ const items = [
     },
     tags: ["mammals", "canines", "doggos"],
     stock: [
-      { size: "S", units: 2 },
-      { size: "M", units: 1 },
-      { size: "L", units: 0 },
-      { size: "XL", units: 3 },
+      { size: "S", units: 2, storage: "jam-36-s" },
+      { size: "M", units: 1, storage: "jam-36-m" },
+      { size: "L", units: 0, storage: "jam-36-l" },
+      { size: "XL", units: 3, storage: "jam-36-xl" },
     ],
   },
   {
@@ -1332,7 +1283,7 @@ const items = [
     brand: "spanko",
     price_unit: 32.99,
     cost_unit: 17.99,
-    base_sku: "ZEBRA001SPA",
+    base_sku: "ZEBRA001SPA-",
     rating: 3.4,
     number_reviews: 8,
     images: {
@@ -1342,190 +1293,14 @@ const items = [
     },
     tags: ["mammals", "horseys"],
     stock: [
-      { size: "S", units: 1 },
-      { size: "M", units: 1 },
-      { size: "L", units: 1 },
-      { size: "XL", units: 0 },
+      { size: "S", units: 1, storage: "spa-10-s" },
+      { size: "M", units: 1, storage: "spa-10-m" },
+      { size: "L", units: 1, storage: "spa-10-l" },
+      { size: "XL", units: 0, storage: "spa-10-xl" },
     ],
   },
 ];
 
-async function main() {
-  console.log("Seeding products...");
-
-  const client = new Client({
-    user: process.env.PG_USER,
-    password: process.env.PG_PASSWORD,
-    host: process.env.PG_HOST,
-    port: Number(process.env.PG_PORT),
-    database: process.env.PG_DATABASE,
-  });
-
-  await client.connect();
-
-  await client.query(`
-  CREATE TABLE IF NOT EXISTS products (
-    id SERIAL PRIMARY KEY,
-    animal_type TEXT,
-    item_type TEXT,
-    brand TEXT,
-    price_unit NUMERIC(10,2),
-    cost_unit NUMERIC(10,2),
-    base_sku TEXT,
-    rating NUMERIC(2,1),
-    review_count INT
-  );
-`);
-
-  await client.query(`
-  CREATE TABLE IF NOT EXISTS product_images (
-    id SERIAL PRIMARY KEY,
-    product_id INT REFERENCES products(id),
-    type TEXT,
-    filename TEXT
-  );
-`);
-
-  await client.query(`
-  CREATE TABLE IF NOT EXISTS tags (
-    id SERIAL PRIMARY KEY,
-    name TEXT UNIQUE
-  );
-`);
-
-  await client.query(`
-  CREATE TABLE IF NOT EXISTS product_tags (
-    product_id INT REFERENCES products(id),
-    tag_id INT REFERENCES tags(id),
-    PRIMARY KEY (product_id, tag_id)
-  );
-`);
-
-  await client.query(`
-  CREATE TABLE IF NOT EXISTS sizes (
-    id SERIAL PRIMARY KEY,
-    code TEXT UNIQUE
-  );
-`);
-
-  await client.query(`
-  CREATE TABLE IF NOT EXISTS inventory (
-    id SERIAL PRIMARY KEY,
-    product_id INT REFERENCES products(id),
-    size_id INT REFERENCES sizes(id),
-    sku TEXT UNIQUE,
-    units INT
-  );
-`);
-
-  for (const item of items) {
-    /* 1️⃣ Insert product */
-    const productRes = await client.query(
-      `
-      INSERT INTO products (
-        animal_type,
-        item_type,
-        brand,
-        price_unit,
-        cost_unit,
-        base_sku,
-        rating,
-        review_count
-      )
-      VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
-      RETURNING id;
-      `,
-      [
-        item.animal_type,
-        item.item_type,
-        item.brand,
-        item.price_unit,
-        item.cost_unit,
-        item.base_sku,
-        item.rating,
-        item.number_reviews,
-      ]
-    );
-
-    const productId = productRes.rows[0].id;
-
-    /* 2️⃣ Insert images */
-    for (const [type, filename] of Object.entries(item.images)) {
-      await client.query(
-        `
-        INSERT INTO product_images (product_id, type, filename)
-        VALUES ($1, $2, $3);
-        `,
-        [productId, type, filename]
-      );
-    }
-
-    /* 3️⃣ Insert tags */
-    for (const tag of item.tags) {
-      const tagRes = await client.query(
-        `
-        INSERT INTO tags (name)
-        VALUES ($1)
-        ON CONFLICT (name) DO UPDATE SET name = EXCLUDED.name
-        RETURNING id;
-        `,
-        [tag]
-      );
-
-      const tagId = tagRes.rows[0].id;
-
-      await client.query(
-        `
-        INSERT INTO product_tags (product_id, tag_id)
-        VALUES ($1, $2)
-        ON CONFLICT DO NOTHING;
-        `,
-        [productId, tagId]
-      );
-    }
-
-    /* 4️⃣ Insert inventory + SKUs */
-    for (const { size, units } of item.stock) {
-      const sizeRes = await client.query(
-        `
-        INSERT INTO sizes (code)
-        VALUES ($1)
-        ON CONFLICT (code) DO UPDATE SET code = EXCLUDED.code
-        RETURNING id;
-        `,
-        [size]
-      );
-
-      const sizeId = sizeRes.rows[0].id;
-      const sku = `${item.base_sku}${size}`;
-
-      //   await client.query(
-      //     `
-      //     INSERT INTO inventory (product_id, size_id, sku, units)
-      //     VALUES ($1, $2, $3, $4);
-      //     `,
-      //     [productId, sizeId, sku, units]
-      //   );
-
-      // comment out above/try below ... ERROR happens if you run it multiple times without cleaning the table, or if item.base_sku + size produces the same SKU more than once.
-      await client.query(
-        `
-        INSERT INTO inventory (product_id, size_id, sku, units)
-        VALUES ($1, $2, $3, $4)
-        ON CONFLICT (sku) DO UPDATE
-        SET units = EXCLUDED.units,
-            product_id = EXCLUDED.product_id,
-            size_id = EXCLUDED.size_id;
-        `,
-        [productId, sizeId, sku, units]
-      );
-    }
-  }
-
-  await client.end();
-  console.log("Product seeding complete!");
-}
-
-main().catch((err) => {
-  console.error("Error seeding DB:", err);
-});
+module.exports = {
+  items,
+};
