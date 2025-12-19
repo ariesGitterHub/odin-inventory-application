@@ -17,10 +17,10 @@ const items = [
     },
     tags: ["mammals", "camelids"],
     stock: [
-      { size: "S", units: 1, storage: "jam-01-s" },
-      { size: "M", units: 0, storage: "jam-01-m" },
-      { size: "L", units: 2, storage: "jam-01-l" },
-      { size: "XL", units: 2, storage: "jam-01-xl" },
+      { size: "S", units: 1, barcode: 739482100011, storage: "jam-01-s" },
+      { size: "M", units: 0, barcode: 739482100028, storage: "jam-01-m" },
+      { size: "L", units: 2, barcode: 739482100035, storage: "jam-01-l" },
+      { size: "XL", units: 2, barcode: 739482100042, storage: "jam-01-xl" },
     ],
   },
   {
@@ -39,10 +39,10 @@ const items = [
     },
     tags: ["amphibians", "salamanders"],
     stock: [
-      { size: "S", units: 2, storage: "jam-02-s" },
-      { size: "M", units: 0, storage: "jam-02-m" },
-      { size: "L", units: 2, storage: "jam-02-l" },
-      { size: "XL", units: 1, storage: "jam-02-xl" },
+      { size: "S", units: 2, barcode: 739482103015, storage: "jam-02-s" },
+      { size: "M", units: 0, barcode: 739482103022, storage: "jam-02-m" },
+      { size: "L", units: 2, barcode: 739482103039, storage: "jam-02-l" },
+      { size: "XL", units: 1, barcode: 739482103046, storage: "jam-02-xl" },
     ],
   },
   {
@@ -61,10 +61,10 @@ const items = [
     },
     tags: ["mammals", "ursines"],
     stock: [
-      { size: "S", units: 0, storage: "jam-03-s" },
-      { size: "M", units: 2, storage: "jam-03-m" },
-      { size: "L", units: 1, storage: "jam-03-l" },
-      { size: "XL", units: 0, storage: "jam-03-xl" },
+      { size: "S", units: 0, barcode: 739482101019, storage: "jam-03-s" },
+      { size: "M", units: 2, barcode: 739482101026, storage: "jam-03-m" },
+      { size: "L", units: 1, barcode: 739482101033, storage: "jam-03-l" },
+      { size: "XL", units: 0, barcode: 739482101040, storage: "jam-03-xl" },
     ],
   },
   {
@@ -83,10 +83,10 @@ const items = [
     },
     tags: ["bugs", "insects"],
     stock: [
-      { size: "S", units: 2, storage: "spa-01-s" },
-      { size: "M", units: 2, storage: "spa-01-m" },
-      { size: "L", units: 0, storage: "spa-01-l" },
-      { size: "XL", units: 0, storage: "spa-01-xl" },
+      { size: "S", units: 2, barcode: 845731202112, storage: "spa-01-s" },
+      { size: "M", units: 2, barcode: 845731202282, storage: "spa-01-m" },
+      { size: "L", units: 0, barcode: 845731202352, storage: "spa-01-l" },
+      { size: "XL", units: 0, barcode: 845731202422, storage: "spa-01-xl" },
     ],
   },
   {
@@ -105,10 +105,10 @@ const items = [
     },
     tags: ["mammals", "ursines"],
     stock: [
-      { size: "S", units: 1, storage: "jam-04-s" },
-      { size: "M", units: 1, storage: "jam-04-m" },
-      { size: "L", units: 0, storage: "jam-04-l" },
-      { size: "XL", units: 0, storage: "jam-04-xl" },
+      { size: "S", units: 1, barcode: 739482102017, storage: "jam-04-s" },
+      { size: "M", units: 1, barcode: 739482102024, storage: "jam-04-m" },
+      { size: "L", units: 0, barcode: 739482102031, storage: "jam-04-l" },
+      { size: "XL", units: 0, barcode: 739482102048, storage: "jam-04-xl" },
     ],
   },
   {
@@ -127,10 +127,10 @@ const items = [
     },
     tags: ["reptiles", "mythical", "lizards"],
     stock: [
-      { size: "S", units: 1, storage: "din-01-s" },
-      { size: "M", units: 0, storage: "din-01-m" },
-      { size: "L", units: 0, storage: "din-01-l" },
-      { size: "XL", units: 1, storage: "din-01-xl" },
+      { size: "S", units: 1, barcode: 692840310517, storage: "din-01-s" },
+      { size: "M", units: 0, barcode: 692840310624, storage: "din-01-m" },
+      { size: "L", units: 0, barcode: 692840310731, storage: "din-01-l" },
+      { size: "XL", units: 1, barcode: 692840310848, storage: "din-01-xl" },
     ],
   },
   {
@@ -149,10 +149,10 @@ const items = [
     },
     tags: ["reptiles", "mythical", "lizards"],
     stock: [
-      { size: "S", units: 0, storage: "din-02-s" },
-      { size: "M", units: 0, storage: "din-02-m" },
-      { size: "L", units: 0, storage: "din-02-l" },
-      { size: "XL", units: 0, storage: "din-02-xl" },
+      { size: "S", units: 0, barcode: 692840311506, storage: "din-02-s" },
+      { size: "M", units: 0, barcode: 692840311613, storage: "din-02-m" },
+      { size: "L", units: 0, barcode: 692840311720, storage: "din-02-l" },
+      { size: "XL", units: 0, barcode: 692840311837, storage: "din-02-xl" },
     ],
   },
   {
@@ -171,10 +171,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 1, storage: "jam-05-s" },
-      { size: "M", units: 3, storage: "jam-05-m" },
-      { size: "L", units: 3, storage: "jam-05-l" },
-      { size: "XL", units: 2, storage: "jam-05-xl" },
+      { size: "S", units: 1, barcode: 739482104013, storage: "jam-05-s" },
+      { size: "M", units: 3, barcode: 739482104020, storage: "jam-05-m" },
+      { size: "L", units: 3, barcode: 739482104037, storage: "jam-05-l" },
+      { size: "XL", units: 2, barcode: 739482104044, storage: "jam-05-xl" },
     ],
   },
   {
@@ -193,10 +193,10 @@ const items = [
     },
     tags: ["bugs", "insects"],
     stock: [
-      { size: "S", units: 1, storage: "moo-01-s" },
-      { size: "M", units: 2, storage: "moo-01-m" },
-      { size: "L", units: 3, storage: "moo-01-l" },
-      { size: "XL", units: 0, storage: "moo-01-xl" },
+      { size: "S", units: 1, barcode: 638274511482, storage: "moo-01-s" },
+      { size: "M", units: 2, barcode: 638274511599, storage: "moo-01-m" },
+      { size: "L", units: 3, barcode: 638274511706, storage: "moo-01-l" },
+      { size: "XL", units: 0, barcode: 638274511813, storage: "moo-01-xl" },
     ],
   },
   {
@@ -215,10 +215,10 @@ const items = [
     },
     tags: ["mammals", "felines", "cats"],
     stock: [
-      { size: "S", units: 2, storage: "jam-06-s" },
-      { size: "M", units: 2, storage: "jam-06-m" },
-      { size: "L", units: 1, storage: "jam-06-l" },
-      { size: "XL", units: 0, storage: "jam-06-xl" },
+      { size: "S", units: 2, barcode: 739482105011, storage: "jam-06-s" },
+      { size: "M", units: 2, barcode: 739482105028, storage: "jam-06-m" },
+      { size: "L", units: 1, barcode: 739482105035, storage: "jam-06-l" },
+      { size: "XL", units: 0, barcode: 739482105042, storage: "jam-06-xl" },
     ],
   },
   {
@@ -237,10 +237,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 1, storage: "jam-07-s" },
-      { size: "M", units: 0, storage: "jam-07-m" },
-      { size: "L", units: 2, storage: "jam-07-l" },
-      { size: "XL", units: 0, storage: "jam-07-xl" },
+      { size: "S", units: 1, barcode: 739482106019, storage: "jam-07-s" },
+      { size: "M", units: 0, barcode: 739482106026, storage: "jam-07-m" },
+      { size: "L", units: 2, barcode: 739482106033, storage: "jam-07-l" },
+      { size: "XL", units: 0, barcode: 739482106040, storage: "jam-07-xl" },
     ],
   },
   {
@@ -259,10 +259,10 @@ const items = [
     },
     tags: ["reptiles", "lizards"],
     stock: [
-      { size: "S", units: 0, storage: "plu-01-s" },
-      { size: "M", units: 0, storage: "plu-01-m" },
-      { size: "L", units: 0, storage: "plu-01-ls" },
-      { size: "XL", units: 2, storage: "plu-01-xl" },
+      { size: "S", units: 0, barcode: 517936420518, storage: "plu-01-s" },
+      { size: "M", units: 0, barcode: 517936420625, storage: "plu-01-m" },
+      { size: "L", units: 0, barcode: 517936420732, storage: "plu-01-ls" },
+      { size: "XL", units: 2, barcode: 517936420849, storage: "plu-01-xl" },
     ],
   },
   {
@@ -281,10 +281,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 1, storage: "jam-08-s" },
-      { size: "M", units: 3, storage: "jam-08-m" },
-      { size: "L", units: 2, storage: "jam-08-l" },
-      { size: "XL", units: 0, storage: "jam-08-xl" },
+      { size: "S", units: 1, barcode: 739482107017, storage: "jam-08-s" },
+      { size: "M", units: 3, barcode: 739482107024, storage: "jam-08-m" },
+      { size: "L", units: 2, barcode: 739482107031, storage: "jam-08-l" },
+      { size: "XL", units: 0, barcode: 739482107048, storage: "jam-08-xl" },
     ],
   },
   {
@@ -303,10 +303,10 @@ const items = [
     },
     tags: ["mammals", "canines", "doggos"],
     stock: [
-      { size: "S", units: 1, storage: "spa-02-s" },
-      { size: "M", units: 2, storage: "spa-02-m" },
-      { size: "L", units: 0, storage: "spa-02-l" },
-      { size: "XL", units: 0, storage: "spa-02-xl" },
+      { size: "S", units: 1, barcode: 845731203113, storage: "spa-02-s" },
+      { size: "M", units: 2, barcode: 845731203283, storage: "spa-02-m" },
+      { size: "L", units: 0, barcode: 845731203353, storage: "spa-02-l" },
+      { size: "XL", units: 0, barcode: 845731203423, storage: "spa-02-xl" },
     ],
   },
   {
@@ -325,10 +325,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 2, storage: "jam-09-s" },
-      { size: "M", units: 6, storage: "jam-09-m" },
-      { size: "L", units: 3, storage: "jam-09-l" },
-      { size: "XL", units: 0, storage: "jam-09-xl" },
+      { size: "S", units: 2, barcode: 739482108015, storage: "jam-09-s" },
+      { size: "M", units: 6, barcode: 739482108022, storage: "jam-09-m" },
+      { size: "L", units: 3, barcode: 739482108039, storage: "jam-09-l" },
+      { size: "XL", units: 0, barcode: 739482108046, storage: "jam-09-xl" },
     ],
   },
   {
@@ -347,10 +347,10 @@ const items = [
     },
     tags: ["reptiles", "dinosaurs", "lizards"],
     stock: [
-      { size: "S", units: 0, storage: "din-03-s" },
-      { size: "M", units: 1, storage: "din-03-m" },
-      { size: "L", units: 2, storage: "din-03-l" },
-      { size: "XL", units: 1, storage: "din-03-xl" },
+      { size: "S", units: 0, barcode: 692840312594, storage: "din-03-s" },
+      { size: "M", units: 1, barcode: 692840312601, storage: "din-03-m" },
+      { size: "L", units: 2, barcode: 692840312718, storage: "din-03-l" },
+      { size: "XL", units: 1, barcode: 692840312825, storage: "din-03-xl" },
     ],
   },
   {
@@ -369,10 +369,10 @@ const items = [
     },
     tags: ["mammals", "horseys"],
     stock: [
-      { size: "S", units: 3, storage: "jam-10-s" },
-      { size: "M", units: 2, storage: "jam-10-m" },
-      { size: "L", units: 2, storage: "jam-10-l" },
-      { size: "XL", units: 1, storage: "jam-10-xl" },
+      { size: "S", units: 3, barcode: 739482109013, storage: "jam-10-s" },
+      { size: "M", units: 2, barcode: 739482109020, storage: "jam-10-m" },
+      { size: "L", units: 2, barcode: 739482109037, storage: "jam-10-l" },
+      { size: "XL", units: 1, barcode: 739482109044, storage: "jam-10-xl" },
     ],
   },
   {
@@ -391,10 +391,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 2, storage: "jam-11-s" },
-      { size: "M", units: 2, storage: "jam-11-m" },
-      { size: "L", units: 0, storage: "jam-11-l" },
-      { size: "XL", units: 0, storage: "jam-11-xl" },
+      { size: "S", units: 2, barcode: 739482110011, storage: "jam-11-s" },
+      { size: "M", units: 2, barcode: 739482110028, storage: "jam-11-m" },
+      { size: "L", units: 0, barcode: 739482110035, storage: "jam-11-l" },
+      { size: "XL", units: 0, barcode: 739482110042, storage: "jam-11-xl" },
     ],
   },
   {
@@ -413,10 +413,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 0, storage: "jam-12-s" },
-      { size: "M", units: 0, storage: "jam-12-ms" },
-      { size: "L", units: 2, storage: "jam-12-l" },
-      { size: "XL", units: 1, storage: "jam-12-xl" },
+      { size: "S", units: 0, barcode: 739482111019, storage: "jam-12-s" },
+      { size: "M", units: 0, barcode: 739482111026, storage: "jam-12-ms" },
+      { size: "L", units: 2, barcode: 739482111033, storage: "jam-12-l" },
+      { size: "XL", units: 1, barcode: 739482111040, storage: "jam-12-xl" },
     ],
   },
   {
@@ -435,10 +435,10 @@ const items = [
     },
     tags: ["mammals", "rodents"],
     stock: [
-      { size: "S", units: 1, storage: "plu-02-s" },
-      { size: "M", units: 2, storage: "plu-02-m" },
-      { size: "L", units: 3, storage: "plu-02-l" },
-      { size: "XL", units: 0, storage: "plu-02-xl" },
+      { size: "S", units: 1, barcode: 517936421507, storage: "plu-02-s" },
+      { size: "M", units: 2, barcode: 517936421614, storage: "plu-02-m" },
+      { size: "L", units: 3, barcode: 517936421721, storage: "plu-02-l" },
+      { size: "XL", units: 0, barcode: 517936421838, storage: "plu-02-xl" },
     ],
   },
   {
@@ -457,10 +457,10 @@ const items = [
     },
     tags: ["mammals", "canines", "doggos"],
     stock: [
-      { size: "S", units: 3, storage: "jam-13-s" },
-      { size: "M", units: 2, storage: "jam-13-m" },
-      { size: "L", units: 1, storage: "jam-13-l" },
-      { size: "XL", units: 2, storage: "jam-13-xl" },
+      { size: "S", units: 3, barcode: 739482112017, storage: "jam-13-s" },
+      { size: "M", units: 2, barcode: 739482112024, storage: "jam-13-m" },
+      { size: "L", units: 1, barcode: 739482112031, storage: "jam-13-l" },
+      { size: "XL", units: 2, barcode: 739482112048, storage: "jam-13-xl" },
     ],
   },
   {
@@ -479,10 +479,10 @@ const items = [
     },
     tags: ["amphibians"],
     stock: [
-      { size: "S", units: 2, storage: "plu-03-s" },
-      { size: "M", units: 2, storage: "plu-03-m" },
-      { size: "L", units: 2, storage: "plu-03-l" },
-      { size: "XL", units: 1, storage: "plu-03-xl" },
+      { size: "S", units: 2, barcode: 517936422596, storage: "plu-03-s" },
+      { size: "M", units: 2, barcode: 517936422603, storage: "plu-03-m" },
+      { size: "L", units: 2, barcode: 517936422710, storage: "plu-03-l" },
+      { size: "XL", units: 1, barcode: 517936422827, storage: "plu-03-xl" },
     ],
   },
   {
@@ -501,10 +501,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 3, storage: "jam-14-s" },
-      { size: "M", units: 1, storage: "jam-14-m" },
-      { size: "L", units: 0, storage: "jam-14-l" },
-      { size: "XL", units: 1, storage: "jam-14-xl" },
+      { size: "S", units: 3, barcode: 739482113015, storage: "jam-14-s" },
+      { size: "M", units: 1, barcode: 739482113022, storage: "jam-14-m" },
+      { size: "L", units: 0, barcode: 739482113039, storage: "jam-14-l" },
+      { size: "XL", units: 1, barcode: 739482113046, storage: "jam-14-xl" },
     ],
   },
   {
@@ -523,10 +523,10 @@ const items = [
     },
     tags: ["bugs", "insects"],
     stock: [
-      { size: "S", units: 2, storage: "spa-03-s" },
-      { size: "M", units: 0, storage: "spa-03-m" },
-      { size: "L", units: 0, storage: "spa-03-l" },
-      { size: "XL", units: 0, storage: "spa-03-xl" },
+      { size: "S", units: 2, barcode: 845731204114, storage: "spa-03-s" },
+      { size: "M", units: 0, barcode: 845731204284, storage: "spa-03-m" },
+      { size: "L", units: 0, barcode: 845731204354, storage: "spa-03-l" },
+      { size: "XL", units: 0, barcode: 845731204424, storage: "spa-03-xl" },
     ],
   },
   {
@@ -545,10 +545,10 @@ const items = [
     },
     tags: ["mammals", "marsupials"],
     stock: [
-      { size: "S", units: 3, storage: "jam-15-s" },
-      { size: "M", units: 3, storage: "jam-15-m" },
-      { size: "L", units: 1, storage: "jam-15-l" },
-      { size: "XL", units: 1, storage: "jam-15-xl" },
+      { size: "S", units: 3, barcode: 739482114013, storage: "jam-15-s" },
+      { size: "M", units: 3, barcode: 739482114020, storage: "jam-15-m" },
+      { size: "L", units: 1, barcode: 739482114037, storage: "jam-15-l" },
+      { size: "XL", units: 1, barcode: 739482114044, storage: "jam-15-xl" },
     ],
   },
   {
@@ -567,10 +567,10 @@ const items = [
     },
     tags: ["mammals", "marsupials"],
     stock: [
-      { size: "S", units: 1, storage: "jam-16-s" },
-      { size: "M", units: 1, storage: "jam-16-m" },
-      { size: "L", units: 3, storage: "jam-16-l" },
-      { size: "XL", units: 3, storage: "jam-16-xl" },
+      { size: "S", units: 1, barcode: 739482115011, storage: "jam-16-s" },
+      { size: "M", units: 1, barcode: 739482115028, storage: "jam-16-m" },
+      { size: "L", units: 3, barcode: 739482115035, storage: "jam-16-l" },
+      { size: "XL", units: 3, barcode: 739482115042, storage: "jam-16-xl" },
     ],
   },
   {
@@ -589,10 +589,10 @@ const items = [
     },
     tags: ["mammals", "felines", "cats"],
     stock: [
-      { size: "S", units: 2, storage: "spa-04-s" },
-      { size: "M", units: 1, storage: "spa-04-m" },
-      { size: "L", units: 4, storage: "spa-04-l" },
-      { size: "XL", units: 0, storage: "spa-04-xl" },
+      { size: "S", units: 2, barcode: 845731205115, storage: "spa-04-s" },
+      { size: "M", units: 1, barcode: 845731205285, storage: "spa-04-m" },
+      { size: "L", units: 4, barcode: 845731205355, storage: "spa-04-l" },
+      { size: "XL", units: 0, barcode: 845731205425, storage: "spa-04-xl" },
     ],
   },
   {
@@ -611,10 +611,10 @@ const items = [
     },
     tags: ["mammals", "felines", "cats"],
     stock: [
-      { size: "S", units: 0, storage: "jam-17-s" },
-      { size: "M", units: 2, storage: "jam-17-m" },
-      { size: "L", units: 3, storage: "jam-17-l" },
-      { size: "XL", units: 2, storage: "jam-17-xl" },
+      { size: "S", units: 0, barcode: 739482116019, storage: "jam-17-s" },
+      { size: "M", units: 2, barcode: 739482116026, storage: "jam-17-m" },
+      { size: "L", units: 3, barcode: 739482116033, storage: "jam-17-l" },
+      { size: "XL", units: 2, barcode: 739482116040, storage: "jam-17-xl" },
     ],
   },
   {
@@ -633,10 +633,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 3, storage: "jam-18-s" },
-      { size: "M", units: 1, storage: "jam-18-m" },
-      { size: "L", units: 0, storage: "jam-18-l" },
-      { size: "XL", units: 0, storage: "jam-18-xl" },
+      { size: "S", units: 3, barcode: 739482117017, storage: "jam-18-s" },
+      { size: "M", units: 1, barcode: 739482117024, storage: "jam-18-m" },
+      { size: "L", units: 0, barcode: 739482117031, storage: "jam-18-l" },
+      { size: "XL", units: 0, barcode: 739482117048, storage: "jam-18-xl" },
     ],
   },
   {
@@ -655,10 +655,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 0, storage: "jam-19-s" },
-      { size: "M", units: 0, storage: "jam-19-m" },
-      { size: "L", units: 1, storage: "jam-19-l" },
-      { size: "XL", units: 1, storage: "jam-19-xl" },
+      { size: "S", units: 0, barcode: 739482118015, storage: "jam-19-s" },
+      { size: "M", units: 0, barcode: 739482118022, storage: "jam-19-m" },
+      { size: "L", units: 1, barcode: 739482118039, storage: "jam-19-l" },
+      { size: "XL", units: 1, barcode: 739482118046, storage: "jam-19-xl" },
     ],
   },
   {
@@ -677,10 +677,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 2, storage: "jam-20-s" },
-      { size: "M", units: 3, storage: "jam-20-m" },
-      { size: "L", units: 2, storage: "jam-20-l" },
-      { size: "XL", units: 2, storage: "jam-20-xl" },
+      { size: "S", units: 2, barcode: 739482119013, storage: "jam-20-s" },
+      { size: "M", units: 3, barcode: 739482119020, storage: "jam-20-m" },
+      { size: "L", units: 2, barcode: 739482119037, storage: "jam-20-l" },
+      { size: "XL", units: 2, barcode: 739482119044, storage: "jam-20-xl" },
     ],
   },
   {
@@ -699,10 +699,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 1, storage: "plu-04-s" },
-      { size: "M", units: 2, storage: "plu-04-m" },
-      { size: "L", units: 1, storage: "plu-04-l" },
-      { size: "XL", units: 1, storage: "plu-04-xl" },
+      { size: "S", units: 1, barcode: 517936423585, storage: "plu-04-s" },
+      { size: "M", units: 2, barcode: 517936423692, storage: "plu-04-m" },
+      { size: "L", units: 1, barcode: 517936423709, storage: "plu-04-l" },
+      { size: "XL", units: 1, barcode: 517936423816, storage: "plu-04-xl" },
     ],
   },
   {
@@ -721,10 +721,10 @@ const items = [
     },
     tags: ["bugs", "insects"],
     stock: [
-      { size: "S", units: 0, storage: "moo-02-s" },
-      { size: "M", units: 1, storage: "moo-02-m" },
-      { size: "L", units: 0, storage: "moo-02-l" },
-      { size: "XL", units: 2, storage: "moo-02-xl" },
+      { size: "S", units: 0, barcode: 638274510493, storage: "moo-02-s" },
+      { size: "M", units: 1, barcode: 638274510607, storage: "moo-02-m" },
+      { size: "L", units: 0, barcode: 638274510714, storage: "moo-02-l" },
+      { size: "XL", units: 2, barcode: 638274510821, storage: "moo-02-xl" },
     ],
   },
   {
@@ -743,10 +743,10 @@ const items = [
     },
     tags: ["mammals", "rodents"],
     stock: [
-      { size: "S", units: 2, storage: "spa-05-s" },
-      { size: "M", units: 1, storage: "spa-05-m" },
-      { size: "L", units: 3, storage: "spa-05-l" },
-      { size: "XL", units: 2, storage: "spa-05-xl" },
+      { size: "S", units: 2, barcode: 845731206116, storage: "spa-05-s" },
+      { size: "M", units: 1, barcode: 845731206286, storage: "spa-05-m" },
+      { size: "L", units: 3, barcode: 845731206356, storage: "spa-05-l" },
+      { size: "XL", units: 2, barcode: 845731206426, storage: "spa-05-xl" },
     ],
   },
   {
@@ -765,10 +765,10 @@ const items = [
     },
     tags: ["mammals", "ursines"],
     stock: [
-      { size: "S", units: 1, storage: "jam-21-s" },
-      { size: "M", units: 2, storage: "jam-21-m" },
-      { size: "L", units: 0, storage: "jam-21-l" },
-      { size: "XL", units: 0, storage: "jam-21-xl" },
+      { size: "S", units: 1, barcode: 739482120011, storage: "jam-21-s" },
+      { size: "M", units: 2, barcode: 739482120028, storage: "jam-21-m" },
+      { size: "L", units: 0, barcode: 739482120035, storage: "jam-21-l" },
+      { size: "XL", units: 0, barcode: 739482120042, storage: "jam-21-xl" },
     ],
   },
   {
@@ -787,10 +787,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 2, storage: "spa-06-s" },
-      { size: "M", units: 0, storage: "spa-06-m" },
-      { size: "L", units: 1, storage: "spa-06-l" },
-      { size: "XL", units: 2, storage: "spa-06-xl" },
+      { size: "S", units: 2, barcode: 845731207117, storage: "spa-06-s" },
+      { size: "M", units: 0, barcode: 845731207287, storage: "spa-06-m" },
+      { size: "L", units: 1, barcode: 845731207357, storage: "spa-06-l" },
+      { size: "XL", units: 2, barcode: 845731207427, storage: "spa-06-xl" },
     ],
   },
   {
@@ -809,10 +809,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 2, storage: "spa-07-s" },
-      { size: "M", units: 3, storage: "spa-07-m" },
-      { size: "L", units: 3, storage: "spa-07-l" },
-      { size: "XL", units: 2, storage: "spa-07-xl" },
+      { size: "S", units: 2, barcode: 845731208118, storage: "spa-07-s" },
+      { size: "M", units: 3, barcode: 845731208288, storage: "spa-07-m" },
+      { size: "L", units: 3, barcode: 845731208358, storage: "spa-07-l" },
+      { size: "XL", units: 2, barcode: 845731208428, storage: "spa-07-xl" },
     ],
   },
   {
@@ -831,10 +831,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 1, storage: "jam-22-s" },
-      { size: "M", units: 1, storage: "jam-22-m" },
-      { size: "L", units: 0, storage: "jam-22-l" },
-      { size: "XL", units: 3, storage: "jam-22-xl" },
+      { size: "S", units: 1, barcode: 739482121019, storage: "jam-22-s" },
+      { size: "M", units: 1, barcode: 739482121026, storage: "jam-22-m" },
+      { size: "L", units: 0, barcode: 739482121033, storage: "jam-22-l" },
+      { size: "XL", units: 3, barcode: 739482121040, storage: "jam-22-xl" },
     ],
   },
   {
@@ -853,10 +853,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 0, storage: "jam-23-s" },
-      { size: "M", units: 5, storage: "jam-23-m" },
-      { size: "L", units: 2, storage: "jam-23-l" },
-      { size: "XL", units: 1, storage: "jam-23-xl" },
+      { size: "S", units: 0, barcode: 739482122017, storage: "jam-23-s" },
+      { size: "M", units: 5, barcode: 739482122024, storage: "jam-23-m" },
+      { size: "L", units: 2, barcode: 739482122031, storage: "jam-23-l" },
+      { size: "XL", units: 1, barcode: 739482122048, storage: "jam-23-xl" },
     ],
   },
   {
@@ -875,10 +875,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 0, storage: "jam-24-s" },
-      { size: "M", units: 3, storage: "jam-24-m" },
-      { size: "L", units: 1, storage: "jam-24-l" },
-      { size: "XL", units: 0, storage: "jam-24-xl" },
+      { size: "S", units: 0, barcode: 739482123015, storage: "jam-24-s" },
+      { size: "M", units: 3, barcode: 739482123022, storage: "jam-24-m" },
+      { size: "L", units: 1, barcode: 739482123039, storage: "jam-24-l" },
+      { size: "XL", units: 0, barcode: 739482123046, storage: "jam-24-xl" },
     ],
   },
   {
@@ -897,10 +897,10 @@ const items = [
     },
     tags: ["mammals", "rodents"],
     stock: [
-      { size: "S", units: 3, storage: "jam-25-s" },
-      { size: "M", units: 0, storage: "jam-25-m" },
-      { size: "L", units: 0, storage: "jam-25-l" },
-      { size: "XL", units: 2, storage: "jam-25-xl" },
+      { size: "S", units: 3, barcode: 739482124013, storage: "jam-25-s" },
+      { size: "M", units: 0, barcode: 739482124020, storage: "jam-25-m" },
+      { size: "L", units: 0, barcode: 739482124037, storage: "jam-25-l" },
+      { size: "XL", units: 2, barcode: 739482124044, storage: "jam-25-xl" },
     ],
   },
   {
@@ -919,10 +919,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 0, storage: "jam-26-s" },
-      { size: "M", units: 0, storage: "jam-26-m" },
-      { size: "L", units: 0, storage: "jam-26-l" },
-      { size: "XL", units: 4, storage: "jam-26-xl" },
+      { size: "S", units: 0, barcode: 739482125011, storage: "jam-26-s" },
+      { size: "M", units: 0, barcode: 739482125028, storage: "jam-26-m" },
+      { size: "L", units: 0, barcode: 739482125035, storage: "jam-26-l" },
+      { size: "XL", units: 4, barcode: 739482125042, storage: "jam-26-xl" },
     ],
   },
   {
@@ -941,10 +941,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 0, storage: "jam-27-s" },
-      { size: "M", units: 2, storage: "jam-27-m" },
-      { size: "L", units: 0, storage: "jam-27-l" },
-      { size: "XL", units: 0, storage: "jam-27-xl" },
+      { size: "S", units: 0, barcode: 739482126019, storage: "jam-27-s" },
+      { size: "M", units: 2, barcode: 739482126026, storage: "jam-27-m" },
+      { size: "L", units: 0, barcode: 739482126033, storage: "jam-27-l" },
+      { size: "XL", units: 0, barcode: 739482126040, storage: "jam-27-xl" },
     ],
   },
   {
@@ -963,10 +963,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 2, storage: "jam-28-s" },
-      { size: "M", units: 1, storage: "jam-28-m" },
-      { size: "L", units: 1, storage: "jam-28-l" },
-      { size: "XL", units: 1, storage: "jam-28-xl" },
+      { size: "S", units: 2, barcode: 739482127017, storage: "jam-28-s" },
+      { size: "M", units: 1, barcode: 739482127024, storage: "jam-28-m" },
+      { size: "L", units: 1, barcode: 739482127031, storage: "jam-28-l" },
+      { size: "XL", units: 1, barcode: 739482127048, storage: "jam-28-xl" },
     ],
   },
   {
@@ -985,10 +985,10 @@ const items = [
     },
     tags: ["mammals", "felines", "cats"],
     stock: [
-      { size: "S", units: 0, storage: "jam-29-s" },
-      { size: "M", units: 0, storage: "jam-29-m" },
-      { size: "L", units: 1, storage: "jam-29-l" },
-      { size: "XL", units: 0, storage: "jam-29-xl" },
+      { size: "S", units: 0, barcode: 739482128015, storage: "jam-29-s" },
+      { size: "M", units: 0, barcode: 739482128022, storage: "jam-29-m" },
+      { size: "L", units: 1, barcode: 739482128039, storage: "jam-29-l" },
+      { size: "XL", units: 0, barcode: 739482128046, storage: "jam-29-xl" },
     ],
   },
   {
@@ -1007,10 +1007,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 2, storage: "jam-30-s" },
-      { size: "M", units: 3, storage: "jam-30-m" },
-      { size: "L", units: 1, storage: "jam-30-l" },
-      { size: "XL", units: 0, storage: "jam-30-xl" },
+      { size: "S", units: 2, barcode: 739482129013, storage: "jam-30-s" },
+      { size: "M", units: 3, barcode: 739482129020, storage: "jam-30-m" },
+      { size: "L", units: 1, barcode: 739482129037, storage: "jam-30-l" },
+      { size: "XL", units: 0, barcode: 739482129044, storage: "jam-30-xl" },
     ],
   },
   {
@@ -1029,10 +1029,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 2, storage: "plu-05-s" },
-      { size: "M", units: 2, storage: "plu-05-m" },
-      { size: "L", units: 1, storage: "plu-05-l" },
-      { size: "XL", units: 0, storage: "plu-05-xl" },
+      { size: "S", units: 2, barcode: 517936424574, storage: "plu-05-s" },
+      { size: "M", units: 2, barcode: 517936424681, storage: "plu-05-m" },
+      { size: "L", units: 1, barcode: 517936424798, storage: "plu-05-l" },
+      { size: "XL", units: 0, barcode: 517936424805, storage: "plu-05-xl" },
     ],
   },
   {
@@ -1051,10 +1051,10 @@ const items = [
     },
     tags: ["mammals"],
     stock: [
-      { size: "S", units: 0, storage: "jam-31-s" },
-      { size: "M", units: 3, storage: "jam-31-m" },
-      { size: "L", units: 0, storage: "jam-31-l" },
-      { size: "XL", units: 1, storage: "jam-31-xl" },
+      { size: "S", units: 0, barcode: 739482130011, storage: "jam-31-s" },
+      { size: "M", units: 3, barcode: 739482130028, storage: "jam-31-m" },
+      { size: "L", units: 0, barcode: 739482130035, storage: "jam-31-l" },
+      { size: "XL", units: 1, barcode: 739482130042, storage: "jam-31-xl" },
     ],
   },
   {
@@ -1073,10 +1073,10 @@ const items = [
     },
     tags: ["bugs", "arachnids"],
     stock: [
-      { size: "S", units: 0, storage: "jam-32-s" },
-      { size: "M", units: 0, storage: "jam-32-m" },
-      { size: "L", units: 0, storage: "jam-32-ls" },
-      { size: "XL", units: 4, storage: "jam-32-xl" },
+      { size: "S", units: 0, barcode: 739482131019, storage: "jam-32-s" },
+      { size: "M", units: 0, barcode: 739482131026, storage: "jam-32-m" },
+      { size: "L", units: 0, barcode: 739482131033, storage: "jam-32-ls" },
+      { size: "XL", units: 4, barcode: 739482131040, storage: "jam-32-xl" },
     ],
   },
   {
@@ -1095,10 +1095,10 @@ const items = [
     },
     tags: ["mammals", "rodents"],
     stock: [
-      { size: "S", units: 2, storage: "jam-33-s" },
-      { size: "M", units: 0, storage: "jam-33-m" },
-      { size: "L", units: 1, storage: "jam-33-l" },
-      { size: "XL", units: 2, storage: "jam-33-xl" },
+      { size: "S", units: 2, barcode: 739482132017, storage: "jam-33-s" },
+      { size: "M", units: 0, barcode: 739482132024, storage: "jam-33-m" },
+      { size: "L", units: 1, barcode: 739482132031, storage: "jam-33-l" },
+      { size: "XL", units: 2, barcode: 739482132048, storage: "jam-33-xl" },
     ],
   },
   {
@@ -1117,10 +1117,10 @@ const items = [
     },
     tags: ["reptiles", "dinosaurs", "lizards"],
     stock: [
-      { size: "S", units: 0, storage: "din-04-s" },
-      { size: "M", units: 1, storage: "din-04-m" },
-      { size: "L", units: 1, storage: "din-04-l" },
-      { size: "XL", units: 1, storage: "din-04-xl" },
+      { size: "S", units: 0, barcode: 692840313583, storage: "din-04-s" },
+      { size: "M", units: 1, barcode: 692840313690, storage: "din-04-m" },
+      { size: "L", units: 1, barcode: 692840313707, storage: "din-04-l" },
+      { size: "XL", units: 1, barcode: 692840313814, storage: "din-04-xl" },
     ],
   },
   {
@@ -1139,10 +1139,10 @@ const items = [
     },
     tags: ["mammals", "felines", "cats"],
     stock: [
-      { size: "S", units: 2, storage: "spa-08-s" },
-      { size: "M", units: 3, storage: "spa-08-m" },
-      { size: "L", units: 0, storage: "spa-08-l" },
-      { size: "XL", units: 3, storage: "spa-08-xl" },
+      { size: "S", units: 2, barcode: 845731209119, storage: "spa-08-s" },
+      { size: "M", units: 3, barcode: 845731209289, storage: "spa-08-m" },
+      { size: "L", units: 0, barcode: 845731209359, storage: "spa-08-l" },
+      { size: "XL", units: 3, barcode: 845731209429, storage: "spa-08-xl" },
     ],
   },
   {
@@ -1161,10 +1161,10 @@ const items = [
     },
     tags: ["reptiles", "dinosaurs", "lizards"],
     stock: [
-      { size: "S", units: 1, storage: "din-05-s" },
-      { size: "M", units: 1, storage: "din-05-m" },
-      { size: "L", units: 1, storage: "din-05-l" },
-      { size: "XL", units: 0, storage: "din-05-xl" },
+      { size: "S", units: 1, barcode: 692840314572, storage: "din-05-s" },
+      { size: "M", units: 1, barcode: 692840314689, storage: "din-05-m" },
+      { size: "L", units: 1, barcode: 692840314796, storage: "din-05-l" },
+      { size: "XL", units: 0, barcode: 692840314803, storage: "din-05-xl" },
     ],
   },
   {
@@ -1183,10 +1183,10 @@ const items = [
     },
     tags: ["birds"],
     stock: [
-      { size: "S", units: 4, storage: "jam-34-s" },
-      { size: "M", units: 3, storage: "jam-34-m" },
-      { size: "L", units: 2, storage: "jam-34-l" },
-      { size: "XL", units: 2, storage: "jam-34-xl" },
+      { size: "S", units: 4, barcode: 739482133015, storage: "jam-34-s" },
+      { size: "M", units: 3, barcode: 739482133022, storage: "jam-34-m" },
+      { size: "L", units: 2, barcode: 739482133039, storage: "jam-34-l" },
+      { size: "XL", units: 2, barcode: 739482133046, storage: "jam-34-xl" },
     ],
   },
   {
@@ -1205,10 +1205,10 @@ const items = [
     },
     tags: ["reptiles", "dinosaurs", "lizards"],
     stock: [
-      { size: "S", units: 2, storage: "din-06-s" },
-      { size: "M", units: 1, storage: "din-06-m" },
-      { size: "L", units: 0, storage: "din-06-l" },
-      { size: "XL", units: 2, storage: "din-06-xl" },
+      { size: "S", units: 2, barcode: 692840315561, storage: "din-06-s" },
+      { size: "M", units: 1, barcode: 692840315678, storage: "din-06-m" },
+      { size: "L", units: 0, barcode: 692840315785, storage: "din-06-l" },
+      { size: "XL", units: 2, barcode: 692840315892, storage: "din-06-xl" },
     ],
   },
   {
@@ -1227,10 +1227,10 @@ const items = [
     },
     tags: ["mammals", "horseys", "mythical"],
     stock: [
-      { size: "S", units: 5, storage: "jam-35-s" },
-      { size: "M", units: 2, storage: "jam-35-m" },
-      { size: "L", units: 4, storage: "jam-35-l" },
-      { size: "XL", units: 4, storage: "jam-35-xl" },
+      { size: "S", units: 5, barcode: 739482134013, storage: "jam-35-s" },
+      { size: "M", units: 2, barcode: 739482134020, storage: "jam-35-m" },
+      { size: "L", units: 4, barcode: 739482134037, storage: "jam-35-l" },
+      { size: "XL", units: 4, barcode: 739482134044, storage: "jam-35-xl" },
     ],
   },
   {
@@ -1249,10 +1249,10 @@ const items = [
     },
     tags: ["mythical"],
     stock: [
-      { size: "S", units: 0, storage: "spa-09-s" },
-      { size: "M", units: 1, storage: "spa-09-m" },
-      { size: "L", units: 0, storage: "spa-09-l" },
-      { size: "XL", units: 2, storage: "spa-09-xl" },
+      { size: "S", units: 0, barcode: 845731210110, storage: "spa-09-s" },
+      { size: "M", units: 1, barcode: 845731210280, storage: "spa-09-m" },
+      { size: "L", units: 0, barcode: 845731210350, storage: "spa-09-l" },
+      { size: "XL", units: 2, barcode: 845731210420, storage: "spa-09-xl" },
     ],
   },
   {
@@ -1271,10 +1271,10 @@ const items = [
     },
     tags: ["mammals", "canines", "doggos"],
     stock: [
-      { size: "S", units: 2, storage: "jam-36-s" },
-      { size: "M", units: 1, storage: "jam-36-m" },
-      { size: "L", units: 0, storage: "jam-36-l" },
-      { size: "XL", units: 3, storage: "jam-36-xl" },
+      { size: "S", units: 2, barcode: 739482135011, storage: "jam-36-s" },
+      { size: "M", units: 1, barcode: 739482135028, storage: "jam-36-m" },
+      { size: "L", units: 0, barcode: 739482135035, storage: "jam-36-l" },
+      { size: "XL", units: 3, barcode: 739482135042, storage: "jam-36-xl" },
     ],
   },
   {
@@ -1293,10 +1293,10 @@ const items = [
     },
     tags: ["mammals", "horseys"],
     stock: [
-      { size: "S", units: 1, storage: "spa-10-s" },
-      { size: "M", units: 1, storage: "spa-10-m" },
-      { size: "L", units: 1, storage: "spa-10-l" },
-      { size: "XL", units: 0, storage: "spa-10-xl" },
+      { size: "S", units: 1, barcode: 845731201111, storage: "spa-10-s" },
+      { size: "M", units: 1, barcode: 845731201281, storage: "spa-10-m" },
+      { size: "L", units: 1, barcode: 845731201351, storage: "spa-10-l" },
+      { size: "XL", units: 0, barcode: 845731201421, storage: "spa-10-xl" },
     ],
   },
 ];

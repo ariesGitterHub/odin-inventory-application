@@ -2,56 +2,6 @@ require("dotenv").config();
 const { items } = require("../data/items.js");
 const { Client } = require("pg");
 
-// const items = [
-//   {
-//     animal_type: "alpaca",
-//     item_type: "adult onesie"
-//     brand: "jammy mart",
-//     price_unit: 32.99,
-//     cost_unit: 17.99,
-//     base_sku: "alpac001jam-",
-//     rating: 4.1,
-//     number_reviews: 13,
-//     img_front_url: "alpac001f.jpg",
-//     img_rear_url: "alpac001r.jpg",
-//     img_size_url: "siz_jam001.jpg",
-//     tags: ["mammals, camelids"],
-//     stock: [
-//       { size: "S", units: 1 },
-//       { size: "M", units: 0 },
-//       { size: "L", units: 2 },
-//       { size: "XL", units: 2 },
-//     ],
-//   },
-// ]
-
-// const items = [
-//   {
-//     animal_type: "alpaca",
-//     item_type: "adult onesie",
-//     brand: "jammy mart",
-//     price_unit: 32.99,
-//     cost_unit: 17.99,
-//     base_sku: "ALPAC001JAM-",
-//     rating: 4.1,
-//     number_reviews: 13,
-//     images: {
-//       front: "alpac001f.jpg",
-//       rear: "alpac001r.jpg",
-//       size: "siz_jam001.jpg",
-//     },
-//     tags: ["mammals", "camelids"],
-//     stock: [
-//       { size: "S", units: 1 },
-//       { size: "M", units: 0 },
-//       { size: "L", units: 2 },
-//       { size: "XL", units: 2 },
-//     ],
-//   },
-// ];
-
-
-
 async function main() {
   console.log("Seeding products...");
 
@@ -116,7 +66,9 @@ async function main() {
     product_id INT REFERENCES products(id),
     size_id INT REFERENCES sizes(id),
     sku TEXT UNIQUE,
-    units INT
+    barcode VARCHAR(12),
+    units INT,
+    storage TEXT
   );
 `);
 
@@ -187,7 +139,7 @@ async function main() {
     }
 
     /* 4️⃣ Insert inventory + SKUs */
-    for (const { size, units } of item.stock) {
+    for (const { size, barcode, units, storage } of item.stock) {
       const sizeRes = await client.query(
         `
         INSERT INTO sizes (code)
@@ -212,18 +164,18 @@ async function main() {
       // comment out above/try below ... ERROR happens if you run it multiple times without cleaning the table, or if item.base_sku + size produces the same SKU more than once.
       await client.query(
         `
-        INSERT INTO inventory (product_id, size_id, sku, units)
-        VALUES ($1, $2, $3, $4)
+        INSERT INTO inventory (product_id, size_id, sku, barcode, units, storage)
+        VALUES ($1, $2, $3, $4, $5, $6)
         ON CONFLICT (sku) DO UPDATE
         SET units = EXCLUDED.units,
             product_id = EXCLUDED.product_id,
             size_id = EXCLUDED.size_id;
         `,
-        [productId, sizeId, sku, units]
+        [productId, sizeId, sku, barcode, units, storage]
       );
     }
   }
-
+//  TODO - ON CONFLICT.....add barcode to this???
   await client.end();
   console.log("Product seeding complete!");
 }
