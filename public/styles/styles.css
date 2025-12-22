@@ -309,14 +309,6 @@ nav h1 {
   color: var(--gold);
 }
 
-.variant-details {
-  width: 100%;
-  background-color: var(--frog-white);
-  border: 2px solid var(--frog-black);
-  border-radius: var(--border-radius-inner);
-  padding: 0.5rem;
-}
-
 .quick-view-notifications,
 .quick-view-tags {
   width: 100%;
@@ -395,6 +387,14 @@ nav h1 {
   padding-left: 0.25rem;
   /* text-transform: uppercase; */
   white-space: nowrap;
+}
+
+.variant-details {
+  width: 100%;
+  background-color: var(--frog-white);
+  border: 2px solid var(--frog-black);
+  border-radius: var(--border-radius-inner);
+  padding: 0.5rem;
 }
 
 .quick-view-profit1 {

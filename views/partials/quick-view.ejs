@@ -51,7 +51,7 @@
                 </p>
               </div>
 
-              <% 
+              <%# 
               // Define the custom order of sizes
               const customSizeOrder = ['S', 'M', 'L', 'XL'];
 
@@ -62,8 +62,14 @@
               sizeCodes.sort((a, b) => customSizeOrder.indexOf(a) - customSizeOrder.indexOf(b));
               %>
 
+              <% 
+
+              // Get the size codes from the inventory
+              const sizeCodes = Object.keys(product.inventoryBySize);
+
+              %>
+
               <p><%= sizeCodes.join(", ") %></p>
-        
               <p><%= product.base_sku %></p>
               <p><%= product.rating %></p>
               <p><%= product.review_count %></p>
@@ -81,7 +87,7 @@
               <!-- TODO - along with all the other items that need to be map and ejs'ed up, also make below messages programmatic-->
               <p>Notice: Reorder - (S) variant at 0 units.</p>
               <p>Notice: Reorder - (M) variant at 0 units.</p>
-          </div>
+          </div>         
           <div class="quick-view-details-col additional-data hidden">
             <div class="quick-view-tags">
               <h2>search tags</h2>
@@ -97,111 +103,40 @@
               <button class="card-button long-button">Storage History</button>
               <button class="card-button long-button">Order History</button>
             </div>
-            <div class="quick-view-details-row variant-details">
-              <div class="quick-view-category">
-                <p>variant</p>
-                <p>sku</p>
-                <p>barcode</p>
-                <p>storage</p>      
-                <p>units</p>
-              </div>
-              <div class="quick-view-data">
-                <% if (product.inventoryBySize['S']) { %>
-                  <% product.inventoryBySize['S'].forEach(function(size) { %>
-                  <p><span class="uppercase">(s)</span> small</p>
-                  <p><%= size.sku %></p>
-                  <p><%= size.barcode %></p>
-                  <p><%= size.storage %></p>      
-                  <p>
-                    <%= size.units %>
-                    <span class="quick-view-unit-message">(MESSAGE)</span>
-                  </p>
-                <% }); %>
-                <% } else { %>
-                  <p>No inventory for size S.</p>
-                <% } %>
-              </div>
-            </div>
-            <div class="quick-view-details-row variant-details">
-              <div class="quick-view-category">
-                <p>variant</p>
-                <p>sku</p>
-                <p>barcode</p>
-                <p>storage</p>      
-                <p>units</p>
-              </div>
-              <div class="quick-view-data">
-                <% if (product.inventoryBySize['M']) { %>
-                  <% product.inventoryBySize['M'].forEach(function(size) { %>
-                  <p><span class="uppercase">(m)</span> medium</p>
-                  <p><%= size.sku %></p>
-                  <p><%= size.barcode %></p>
-                  <p><%= size.storage %></p>      
-                  <p>
-                    <%= size.units %>
-                    <span class="quick-view-unit-message">(MESSAGE)</span>
-                  </p>
-                <% }); %>
-                <% } else { %>
-                  <p>No inventory for size M.</p>
-                <% } %>
-              </div>
-            </div>
-            <div class="quick-view-details-row variant-details">
-              <div class="quick-view-category">
-                <p>variant</p>
-                <p>sku</p>
-                <p>barcode</p>
-                <p>storage</p>      
-                <p>units</p>
-              </div>
-              <div class="quick-view-data">
-                <% if (product.inventoryBySize['L']) { %>
-                  <% product.inventoryBySize['L'].forEach(function(size) { %>
-                  <p><span class="uppercase">(l)</span> large</p>
-                  <p><%= size.sku %></p>
-                  <p><%= size.barcode %></p>
-                  <p><%= size.storage %></p>      
-                  <p>
-                    <%= size.units %>
-                    <span class="quick-view-unit-message">(MESSAGE)</span>
-                  </p>
-                <% }); %>
-                <% } else { %>
-                  <p>No inventory for size L.</p>
-                <% } %>
-              </div>
-            </div>
-            <div class="quick-view-details-row variant-details">
-              <div class="quick-view-category">
-                <p>variant</p>
-                <p>sku</p>
-                <p>barcode</p>
-                <p>storage</p>      
-                <p>units</p>
-              </div>
-              <div class="quick-view-data">
-                <% if (product.inventoryBySize['XL']) { %>
-                  <% product.inventoryBySize['XL'].forEach(function(size) { %>
-                  <p><span class="uppercase">(xl)</span> extra large</p>
-                  <p><%= size.sku %></p>
-                  <p><%= size.barcode %></p>
-                  <p><%= size.storage %></p>      
-                  <p>
-                    <%= size.units %>
-                    <span class="quick-view-unit-message">(MESSAGE)</span>
-                  </p>
-                <% }); %>
-                <% } else { %>
-                  <p>No inventory for size XL.</p>
-                <% } %>
-              </div>
-            </div>
-          </div>
+            <%#// HOLDER CODE %>
+          <% if (product.inventoryBySize) { %>
+            <% Object.keys(product.inventoryBySize).forEach(function(sizeCode) { %>
+              <% const size = product.inventoryBySize[sizeCode]; %>
+                <div class="quick-view-details-row variant-details">
+                  <div class="quick-view-category variant-category">
+                    <p>variant</p>
+                    <p>sku</p>
+                    <p>barcode</p>
+                    <p>storage</p>      
+                    <p>units</p>
+                  </div>
+                  <div class="quick-view-data variant-data">
+                    <p class="uppercase"> size (<%= sizeCode %>)</p>
+                    <% size.forEach(function(size) { %>
+                      <p><%= size.sku %></p>
+                      <p><%= size.barcode %></p>
+                      <p><%= size.storage %></p>      
+                      <p>
+                        <%= size.units %>
+                        <span class="quick-view-unit-message">(MESSAGE)</span>
+                      </p>
+                    <% }); %>
+                  </div>
+                </div>
+            <% }); %>
+        <% } else { %>
+          <p>No inventory for size <%= sizeCode %>.</p>
+        <% } %>
+        </div>
       </div>
     </div>
   <% }) %>
   <script src="/js/main.js"></script>
 <% } else { %>
-  <p>No products found.</p>
+  <p class="uppercase">No products found.</p>
 <% } %>

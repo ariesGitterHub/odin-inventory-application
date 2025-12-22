@@ -124,6 +124,7 @@ async function getAllProducts() {
     inventoryBySize: p.inventory.reduce((acc, inv) => {
       acc[inv.size_code] = acc[inv.size_code] || [];
       acc[inv.size_code].push({
+        // size: inv.size_code,
         sku: inv.sku,
         barcode: inv.barcode,
         units: inv.units,

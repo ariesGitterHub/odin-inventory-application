@@ -649,7 +649,7 @@ const items = [
     rating: 4.0,
     number_reviews: 4,
     images: {
-      front: "mallax001f.jpg",
+      front: "malla001f.jpg",
       rear: "malla001r.jpg",
       size: "siz_jam001.jpg",
     },
@@ -979,8 +979,8 @@ const items = [
     rating: 2.7,
     number_reviews: 3,
     images: {
-      front: "sandca001f.jpg",
-      rear: "sandca001r.jpg",
+      front: "sanca001f.jpg",
+      rear: "sanca001r.jpg",
       size: "siz_jam001.jpg",
     },
     tags: ["mammals", "felines", "cats"],
