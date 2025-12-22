@@ -26,7 +26,7 @@ function computeProfit(products) {
     //   (Number(p.price_unit) - Number(p.cost_unit)).toFixed(2)
     // ),
 
-    // THERE IS A PROBLEM WITH JS DROPPING ZEROS ON NUMBERS, TRY:
+    // THERE IS A PROBLEM WITH JS DROPPING ZEROS ON NUMBERS, TRY THIS TO GET TO TWO FIXED DIGITS:
     profit_per_unit: (Number(p.price_unit) - Number(p.cost_unit)).toFixed(2),
   }));
 }

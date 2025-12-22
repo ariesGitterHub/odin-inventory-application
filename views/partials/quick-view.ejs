@@ -51,7 +51,7 @@
                 </p>
               </div>
 
-              <%# 
+              <% 
               // Define the custom order of sizes
               const customSizeOrder = ['S', 'M', 'L', 'XL'];
 
@@ -62,7 +62,7 @@
               sizeCodes.sort((a, b) => customSizeOrder.indexOf(a) - customSizeOrder.indexOf(b));
               %>
 
-              <% 
+              <%# 
 
               // Get the size codes from the inventory
               const sizeCodes = Object.keys(product.inventoryBySize);
@@ -79,14 +79,25 @@
             </div>
           </div>
           <div class="quick-view-button-container">
-            <button class="card-button toggle-btn">view file</button>
-            <button class="card-button">edit file</button>
+            <button class="card-button toggle-btn color-button">toggle file</button>
+            <button class="card-button">update file</button>
           </div>
           <div class="quick-view-notifications">
-            <h2>notifications</h2>
-              <!-- TODO - along with all the other items that need to be map and ejs'ed up, also make below messages programmatic-->
-              <p>Notice: Reorder - (S) variant at 0 units.</p>
-              <p>Notice: Reorder - (M) variant at 0 units.</p>
+            <h2>notifications</h2> 
+            <% if (product.inventoryBySize && Object.keys(product.inventoryBySize).length > 0) { %>
+            <% const customSizeOrder = ['S', 'M', 'L', 'XL']; %>
+            <% const sizeCodes = Object.keys(product.inventoryBySize).sort((a, b) => customSizeOrder.indexOf(a) - customSizeOrder.indexOf(b)); %>
+            <% sizeCodes.forEach(function(sizeCode) { %>
+              <% const size = product.inventoryBySize[sizeCode]; %>
+            <div class="notifications">
+              <p class="uppercase"><span class="messages"></span> size (<%= sizeCode %>) variant at <% size.forEach(function(variantSize) { %>
+              <span class="messageUnitCount"><%= variantSize.units %></span> units.</p>
+                    <% }); %>
+                </div>
+            <% }); %>
+          <% } else { %>
+            <p>No messages.</p>
+          <% } %>
           </div>         
           <div class="quick-view-details-col additional-data hidden">
             <div class="quick-view-tags">
@@ -104,8 +115,10 @@
               <button class="card-button long-button">Order History</button>
             </div>
             <%#// HOLDER CODE %>
-          <% if (product.inventoryBySize) { %>
-            <% Object.keys(product.inventoryBySize).forEach(function(sizeCode) { %>
+          <% if (product.inventoryBySize && Object.keys(product.inventoryBySize).length > 0) { %>
+            <% const customSizeOrder = ['S', 'M', 'L', 'XL']; %>
+            <% const sizeCodes = Object.keys(product.inventoryBySize).sort((a, b) => customSizeOrder.indexOf(a) - customSizeOrder.indexOf(b)); %>
+            <% sizeCodes.forEach(function(sizeCode) { %>
               <% const size = product.inventoryBySize[sizeCode]; %>
                 <div class="quick-view-details-row variant-details">
                   <div class="quick-view-category variant-category">
@@ -117,21 +130,21 @@
                   </div>
                   <div class="quick-view-data variant-data">
                     <p class="uppercase"> size (<%= sizeCode %>)</p>
-                    <% size.forEach(function(size) { %>
-                      <p><%= size.sku %></p>
-                      <p><%= size.barcode %></p>
-                      <p><%= size.storage %></p>      
-                      <p>
-                        <%= size.units %>
-                        <span class="quick-view-unit-message">(MESSAGE)</span>
+                    <% size.forEach(function(variantSize) { %>
+                      <p><%= variantSize.sku %></p>
+                      <p><%= variantSize.barcode %></p>
+                      <p><%= variantSize.storage %></p>      
+                      <p class="sizeUnitCount">
+                        <%= variantSize.units %>
+                        <span class="quick-view-unit-message"></span>
                       </p>
                     <% }); %>
                   </div>
                 </div>
             <% }); %>
-        <% } else { %>
-          <p>No inventory for size <%= sizeCode %>.</p>
-        <% } %>
+          <% } else { %>
+            <p>No inventory for size <%= sizeCode %>.</p>
+          <% } %>
         </div>
       </div>
     </div>

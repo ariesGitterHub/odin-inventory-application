@@ -10,6 +10,8 @@
   --gold: #ffc001;
   --white: #ffffff;
   --focus-blue: #4d90fe;
+  --red-dk: #b00e0e;
+  --orange-dk: #eb9e0f;
 
   --font-title: "Slackey", sans-serif;
   --font-text: "Rubik", sans-serif;
@@ -93,7 +95,7 @@ ul {
 
 a,
 button {
-  height: fit-content;
+  height: 3rem;
   width: 10.5rem;
   display: flex;
   align-items: center;
@@ -106,13 +108,13 @@ button {
   font-family: var(--font-title);
   font-size: 0.9rem;
   text-transform: uppercase;
-  padding: 0.5rem 0.8rem;
+   padding: 0.5rem 0.8rem;
   white-space: nowrap;
 }
 
 a:hover,
 button:hover {
-  background-color: var(--rose-lt);
+  /* background-color: var(--rose-lt); */
   border: 2px solid var(--frog-black);
   transform: scale(1.1);
 }
@@ -134,9 +136,9 @@ button:active {
   white-space: wrap;
 }
 
-.card-button:hover {
+/* .card-button:hover {
   background-color: var(--gold);
-}
+} */
 
 .long-button {
   width: fit-content;
@@ -241,6 +243,7 @@ nav h1 {
   justify-content: start;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .quick-view {
@@ -311,6 +314,7 @@ nav h1 {
 
 .quick-view-notifications,
 .quick-view-tags {
+  height: fit-content;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -442,6 +446,10 @@ nav h1 {
   display: none;
 }
 
+/* .color-button {
+  background-color: var(--rose-dk);
+} */
+
 /* .hidden {
   display: none;
 } */
@@ -493,7 +501,7 @@ nav h1 {
 
   .nav-item {
     width: 9rem;
-    font-family: var(--font-text);
+    /* font-family: var(--font-text); */
   }
 
   .quick-view-container {
@@ -566,7 +574,7 @@ nav h1 {
   }
 
   .nav-item {
-    width: 8rem;
-    font-family: var(--font-text);
+    /* width: 8rem; */
+    /* font-family: var(--font-text); */
   }
 }
