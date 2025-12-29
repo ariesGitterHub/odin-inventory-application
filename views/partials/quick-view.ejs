@@ -2,11 +2,12 @@
   <% products.forEach(product => { %>
     <div class="quick-view">
       <div class="quick-view-details-col main-data">
-        <h1>
-          <span class="file-tab">quick view: <span class="highlight-color"><%= product.animal_type %></span></span
-          >
-        </h1>
-          <div class="quick-view-details-row">
+          <h1>
+            <span class="file-tab">quick view: 
+              <span class="highlight-color"><%= product.animal_type %></span>
+            </span>
+          </h1>
+          <div class="quick-view-details-adjustable">
             <div class="quick-view-image-container">
               <% product.imagesByType.front && product.imagesByType.front.forEach(fn => { %>
               <img
@@ -23,14 +24,14 @@
               />
               <% }) %>
             </div>
-
-            <div class="quick-view-category">
-              <p>brand</p>
-              <p>item type</p>        
-              <div class="quick-view-money1">
-                <p>($) price/unit</p>
-                <p>($) cost/unit</p>
-                <p class="quick-view-profit1">($) profit/unit</p>
+            <div class="quick-view-details-row">            
+              <div class="quick-view-category">
+                <p>brand</p>
+                <p>item type</p>        
+                <div class="quick-view-money1">
+                  <p>($) price/unit</p>
+                  <p>($) cost/unit</p>
+                  <p class="quick-view-profit1">($) profit/unit</p>
               </div>
               <p>variants</p>
               <p>base sku</p>
@@ -50,7 +51,6 @@
                   <span class="highlight-color2"><%= product.profit_per_unit %></span>
                 </p>
               </div>
-
               <% 
               // Define the custom order of sizes
               const customSizeOrder = ['S', 'M', 'L', 'XL'];
@@ -61,14 +61,6 @@
               // Sort the size codes according to the custom order
               sizeCodes.sort((a, b) => customSizeOrder.indexOf(a) - customSizeOrder.indexOf(b));
               %>
-
-              <%# 
-
-              // Get the size codes from the inventory
-              const sizeCodes = Object.keys(product.inventoryBySize);
-
-              %>
-
               <p><%= sizeCodes.join(", ") %></p>
               <p><%= product.base_sku %></p>
               <p><%= product.rating %></p>
@@ -76,28 +68,30 @@
               <p><%= product.imagesByType.front %></p>
               <p><%= product.imagesByType.rear %></p>
               <p><%= product.imagesByType.size %></p>
-            </div>
+            </div></div>
+
           </div>
           <div class="quick-view-button-container">
-            <button class="card-button toggle-btn color-button">toggle file</button>
-            <button class="card-button">update file</button>
+            <button class="quick-view-button1 toggle-btn color-button">toggle file</button>
+            <button class="quick-view-button1">update file</button>
           </div>
           <div class="quick-view-notifications">
-            <h2>notifications</h2> 
+            <h2>inventory notifications</h2> 
             <% if (product.inventoryBySize && Object.keys(product.inventoryBySize).length > 0) { %>
             <% const customSizeOrder = ['S', 'M', 'L', 'XL']; %>
             <% const sizeCodes = Object.keys(product.inventoryBySize).sort((a, b) => customSizeOrder.indexOf(a) - customSizeOrder.indexOf(b)); %>
             <% sizeCodes.forEach(function(sizeCode) { %>
               <% const size = product.inventoryBySize[sizeCode]; %>
-            <div class="notifications">
-              <p class="uppercase"><span class="messages"></span> size (<%= sizeCode %>) variant at <% size.forEach(function(variantSize) { %>
-              <span class="messageUnitCount"><%= variantSize.units %></span> units.</p>
+                <div class="notifications">
+                  <p class="capitalize">&nbsp;➤&nbsp;size (<%= sizeCode %>) @ 
+                    <% size.forEach(function(variantSize) { %>
+                      <span class="sizeUnitCount"><%= variantSize.units %> units <span class="quick-view-unit-message"></span></span>
                     <% }); %>
                 </div>
             <% }); %>
-          <% } else { %>
-            <p>No messages.</p>
-          <% } %>
+            <% } else { %>
+              <p>No messages.</p>
+            <% } %>
           </div>         
           <div class="quick-view-details-col additional-data hidden">
             <div class="quick-view-tags">
@@ -105,14 +99,14 @@
               <p><%= product.tags.join(", ") %> %></p>
             </div>
             <div class="quick-view-button-container2">
-              <button class="card-button long-button">Add/View Notes</button>
-              <button class="card-button long-button">Rating History</button>
-              <button class="card-button long-button">Pricing History</button>
+              <button class="quick-view-button2">Add/View Notes</button>
+              <button class="quick-view-button2">Rating History</button>
+              <button class="quick-view-button2">Pricing History</button>
             </div>
             <div class="quick-view-button-container2">
-              <button class="card-button long-button">Sales History</button>
-              <button class="card-button long-button">Storage History</button>
-              <button class="card-button long-button">Order History</button>
+              <button class="quick-view-button2">Sales History</button>
+              <button class="quick-view-button2">Storage History</button>
+              <button class="quick-view-button2">Order History</button>
             </div>
             <%#// HOLDER CODE %>
           <% if (product.inventoryBySize && Object.keys(product.inventoryBySize).length > 0) { %>
@@ -127,6 +121,7 @@
                     <p>barcode</p>
                     <p>storage</p>      
                     <p>units</p>
+                    <br>
                   </div>
                   <div class="quick-view-data variant-data">
                     <p class="uppercase"> size (<%= sizeCode %>)</p>
@@ -138,6 +133,7 @@
                         <%= variantSize.units %>
                         <span class="quick-view-unit-message"></span>
                       </p>
+                      <button class="reorder-button">Reorder Units</button>
                     <% }); %>
                   </div>
                 </div>

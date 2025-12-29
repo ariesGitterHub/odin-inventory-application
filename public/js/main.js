@@ -20,12 +20,18 @@ document.querySelectorAll(".toggle-btn").forEach((btn) => {
     const additionalData = card.querySelector(".additional-data");
     additionalData.classList.toggle("hidden");
     if (!additionalData.classList.contains("hidden")) {
-      card.querySelector(".toggle-btn").style.backgroundColor = "var(--rose-dk)"
-      card.querySelector(".toggle-btn").style.color = "var(--gold)"
+      card.querySelector(".toggle-btn").style.backgroundColor = "var(--frog-dk)";
+      card.querySelector(".toggle-btn").style.color = "var(--gold)";
+      card.querySelector(".quick-view-details-adjustable").style.borderTopLeftRadius = "0.5rem";
+      card.style.backgroundColor = "var(--rose-dk)";
     } else {
       card.querySelector(".toggle-btn").style.backgroundColor = "var(--frog-white)";
       card.querySelector(".toggle-btn").style.color =
         "var(--frog-black)";
+              card.querySelector(
+                ".quick-view-details-adjustable"
+              ).style.borderTopLeftRadius = "0rem";
+      card.style.backgroundColor = "var(--frog-lt)";
     }
   });
 });
@@ -46,15 +52,15 @@ document.querySelectorAll(".sizeUnitCount").forEach((el) => {
     unitCountMessage.style.color = "var(--gold)";
     unitCountMessage.style.backgroundColor = "var(--red-dk)";
     unitCountMessage.style.borderRadius = "1rem";
-    unitCountMessage.innerHTML = "&nbsp;&nbsp;REORDER NOW!&nbsp;&nbsp;";
+    unitCountMessage.innerHTML = "&nbsp;&nbsp;Reorder&nbsp;&nbsp;";
   } else if (unitCount >= 100 && unitCount <= 150) {
     unitCountMessage.style.color = "var(--frog-black)";
     unitCountMessage.style.backgroundColor = "var(--orange-dk)";
     unitCountMessage.style.borderRadius = "1rem";
     unitCountMessage.innerHTML = "&nbsp;&nbsp;Low Stock&nbsp;&nbsp;";
   } else if (unitCount > 350) {
-    unitCountMessage.style.color = "var(--frog-black)";
-    unitCountMessage.style.backgroundColor = "var(--focus-blue)";
+    unitCountMessage.style.color = "var(--white)";
+    unitCountMessage.style.backgroundColor = "var(--blue-dk)";
     unitCountMessage.style.borderRadius = "1rem";
     unitCountMessage.innerHTML = "&nbsp;&nbsp;Overstock&nbsp;&nbsp;";
   } else {
