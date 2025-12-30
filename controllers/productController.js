@@ -37,6 +37,14 @@ async function getProductCardPage(req, res, next) {
   }
 }
 
+async function getCreateItemPage(req, res, next) {
+  try {
+    res.render("create-item");
+  } catch (err) {
+    next(err);
+  }
+}
+
 module.exports = { getProductCardPage };
 
 // THIS WORKS, BUT USING ABOVE WITH A HELPER INSTEAD
@@ -77,6 +85,7 @@ module.exports = { getProductCardPage };
 
 module.exports = {
   getProductCardPage,
+  getCreateItemPage,
   // getProductsWithProfit,
   // getProductUniquePage,
 };

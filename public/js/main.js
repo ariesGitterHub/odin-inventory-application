@@ -19,11 +19,13 @@ document.querySelectorAll(".toggle-btn").forEach((btn) => {
     const card = btn.closest(".quick-view");
     const additionalData = card.querySelector(".additional-data");
     additionalData.classList.toggle("hidden");
-    if (!additionalData.classList.contains("hidden")) {
+    // const fileTab = card.querySelector(".file-tab");
+        if (!additionalData.classList.contains("hidden")) {
       card.querySelector(".toggle-btn").style.backgroundColor = "var(--frog-dk)";
       card.querySelector(".toggle-btn").style.color = "var(--gold)";
       card.querySelector(".quick-view-details-adjustable").style.borderTopLeftRadius = "0.5rem";
       card.style.backgroundColor = "var(--rose-dk)";
+      card.querySelector(".file-tab-text").innerHTML = "full view:&nbsp;";
     } else {
       card.querySelector(".toggle-btn").style.backgroundColor = "var(--frog-white)";
       card.querySelector(".toggle-btn").style.color =
@@ -32,6 +34,7 @@ document.querySelectorAll(".toggle-btn").forEach((btn) => {
                 ".quick-view-details-adjustable"
               ).style.borderTopLeftRadius = "0rem";
       card.style.backgroundColor = "var(--frog-lt)";
+      card.querySelector(".file-tab-text").innerHTML = "quick view:&nbsp;";
     }
   });
 });
