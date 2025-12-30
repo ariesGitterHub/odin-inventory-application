@@ -71,9 +71,10 @@
             </div></div>
 
           </div>
-          <div class="quick-view-button-container">
-            <button class="quick-view-button1 toggle-btn color-button">toggle file</button>
-            <button class="quick-view-button1">update file</button>
+          <div class="quick-view-button-container1">
+            <button class="quick-view-button1 toggle-btn color-button">toggle</button>
+            <button class="quick-view-button1">update</button>
+            <button class="quick-view-button1">delete</button>
           </div>
           <div class="quick-view-notifications">
             <h2>inventory notifications</h2> 
@@ -123,7 +124,7 @@
                     <p>units</p>
                     <br>
                   </div>
-                  <div class="quick-view-data variant-data">
+                  <div class="quick-view-data variant-data variant-reorder">
                     <p class="uppercase"> size (<%= sizeCode %>)</p>
                     <% size.forEach(function(variantSize) { %>
                       <p><%= variantSize.sku %></p>

@@ -68,5 +68,15 @@ document.querySelectorAll(".sizeUnitCount").forEach((el) => {
   }
 });
 
+document.querySelectorAll(".variant-reorder").forEach((el) => {
+const message = el.querySelector(".quick-view-unit-message");
+const reorderButton = el.querySelector(".reorder-button");
 
+if (message.innerHTML === "&nbsp;&nbsp;Reorder&nbsp;&nbsp;") {
+ reorderButton.style.backgroundColor = "var(--rose-lt)";
+} else if (message.innerHTML === "&nbsp;&nbsp;Low Stock&nbsp;&nbsp;") {
+  reorderButton.style.backgroundColor = "var(--gold-lt)";
+}
+  
+});
 
