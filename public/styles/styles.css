@@ -584,7 +584,7 @@ label {
 }
 
 input {
-  height: 1.5rem;
+  height: 1.65rem;
   width: 100%;
     border-radius: var(--border-radius-inner);
     font-size: 1rem;
@@ -613,6 +613,7 @@ input {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 1rem;
 }
 
 .create-view-button-container button {
@@ -633,6 +634,19 @@ footer {
   text-align: center;
 }
 
+/* REMOVE ARROWS FROM INPUT TYPE = NUMBER */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 /* MEDIA QUERIES */
 @media (min-width: 400px) {
   :root {
@@ -645,7 +659,7 @@ footer {
     width: auto;
   }
 
-  .quick-view {
+  .quick-view, .create-item {
     width: 350px;
   }
 
@@ -680,7 +694,7 @@ footer {
     width: auto;
   }
 
-  .quick-view {
+  .quick-view, .create-item {
     width: 410px;
   }
 
@@ -744,13 +758,18 @@ footer {
     flex-wrap: wrap;
     gap: var(--default-rem-size);
   }
+
+  .quick-view, .create-item {
+    width: 470px;
+  }
+
 }
 
 @media (min-width: 1950px) {
   header {
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     gap: var(--default-rem-size);
   }
