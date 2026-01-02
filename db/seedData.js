@@ -32,9 +32,9 @@ async function main() {
   await client.query(`
   CREATE TABLE IF NOT EXISTS product_images (
     id SERIAL PRIMARY KEY,
-    product_id INT REFERENCES products(id),
+    product_id INT REFERENCES products(id) ON DELETE CASCADE,
     type TEXT,
-    filename TEXT
+    filename_or_link TEXT
   );
 `);
 
@@ -47,8 +47,8 @@ async function main() {
 
   await client.query(`
   CREATE TABLE IF NOT EXISTS product_tags (
-    product_id INT REFERENCES products(id),
-    tag_id INT REFERENCES tags(id),
+    product_id INT REFERENCES products(id) ON DELETE CASCADE,
+    tag_id INT REFERENCES tags(id) ON DELETE CASCADE,
     PRIMARY KEY (product_id, tag_id)
   );
 `);
@@ -63,7 +63,7 @@ async function main() {
   await client.query(`
   CREATE TABLE IF NOT EXISTS inventory (
     id SERIAL PRIMARY KEY,
-    product_id INT REFERENCES products(id),
+    product_id INT REFERENCES products(id) ON DELETE CASCADE,
     size_id INT REFERENCES sizes(id),
     sku TEXT UNIQUE,
     barcode VARCHAR(12),
@@ -104,13 +104,13 @@ async function main() {
     const productId = productRes.rows[0].id;
 
     /* 2️⃣ Insert images */
-    for (const [type, filename] of Object.entries(item.images)) {
+    for (const [type, filename_or_link] of Object.entries(item.images)) {
       await client.query(
         `
-        INSERT INTO product_images (product_id, type, filename)
+        INSERT INTO product_images (product_id, type, filename_or_link)
         VALUES ($1, $2, $3);
         `,
-        [productId, type, filename]
+        [productId, type, filename_or_link]
       );
     }
 

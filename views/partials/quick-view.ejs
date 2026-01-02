@@ -70,12 +70,13 @@
               <p><%= product.imagesByType.rear %></p>
               <p><%= product.imagesByType.size %></p>
             </div></div>
-
           </div>
           <div class="quick-view-button-container1">
             <button class="quick-view-button1 toggle-btn color-button">toggle</button>
-            <button class="quick-view-button1">update</button>
-            <button class="quick-view-button1">delete</button>
+            <button class="quick-view-button1" type="submit">update</button>  
+            <form action="/<%= product.id %>/delete" method="POST">
+              <button class="quick-view-button1" onclick="return confirm('Are you sure you want to delete this product?');">delete</button>
+            </form>
           </div>
           <div class="quick-view-notifications">
             <h2>inventory notifications</h2> 

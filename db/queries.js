@@ -78,7 +78,7 @@ async function getAllProducts() {
       COALESCE(
         json_agg(DISTINCT jsonb_build_object(
           'type', pi.type,
-          'filename', pi.filename
+          'filename_or_link', pi.filename_or_link
         )) FILTER (WHERE pi.id IS NOT NULL), '[]'
       ) AS images,
       COALESCE(
@@ -112,7 +112,7 @@ async function getAllProducts() {
     // Organizing images by type (front, rear, size)
     imagesByType: p.images.reduce((acc, img) => {
       acc[img.type] = acc[img.type] || [];
-      acc[img.type].push(img.filename);
+      acc[img.type].push(img.filename_or_link);
       return acc;
     }, {}),
 
@@ -141,6 +141,73 @@ async function getAllProducts() {
   }));
 }
 
+// async function postNewProduct({
+//   animal_type,
+//   item_type,
+//   brand,
+//   price_unit,
+//   cost_unit,
+//   base_sku,
+//   rating,
+//   review_count,
+//   images, // images is now an object with { front, rear, size }
+// }) {
+//   const client = await pool.connect(); // Get a client from the pool for transaction
+//   try {
+//     // Start a transaction
+//     await client.query("BEGIN");
+
+//     // Step 1: Insert into the `products` table
+//     const insertProductQuery = `INSERT INTO products (animal_type, item_type, brand, price_unit, cost_unit, base_sku, rating, review_count) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+//     RETURNING id;`;
+
+//     const values = [
+//       animal_type,
+//       item_type,
+//       brand,
+//       price_unit,
+//       cost_unit,
+//       base_sku,
+//       rating,
+//       review_count,
+//     ];
+
+//     const { rows } = await pool.query(insertProductQuery, values);
+//     const productId = rows[0].id; // Get the inserted product's ID
+
+//     // Step 2: Insert related images into the `product_images` table
+//     // Loop through the images object and insert each image type and filename
+//     const insertImageQuery = `
+//       INSERT INTO product_images (product_id, type, filename_or_link)
+//       VALUES ($1, $2, $3)
+//     `;
+
+//     // Loop through the keys of the images object (e.g., front, rear, size)
+//     for (const [type, filename_or_link] of Object.entries(images)) {
+//       await client.query(insertImageQuery, [productId, type, filename_or_link]);
+//     }
+
+//     // Commit the transaction
+//     await client.query("COMMIT");
+
+//     return { id: productId, images };
+//   } catch (error) {
+//     // If any error occurs, rollback the transaction
+//     await client.query("ROLLBACK");
+//     throw error; // Re-throw the error to handle it elsewhere
+//   } finally {
+//     // Release the client back to the pool
+//     client.release();
+//   }
+// }
+
+// --- Delete a product by id ---
+async function deleteProduct(id) {
+  await pool.query("DELETE FROM products WHERE id = $1", [id]);
+}
+
 module.exports = {
   getAllProducts,
+  // postNewProduct,
+  deleteProduct,
 };

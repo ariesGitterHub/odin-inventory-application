@@ -6,12 +6,14 @@
   <body>
     <%- include('./partials/header.ejs') %>
     <main>
+      <%- include("partials/errors.ejs") %>
       <div class="create-item-view">
         <h1 class="create-item-title">Create New Item</h1>
         <form class="create-item" method="POST" action="/create">
           <%#- include('./partials/errors.ejs') %>
           <label for="animal_type">onesie animal type</label>
           <input
+            class="lowercase"
             type="text"
             id="animal_type"
             name="animal_type"
@@ -21,6 +23,7 @@
 
           <label for="brand">brand</label>
           <input
+            class="lowercase"
             type="text"
             id="brand"
             name="brand"
@@ -30,6 +33,7 @@
 
           <label for="item_type">item type</label>
           <input
+            class="lowercase"
             type="text"
             id="item_type"
             name="item_type"
@@ -38,13 +42,15 @@
 
           <div class="price-cost-container">
             <!-- TODO - validate these as currency -->
+              <!-- placeholder="They pay (00.00)" -->
+              <!-- placeholder="You paid (00.00)" -->
             <div class="create-item-col">
               <label for="price_unit">price per unit</label>
               <input
                 type="number"
                 id="price_unit"
                 name="price_unit"
-                placeholder="Price (00.00)"
+                value=00.00
                 required
               />
             </div>
@@ -54,7 +60,7 @@
                 type="number"
                 id="cost_unit"
                 name="cost_unit"
-                placeholder="Cost paid (00.00)"
+                value=00.00
                 required
               />
             </div>
@@ -63,6 +69,7 @@
           <!-- TODO - definitely enforce validation pattern on base sku -->
           <label for="base_sku">base sku</label>
           <input
+            class="uppercase"
             type="text"
             id="base_sku"
             name="base_sku"
@@ -84,35 +91,35 @@
             hidden
           />
 
-          <label for="unknown_front">front image link</label>
+          <!-- <label for="front">front image link</label>
           <input
             type="url"
-            id="unknown_front"
-            name="unknown_front"
+            id="front"
+            name="front"
             placeholder="Enter the front view url"
-            required
+            
           />
-          <label for="unknown_rear">rear image link</label>
+          <label for="rear">rear image link</label>
           <input
             type="url"
-            id="unknown_rear"
-            name="unknown_rear"
+            id="rear"
+            name="rear"
             placeholder="Enter the rear view url"
-            required
+            
           />
-          <label for="unknown_sizing">sizing image link</label>
+          <label for="size">sizing image link</label>
           <input
-            type="url"
-            id="unknown_sizing"
-            name="unknown_sizing"
+            type="url" 
+            id="size"
+            name="size"
             placeholder="Enter the sizing view url"
-            required
-          />
+            
+          /> -->
 
           <!-- TODO - figure out starting tags -->
           <!-- TODO - figure out starting inventory with size, barcode, units, storage-->
           <div class="create-view-button-container">
-            <button>Submit Newly Created Item</button>   
+            <button class="submit-button" type="submit">Submit Newly Created Item</button>   
           </div>      
         </form>
       </div>

@@ -107,6 +107,20 @@ li {
   list-style: none;
 }
 
+/* THIS IS NEW FOR ME */
+/* REMOVE ARROWS FROM INPUT TYPE = NUMBER */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 /* BUTTON AND BUTTON-LIKE ELEMENTS */
 
 a,
@@ -134,6 +148,11 @@ a:hover,
 button:hover {
   border: 2px solid var(--frog-black);
   transform: scale(1.1);
+}
+
+.submit-button:hover {
+  background-color: var(--gold);
+    transform: scale(1);
 }
 
 a:active,
@@ -537,6 +556,10 @@ main {
   text-transform: capitalize;
 }
 
+.lowercase {
+  text-transform: lowercase;
+}
+
 /* CREATE-ITEM */
 .create-item-view {
   /* height: fit-content; */
@@ -617,7 +640,7 @@ input {
 }
 
 .create-view-button-container button {
-  /* width: 100%; */
+  width: 100%;
 }
 
 /* FOOTER */
@@ -634,18 +657,25 @@ footer {
   text-align: center;
 }
 
-/* REMOVE ARROWS FROM INPUT TYPE = NUMBER */
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+/* ERRORS */
+.errors,
+ul {
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  margin: 0.25rem 0 0 0.25rem;
 }
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
+.errors li {
+  color: var(--red-dk);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
 }
+
 
 /* MEDIA QUERIES */
 @media (min-width: 400px) {
