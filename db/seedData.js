@@ -73,9 +73,12 @@ async function main() {
 `);
 
   for (const item of items) {
-    /* 1️⃣ Insert product */
-    const productRes = await client.query(
-      `
+    await client.query("BEGIN");
+
+    try {
+      /* 1️⃣ Insert product */
+      const productRes = await client.query(
+        `
       INSERT INTO products (
         animal_type,
         item_type,
@@ -89,93 +92,103 @@ async function main() {
       VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
       RETURNING id;
       `,
-      [
-        item.animal_type,
-        item.item_type,
-        item.brand,
-        item.price_unit,
-        item.cost_unit,
-        item.base_sku,
-        item.rating,
-        item.number_reviews,
-      ]
-    );
+        [
+          item.animal_type,
+          item.item_type,
+          item.brand,
+          item.price_unit,
+          item.cost_unit,
+          item.base_sku,
+          item.rating,
+          item.number_reviews,
+        ]
+      );
 
-    const productId = productRes.rows[0].id;
+      const productId = productRes.rows[0].id;
 
-    /* 2️⃣ Insert images */
-    for (const [type, filename_or_link] of Object.entries(item.images)) {
-      await client.query(
-        `
+      /* 2️⃣ Insert images */
+      for (const [type, filename_or_link] of Object.entries(item.images)) {
+        await client.query(
+          `
         INSERT INTO product_images (product_id, type, filename_or_link)
         VALUES ($1, $2, $3);
         `,
-        [productId, type, filename_or_link]
-      );
-    }
+          [productId, type, filename_or_link]
+        );
+      }
 
-    /* 3️⃣ Insert tags */
-    for (const tag of item.tags) {
-      const tagRes = await client.query(
-        `
+      /* 3️⃣ Insert tags */
+      for (const tag of item.tags) {
+        const tagRes = await client.query(
+          `
         INSERT INTO tags (name)
         VALUES ($1)
         ON CONFLICT (name) DO UPDATE SET name = EXCLUDED.name
         RETURNING id;
         `,
-        [tag]
-      );
+          [tag]
+        );
 
-      const tagId = tagRes.rows[0].id;
+        const tagId = tagRes.rows[0].id;
 
-      await client.query(
-        `
+        await client.query(
+          `
         INSERT INTO product_tags (product_id, tag_id)
         VALUES ($1, $2)
         ON CONFLICT DO NOTHING;
         `,
-        [productId, tagId]
-      );
-    }
+          [productId, tagId]
+        );
+      }
 
-    /* 4️⃣ Insert inventory + SKUs */
-    for (const { size, barcode, units, storage } of item.stock) {
-      const sizeRes = await client.query(
-        `
+      /* 4️⃣ Insert inventory + SKUs */
+      for (const { size, barcode, units, storage } of item.stock) {
+        const sizeRes = await client.query(
+          `
         INSERT INTO sizes (code)
         VALUES ($1)
         ON CONFLICT (code) DO UPDATE SET code = EXCLUDED.code
         RETURNING id;
         `,
-        [size]
-      );
+          [size]
+        );
 
-      const sizeId = sizeRes.rows[0].id;
-      const sku = `${item.base_sku}${size}`;
+        const sizeId = sizeRes.rows[0].id;
+        const sku = `${item.base_sku}${size}`;
 
-      //   await client.query(
-      //     `
-      //     INSERT INTO inventory (product_id, size_id, sku, units)
-      //     VALUES ($1, $2, $3, $4);
-      //     `,
-      //     [productId, sizeId, sku, units]
-      //   );
+        //   await client.query(
+        //     `
+        //     INSERT INTO inventory (product_id, size_id, sku, units)
+        //     VALUES ($1, $2, $3, $4);
+        //     `,
+        //     [productId, sizeId, sku, units]
+        //   );
 
-      // comment out above/try below ... ERROR happens if you run it multiple times without cleaning the table, or if item.base_sku + size produces the same SKU more than once.
-      await client.query(
-        `
+        // comment out above/try below ... ERROR happens if you run it multiple times without cleaning the table, or if item.base_sku + size produces the same SKU more than once.
+        await client.query(
+          `
         INSERT INTO inventory (product_id, size_id, sku, barcode, units, storage)
         VALUES ($1, $2, $3, $4, $5, $6)
         ON CONFLICT (sku) DO UPDATE
         SET units = EXCLUDED.units,
+            barcode = EXCLUDED.barcode,
+            storage = EXCLUDED.storage,
             product_id = EXCLUDED.product_id,
             size_id = EXCLUDED.size_id;
         `,
-        [productId, sizeId, sku, barcode, units, storage]
-      );
+          [productId, sizeId, sku, barcode, units, storage]
+        );
+      }
+      // ✅ All inserts for THIS item succeeded
+      await client.query("COMMIT");
+    } catch (err) {
+      // ❌ Something failed for THIS item
+      await client.query("ROLLBACK");
+      console.error("Failed seeding item:", item.base_sku, err.message);
+      throw err; // stop seeding and surface the error
     }
   }
-//  TODO - ON CONFLICT.....add barcode to this???
+  //  TODO - ON CONFLICT.....add barcode to this???
   await client.end();
   console.log("Product seeding complete!");
 }

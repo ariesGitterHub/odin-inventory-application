@@ -13,14 +13,15 @@
               <% product.imagesByType.front && product.imagesByType.front.forEach(fn => { %>
               <img
                 class="quick-view-image"
-                src="/images/<%= fn %>"
+                src="<%= fn.startsWith('http') ? fn : '/images/' + fn %>"
                 alt="<%= product.animal_type %> front view"
               />
-              <% }) %> <% product.imagesByType.rear &&
+              <% }) %> 
+              <% product.imagesByType.rear &&
               product.imagesByType.rear.forEach(fn => { %>
               <img
                 class="quick-view-image"
-                src="/images/<%= fn %>"
+                src="<%= fn.startsWith('http') ? fn : '/images/' + fn %>"
                 alt="<%= product.animal_type %> rear view"
               />
               <% }) %>

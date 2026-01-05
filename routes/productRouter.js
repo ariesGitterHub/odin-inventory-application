@@ -2,24 +2,25 @@
 
 const { Router } = require("express");
 const {
-  getProductCardPage,
-  getCreateItemPage,
+  getProductsPage,
+  // getCreateItemPage,
   // postCreateItemPage,
-  getProductsWithProfit,
+  // getProductsWithProfit,
+  postNewProductItem,
   deleteProductItem,
   //   getProductUniquePage,
 } = require("../controllers/productController");
 
 const productRouter = Router();
 
-productRouter.get("/", getProductCardPage);
+productRouter.get("/", getProductsPage);
 // productRouter.get("/", getProductsWithProfit); // rookie mistake: Only the second one will ever run. Express matches routes top-down, and the second / overwrites the first.
 // productRouter.get("/product:id", getProductUniquePage);
-productRouter.get("/create", getCreateItemPage);
-// productRouter.post("/create", postCreateItemPage);
+// productRouter.get("/create", getCreateItemPage);
+productRouter.post("/create", postNewProductItem);
 // usersRouter.post("/create", usersController.usersCreatePost);
 
-// Delete product
+// Delete product item
 productRouter.post("/:id/delete", deleteProductItem);
 
 module.exports = productRouter;
