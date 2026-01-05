@@ -10,18 +10,18 @@
           </h1>
           <div class="quick-view-details-adjustable">
             <div class="quick-view-image-container">
-              <% product.imagesByType.front && product.imagesByType.front.forEach(fn => { %>
+              <% product.imagesByType.front && product.imagesByType.front.forEach(filename_or_link => { %>
               <img
                 class="quick-view-image"
-                src="<%= fn.startsWith('http') ? fn : '/images/' + fn %>"
+                src="<%= filename_or_link.startsWith('http') ? filename_or_link : '/images/' + filename_or_link %>"
                 alt="<%= product.animal_type %> front view"
               />
               <% }) %> 
               <% product.imagesByType.rear &&
-              product.imagesByType.rear.forEach(fn => { %>
+              product.imagesByType.rear.forEach(filename_or_link => { %>
               <img
                 class="quick-view-image"
-                src="<%= fn.startsWith('http') ? fn : '/images/' + fn %>"
+                src="<%= filename_or_link.startsWith('http') ? filename_or_link : '/images/' + filename_or_link %>"
                 alt="<%= product.animal_type %> rear view"
               />
               <% }) %>
@@ -42,8 +42,9 @@
               <p>front image</p>
               <p>rear image</p>
               <p>sizing image</p>
+              <br>
             </div>
-            <div class="quick-view-data">
+            <div class="quick-view-data overflow-wide">
               <p class="uppercase"><%= product.brand %></p>
               <p><%= product.item_type %></p>
               <div class="quick-view-money2">
@@ -70,6 +71,7 @@
               <p><%= product.imagesByType.front %></p>
               <p><%= product.imagesByType.rear %></p>
               <p><%= product.imagesByType.size %></p>
+              <br>
             </div></div>
           </div>
           <div class="quick-view-button-container1">
@@ -143,7 +145,7 @@
                 </div>
             <% }); %>
           <% } else { %>
-            <p>No inventory for size <%= sizeCode %>.</p>
+            <p>No inventory for size <%#= sizeCode %>.</p>
           <% } %>
         </div>
       </div>

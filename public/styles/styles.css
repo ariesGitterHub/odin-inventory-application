@@ -490,13 +490,14 @@ main {
 
 .quick-view-category,
 .quick-view-data {
+  width: 7.75rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .quick-view-category {
-  width: 7.5rem;
+  /* width: 7.5rem; */
   text-transform: capitalize;
   white-space: nowrap;
 }
@@ -507,10 +508,15 @@ main {
   white-space: nowrap;
 }
 
+.overflow-wide {
+  overflow-x: auto;
+}
+
 .variant-details {
   background-color: var(--frog-white);
   border: 2px solid var(--frog-black);
   border-radius: var(--border-radius-inner);
+  font-size: 0.9rem;
   padding: 0.5rem;
 }
 
@@ -693,7 +699,7 @@ ul {
     width: 350px;
   }
 
-  .notifications {
+  .notifications, .variant-details {
     font-size: var(--default-font-size);
   }
 }

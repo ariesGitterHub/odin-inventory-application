@@ -165,7 +165,7 @@ async function postNewProduct({
     await client.query("BEGIN");
 
     /* 1️⃣ Insert product */
-    const productRes = await client.query(
+    const result = await client.query(
       `
       INSERT INTO products (
         animal_type,
@@ -192,7 +192,7 @@ async function postNewProduct({
       ]
     );
 
-    const productId = productRes.rows[0].id;
+    const productId = result.rows[0].id;
 
     /* 2️⃣ Insert images */
     for (const [type, filename_or_link] of Object.entries(images)) {

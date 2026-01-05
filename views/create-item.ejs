@@ -91,7 +91,7 @@
             hidden
           />
 
-          <!-- <label for="front">front image link</label>
+          <label for="front">front image link</label>
           <input
             type="url"
             id="front"
@@ -114,10 +114,39 @@
             name="size"
             placeholder="Enter the sizing view url"
             
-          /> -->
+          />
 
           <!-- TODO - figure out starting tags -->
+          <label for="tags">tags (comma separated)</label>
+          <input
+            type="text"
+            id="tags"
+            name="tags"
+            placeholder="cute, winter, sale"
+          />
+
           <!-- TODO - figure out starting inventory with size, barcode, units, storage-->
+          <label hidden>initial inventory</label>
+
+          <input type="text" name="sizes[]" value="S" hidden />
+          <input type="text" name="barcodes[]" value="000000000000" hidden />
+          <input type="number" name="units[]" value="0" hidden />
+          <input type="text" name="storage[]" value="n/a" hidden />
+
+          <input type="text" name="sizes[]" value="M" hidden />
+          <input type="text" name="barcodes[]" value="000000000000" hidden />
+          <input type="number" name="units[]" value="0" hidden />
+          <input type="text" name="storage[]" value="n/a" hidden />
+
+          <input type="text" name="sizes[]" value="L" hidden />
+          <input type="text" name="barcodes[]" value="000000000000" hidden />
+          <input type="number" name="units[]" value="0" hidden />
+          <input type="text" name="storage[]" value="n/a" hidden />
+
+          <input type="text" name="sizes[]" value="XL" hidden />
+          <input type="text" name="barcodes[]" value="000000000000" hidden />
+          <input type="number" name="units[]" value="0" hidden />
+          <input type="text" name="storage[]" value="n/a" hidden />
           <div class="create-view-button-container">
             <button class="submit-button" type="submit">Submit Newly Created Item</button>   
           </div>      

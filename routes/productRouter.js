@@ -6,6 +6,7 @@ const {
   // getCreateItemPage,
   // postCreateItemPage,
   // getProductsWithProfit,
+  getCreateItemPage,
   postNewProductItem,
   deleteProductItem,
   //   getProductUniquePage,
@@ -16,7 +17,7 @@ const productRouter = Router();
 productRouter.get("/", getProductsPage);
 // productRouter.get("/", getProductsWithProfit); // rookie mistake: Only the second one will ever run. Express matches routes top-down, and the second / overwrites the first.
 // productRouter.get("/product:id", getProductUniquePage);
-// productRouter.get("/create", getCreateItemPage);
+productRouter.get("/create", getCreateItemPage);
 productRouter.post("/create", postNewProductItem);
 // usersRouter.post("/create", usersController.usersCreatePost);
 
