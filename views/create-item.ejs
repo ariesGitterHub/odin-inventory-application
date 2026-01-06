@@ -48,6 +48,7 @@
               <label for="price_unit">price per unit</label>
               <input
                 type="number"
+                step="0.01"
                 id="price_unit"
                 name="price_unit"
                 value=00.00
@@ -58,6 +59,7 @@
               <label for="cost_unit">cost per unit</label>
               <input
                 type="number"
+                step="0.01"
                 id="cost_unit"
                 name="cost_unit"
                 value=00.00
@@ -93,7 +95,7 @@
 
           <label for="front">front image link</label>
           <input
-            type="url"
+            type="text"
             id="front"
             name="front"
             placeholder="Enter the front view url"
@@ -101,7 +103,7 @@
           />
           <label for="rear">rear image link</label>
           <input
-            type="url"
+            type="text"
             id="rear"
             name="rear"
             placeholder="Enter the rear view url"
@@ -109,7 +111,7 @@
           />
           <label for="size">sizing image link</label>
           <input
-            type="url" 
+            type="text" 
             id="size"
             name="size"
             placeholder="Enter the sizing view url"
@@ -122,37 +124,37 @@
             type="text"
             id="tags"
             name="tags"
-            placeholder="cute, winter, sale"
+            placeholder="mammal, fruit, vegetable"
           />
 
           <!-- TODO - figure out starting inventory with size, barcode, units, storage-->
           <label hidden>initial inventory</label>
 
           <input type="text" name="sizes[]" value="S" hidden />
-          <input type="text" name="barcodes[]" value="000000000000" hidden />
+          <input type="text" name="barcodes[]" value="n/a (add)" hidden />
           <input type="number" name="units[]" value="0" hidden />
-          <input type="text" name="storage[]" value="n/a" hidden />
+          <input type="text" name="storage[]" value="n/a (add)" hidden />
 
           <input type="text" name="sizes[]" value="M" hidden />
-          <input type="text" name="barcodes[]" value="000000000000" hidden />
+          <input type="text" name="barcodes[]" value="n/a (add)" hidden />
           <input type="number" name="units[]" value="0" hidden />
-          <input type="text" name="storage[]" value="n/a" hidden />
+          <input type="text" name="storage[]" value="n/a (add)" hidden />
 
           <input type="text" name="sizes[]" value="L" hidden />
-          <input type="text" name="barcodes[]" value="000000000000" hidden />
+          <input type="text" name="barcodes[]" value="n/a (add)" hidden />
           <input type="number" name="units[]" value="0" hidden />
-          <input type="text" name="storage[]" value="n/a" hidden />
+          <input type="text" name="storage[]" value="n/a (add)" hidden />
 
           <input type="text" name="sizes[]" value="XL" hidden />
-          <input type="text" name="barcodes[]" value="000000000000" hidden />
+          <input type="text" name="barcodes[]" value="n/a (add)" hidden />
           <input type="number" name="units[]" value="0" hidden />
-          <input type="text" name="storage[]" value="n/a" hidden />
+          <input type="text" name="storage[]" value="n/a (add)" hidden />
           <div class="create-view-button-container">
             <button class="submit-button" type="submit">Submit Newly Created Item</button>   
           </div>      
         </form>
       </div>
     </main>
-    <%- include('./partials/footer.ejs') %>
+    <%#- include('./partials/footer.ejs') %>
   </body>
 </html>

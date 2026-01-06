@@ -50,9 +50,13 @@ document.querySelectorAll(".sizeUnitCount").forEach((el) => {
   const unitCountMessage = el.querySelector(".quick-view-unit-message");
   // Extract the numeric value from the .sizeUnitCount element's text content
   const unitCount = parseInt(el.textContent.trim(), 10); // Convert the string to a number
-  if (unitCount < 100) {
-    // Check if units are 100 or less
+  if (unitCount === 0) {
     unitCountMessage.style.color = "var(--gold)";
+    unitCountMessage.style.backgroundColor = "var(--frog-black)";
+    unitCountMessage.style.borderRadius = "1rem";
+    unitCountMessage.innerHTML = "&nbsp;&nbsp;Review&nbsp;&nbsp;";
+  } else if (unitCount > 0 && unitCount < 100) {
+        unitCountMessage.style.color = "var(--gold)";
     unitCountMessage.style.backgroundColor = "var(--red-dk)";
     unitCountMessage.style.borderRadius = "1rem";
     unitCountMessage.innerHTML = "&nbsp;&nbsp;Reorder&nbsp;&nbsp;";
@@ -75,10 +79,16 @@ document.querySelectorAll(".variant-reorder").forEach((el) => {
 const message = el.querySelector(".quick-view-unit-message");
 const reorderButton = el.querySelector(".reorder-button");
 
-if (message.innerHTML === "&nbsp;&nbsp;Reorder&nbsp;&nbsp;") {
- reorderButton.style.backgroundColor = "var(--rose-lt)";
+if (message.innerHTML === "&nbsp;&nbsp;Review&nbsp;&nbsp;") {
+  reorderButton.innerHTML = "Initial Order";
+} else if (message.innerHTML === "&nbsp;&nbsp;Reorder&nbsp;&nbsp;") {
+  reorderButton.style.backgroundColor = "var(--rose-lt)";
+  reorderButton.innerHTML = "Reorder Now";
 } else if (message.innerHTML === "&nbsp;&nbsp;Low Stock&nbsp;&nbsp;") {
   reorderButton.style.backgroundColor = "var(--gold-lt)";
+  reorderButton.innerHTML = "Reorder Soon";
+} else {
+  reorderButton.innerHTML = "Reorder";
 }
   
 });

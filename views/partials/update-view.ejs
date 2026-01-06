@@ -1,0 +1,67 @@
+<div class="quick-view-details-col main-data">
+  <h1>
+    <span class="file-tab-span">
+      <span class="file-tab-text">edit product:&nbsp;</span>
+      <input type="text" name="animal_type" value="<%= product.animal_type %>" />
+    </span>
+  </h1>
+
+  <div class="quick-view-details-adjustable">
+    <div class="quick-view-image-container">
+      <% ['front','rear','size'].forEach(type => { %>
+        <% if(product.imagesByType[type]) { %>
+          <% product.imagesByType[type].forEach((img, idx) => { %>
+            <div class="image-edit">
+              <label><%= type %> image <%= idx + 1 %></label>
+              <input type="text" name="imagesByType[<%= type %>][<%= idx %>]" value="<%= img %>" />
+            </div>
+          <% }) %>
+        <% } %>
+      <% }) %>
+    </div>
+
+    <div class="quick-view-details-row">
+      <div class="quick-view-category">
+        <p>brand</p>
+        <p>item type</p>
+        <div class="quick-view-money1">
+          <p>($) price/unit</p>
+          <p>($) cost/unit</p>
+          <p class="quick-view-profit1">($) profit/unit</p>
+        </div>
+        <p>variants</p>
+        <p>base sku</p>
+        <p>rating</p>
+        <p>reviews</p>
+      </div>
+
+      <div class="quick-view-data overflow-wide">
+        <input type="text" name="brand" value="<%= product.brand %>" />
+        <input type="text" name="item_type" value="<%= product.item_type %>" />
+        <div class="quick-view-money2">
+          <input type="number" step="0.01" name="price_unit" value="<%= product.price_unit %>" />
+          <input type="number" step="0.01" name="cost_unit" value="<%= product.cost_unit %>" />
+          <span class="highlight-color2"><%= product.profit_per_unit %></span>
+        </div>
+
+        <% 
+        const customSizeOrder = ['S', 'M', 'L', 'XL'];
+        const sizeCodes = Object.keys(product.inventoryBySize).sort((a,b)=>customSizeOrder.indexOf(a)-customSizeOrder.indexOf(b));
+        %>
+        <% sizeCodes.forEach(sizeCode => { %>
+          <label>Size <%= sizeCode %></label>
+          <% product.inventoryBySize[sizeCode].forEach((variant, idx) => { %>
+            <input type="text" name="inventoryBySize[<%= sizeCode %>][<%= idx %>][sku]" value="<%= variant.sku %>" />
+            <input type="text" name="inventoryBySize[<%= sizeCode %>][<%= idx %>][barcode]" value="<%= variant.barcode %>" />
+            <input type="text" name="inventoryBySize[<%= sizeCode %>][<%= idx %>][storage]" value="<%= variant.storage %>" />
+            <input type="number" name="inventoryBySize[<%= sizeCode %>][<%= idx %>][units]" value="<%= variant.units %>" />
+          <% }) %>
+        <% }) %>
+
+        <input type="text" name="base_sku" value="<%= product.base_sku %>" />
+        <input type="number" step="0.1" name="rating" value="<%= product.rating %>" />
+        <input type="number" name="review_count" value="<%= product.review_count %>" />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,11 @@
 
-const { getAllProducts, postNewProduct, deleteProduct } = require("../db/queries");
+const { 
+  getAllProducts,
+  getProductById,
+  // postNewProduct,
+  upsertProduct,
+  deleteProduct
+ } = require("../db/queries");
 
 const { computeProfit } = require("../helpers/profitHelper");
 
@@ -124,6 +130,26 @@ async function postNewProductItem(req, res, next) {
   }
 }
 
+async function getUpdateForm(req, res, next) {
+  try {
+    const product = await getProductById(req.params.id);
+    res.render("update-item", { product });
+  } catch (err) {
+    next(err);
+  }
+};
+
+async function putUpdateProduct (req, res, next) {
+  try {
+    // await updateProduct(req.params.id, req.body);
+    await upsertProduct(req.params.id, req.body);
+    res.redirect("/");
+  } catch (err) {
+    next(err);
+  }
+};
+
+
 async function deleteProductItem(req, res, next) {
   try {
     await deleteProduct(req.params.id);
@@ -139,5 +165,7 @@ module.exports = {
   // postCreateItemPage,
   getCreateItemPage,
   postNewProductItem,
+  getUpdateForm,
+  putUpdateProduct,
   deleteProductItem,
 };

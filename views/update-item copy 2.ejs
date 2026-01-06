@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head.ejs') %>
+  </head>
+  <body>
+    <%- include('./partials/header.ejs') %>
+
+    <main>
+      <%- include('./partials/errors.ejs') %>
+
+      <div class="update-item-view">
+        <h1 class="update-item-title">Update Item</h1>
+
+        <form
+          class="update-item"
+          method="POST"
+          action="/products/<%= product.id %>?_method=PUT"
+        >
+
+          <!-- Animal Type -->
+          <label for="animal_type">onesie animal type</label>
+          <input
+            class="lowercase"
+            type="text"
+            id="animal_type"
+            name="animal_type"
+            value="<%= product.animal_type %>"
+            required
+          />
+
+          <!-- Brand -->
+          <label for="brand">brand</label>
+          <input
+            class="lowercase"
+            type="text"
+            id="brand"
+            name="brand"
+            value="<%= product.brand %>"
+            required
+          />
+
+          <!-- Item Type -->
+          <label for="item_type">item type</label>
+          <input
+            class="lowercase"
+            type="text"
+            id="item_type"
+            name="item_type"
+            value="<%= product.item_type %>"
+          />
+
+          <!-- Price / Cost -->
+          <div class="price-cost-container">
+            <div class="update-item-col">
+              <label for="price_unit">price per unit</label>
+              <input
+                type="number"
+                step="0.01"
+                id="price_unit"
+                name="price_unit"
+                value="<%= product.price_unit %>"
+                required
+              />
+            </div>
+
+            <div class="update-item-col">
+              <label for="cost_unit">cost per unit</label>
+              <input
+                type="number"
+                step="0.01"
+                id="cost_unit"
+                name="cost_unit"
+                value="<%= product.cost_unit %>"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Base SKU -->
+          <label for="base_sku">base sku</label>
+          <input
+            class="uppercase"
+            type="text"
+            id="base_sku"
+            name="base_sku"
+            value="<%= product.base_sku %>"
+            required
+          />
+
+          <!-- Rating / Reviews -->
+          <!-- <input type="number" name="rating" value="<%#= product.rating %>" hidden />
+          <input type="number" name="review_count" value="<%#= product.review_count %>" hidden /> -->
+
+          <!-- Images -->
+          <label for="front">front image link</label>
+          <input
+            type="text"
+            id="front"
+            name="front"
+            value="<%= product.imagesByType?.front?.[0] || '' %>"
+          />
+
+          <label for="rear">rear image link</label>
+          <input
+            type="text"
+            id="rear"
+            name="rear"
+            value="<%= product.imagesByType?.rear?.[0] || '' %>"
+          />
+
+          <label for="size">sizing image link</label>
+          <input
+            type="text"
+            id="size"
+            name="size"
+            value="<%= product.imagesByType?.size?.[0] || '' %>"
+          />
+
+          <!-- Tags -->
+          <label for="tags">tags (comma separated)</label>
+          <input
+            type="text"
+            id="tags"
+            name="tags"
+            value="<%= product.tags.join(', ') %>"
+          />
+
+          <!-- Inventory -->
+           <label class="uppercase">adjust inventory</label>
+          <%
+            const sizes = ['S','M','L','XL'];
+            sizes.forEach(size => {
+              const inv = product.inventoryBySize?.[size]?.[0];
+          %>
+          <div class="update-item-variant-container">
+            <div class="update-item-row">
+              <label for="sizes[]">size</label>
+              <input class="size" type="text" name="sizes[]" value="<%= size %>" />
+            </div>
+            <div class="update-item-row">
+              <label for="barcodes[]">barcode</label>
+              <input class="barcode" type="text" name="barcodes[]" value="<%= inv?.barcode || 'n/a (add)' %>" />
+            </div>
+              <div class="update-item-row">
+                <label for="units[]">units</label>
+                <input class="units" type="number" name="units[]" value="<%= inv?.units ?? 0 %>" />   
+              </div>
+              <div class="update-item-row">
+                <label for="storage[]">storage</label>
+                <input class="storage" type="text" name="storage[]" value="<%= inv?.storage || 'n/a (add)' %>" />            
+              </div>
+          </div>
+
+          <% }) %>
+
+          <!-- Submit -->
+          <div class="update-view-button-container">
+            <button class="submit-button" type="submit">
+              Save Changes
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </main>
+
+    <%#- include('./partials/footer.ejs') %>
+  </body>
+</html>

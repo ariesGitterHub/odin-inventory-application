@@ -50,6 +50,9 @@ ol {
   list-style: none;
   margin: 0;
 }
+input {
+  margin: 0;
+}
 
 /* Generic focus-visible outline for accessibility */
 :focus-visible {
@@ -122,7 +125,6 @@ input[type=number] {
 }
 
 /* BUTTON AND BUTTON-LIKE ELEMENTS */
-
 a,
 button {
   display: flex;
@@ -134,13 +136,15 @@ button {
   box-shadow: var(--box-shadow);
   color: var(--frog-black);
   font-family: var(--font-title);
-  font-size: 0.9rem;
+  /* font-size: 0.9rem; */
+  /* font-size: var(--default-font-size); */
   text-transform: uppercase;
   padding: 0.25rem var(--default-rem-size);
   white-space: nowrap;
 }
 
 .reorder-button {
+  width: 7.75rem;
   font-family: var(--font-text);
 }
 
@@ -180,7 +184,8 @@ button:active {
   background-color: var(--rose-dk);
   border: 2px solid var(--white);
   color: var(--white);
-  font-size: 0.8rem;
+  /* font-size: 0.8rem; */
+   /* font-size: var(--default-font-size); */
   font-family: var(--font-text);
   padding: 0.25rem;
   text-align: center;
@@ -222,7 +227,7 @@ button:active {
   flex-wrap: wrap;
   border-radius: var(--border-radius-inner);
   font-family: var(--font-text);
-  font-size: var(--default-font-size);
+  /* font-size: var(--default-font-size); */
   text-transform: uppercase;
   white-space: wrap;
 }
@@ -236,6 +241,41 @@ button:active {
 .quick-view-button2 {
   height: 3rem;
   width: 6rem;
+}
+
+/* LABEL and INPUT */
+
+label {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+input {
+  height: 1.75rem;
+  width: 100%;
+    border-radius: var(--border-radius-inner);
+    /* font-size: 1rem; */
+    font-weight: 600;
+    /* margin-bottom: var(--default-rem-size); */
+    padding: 0.25rem;
+}
+
+/* MISC */
+
+.hidden {
+  display: none;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.lowercase {
+  text-transform: lowercase;
 }
 
 /* BODY */
@@ -344,8 +384,21 @@ main {
   margin-bottom: var(--default-rem-size);
 }
 
-/* QUICK-VIEW */
-.quick-view {
+/* QUICK-VIEW and UPDATE-ITEM*/
+.update-item-view {
+  /* height: fit-content; */
+  height: 100vh;
+  /* width: fit-content; */
+    /* width: 90vw; */
+  display: flex;
+  flex-direction: column;
+  /* align-items: ; */
+  justify-content: start;
+  /* flex-wrap: nowrap; */
+  /* gap: var(--default-rem-size); */
+  margin: 0 var(--default-rem-size);
+}
+.quick-view, .update-item {
   height: fit-content;
   width: 97%;
   display: flex;
@@ -359,6 +412,36 @@ main {
   border-radius: var(--border-radius-outer);
   box-shadow: var(--box-shadow);
   padding: var(--default-rem-size);
+}
+
+.quick-view-details-col, .update-item-details-col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--default-rem-size);
+}
+
+.quick-view-details-col h1, .update-item-details-col h1,
+.quick-view-details-col h2, .update-item-details-col h2 {
+  margin-bottom: -0.875rem;
+  text-transform: uppercase;
+}
+
+.quick-view-details-col h1, .update-item-details-col h1 {
+  font-size: var(--default-font-size);
+}
+.quick-view-details-col h2, .update-item-details-col h2 {
+  font-size: 0.95rem;
+}
+
+.file-tab-span {
+  display: inline-flex;
+  background-color: var(--rose-dk);
+  border: 2px solid var(--rose-dk);
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  color: var(--white);
+  padding: 0.25rem;
 }
 
 .quick-view-details-adjustable {
@@ -376,7 +459,17 @@ main {
   padding: var(--default-rem-size);
 }
 
-.quick-view-details-row {
+.update-item-details-adjustable {
+  width: 100%;
+  background-color: var(--rose-lt);
+  border: 2px solid var(--rose-dk);
+  border-top-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  padding: var(--default-rem-size);
+}
+
+.quick-view-details-row, .update-item-details-row {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -384,32 +477,8 @@ main {
   background-color: var(--rose-lt);
 }
 
-.quick-view-details-col {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: var(--default-rem-size);
-}
-
-.quick-view-details-col h1,
-.quick-view-details-col h2 {
-  margin-bottom: -0.875rem;
-  text-transform: uppercase;
-}
-.quick-view-details-col h1 {
-  font-size: var(--default-font-size);
-}
-.quick-view-details-col h2 {
-  font-size: 0.95rem;
-}
-
-.file-tab-span {
-  background-color: var(--rose-dk);
-  border: 2px solid var(--rose-dk);
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-  color: var(--white);
-  padding: 0.25rem;
+.animal-type {
+  width: 20ch;
 }
 
 .highlight-color {
@@ -421,7 +490,7 @@ main {
 }
 
 .quick-view-notifications,
-.quick-view-tags {
+.quick-view-tags, .update-item-tags {
   height: fit-content;
   width: 100%;
   display: flex;
@@ -441,19 +510,19 @@ main {
   font-weight: 600;
 }
 
-.quick-view-tags {
+.quick-view-tags, .update-item-tags {
   border: 2px solid var(--frog-black);
   text-transform: lowercase;
 }
 
 .quick-view-notifications h2,
-.quick-view-tags h2 {
+.quick-view-tags h2, .update-item-tags h2 {
   font-size: 0.95rem;
   margin: 0;
 }
 
 .notifications {
-  font-size: 0.9rem;
+  /* font-size: 0.9rem; */
 }
 
 .quick-view-button-container1 {
@@ -489,20 +558,37 @@ main {
 }
 
 .quick-view-category,
-.quick-view-data {
-  width: 7.75rem;
+.quick-view-data{
+  height: fit-content;
+  /* width: 7.75rem; */
   display: flex;
   flex-direction: column;
+  align-items: start;
   justify-content: space-between;
+  padding: 0.5rem;
 }
 
-.quick-view-category {
+.update-item-category, .update-item-data {
+  /* height: fit-content; */
+  height: auto;
+  /* width: 7.75rem; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  /* gap: var(--default-rem-size); */
+  /* padding: 0.5rem; */
+}
+
+.quick-view-category, .update-item-category {
   /* width: 7.5rem; */
+  width: 7rem;
   text-transform: capitalize;
   white-space: nowrap;
 }
 
-.quick-view-data {
+.quick-view-data, .update-item-data {
+   width: 9rem;
   font-weight: 600;
   padding-left: 0.25rem;
   white-space: nowrap;
@@ -516,8 +602,8 @@ main {
   background-color: var(--frog-white);
   border: 2px solid var(--frog-black);
   border-radius: var(--border-radius-inner);
-  font-size: 0.9rem;
-  padding: 0.5rem;
+  /* font-size: 0.9rem; */
+  /* padding: 0.5rem; */
 }
 
 .quick-view-profit1 {
@@ -528,12 +614,18 @@ main {
   border-top: 1px solid var(--white);
 }
 
-.quick-view-money2 {
+/* .quick-view-money1, */
+ .quick-view-money2 {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: end;
+  flex-wrap: nowrap;
   background-color: var(--frog-dk);
   border-radius: var(--border-radius-inner);
   color: var(--white);
   padding: 0 0.25rem 0 0.25rem;
-  text-align: right;
+  /* text-align: right; */
 }
 
 /* TODO - DELETE if unused - DELETE LAST */
@@ -550,20 +642,13 @@ main {
   /* Only used in main.js - TODO - Double check this!!! */
 }
 
-.hidden {
-  display: none;
-}
-
-.uppercase {
-  text-transform: uppercase;
-}
-
-.capitalize {
-  text-transform: capitalize;
-}
-
-.lowercase {
-  text-transform: lowercase;
+.update-item-grid {
+    display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.5rem 1rem;
+  align-items: center;
+  align-self: start;
+  justify-content: center;
 }
 
 /* CREATE-ITEM */
@@ -578,14 +663,12 @@ main {
   justify-content: start;
   /* flex-wrap: nowrap; */
   /* gap: var(--default-rem-size); */
-
-
   margin: 0 var(--default-rem-size);
 }
 
 .create-item-title {
   font-family: var(--font-title);
-  font-size: var(--default-fun-title);
+  /* font-size: var(--default-fun-title); */
   text-align: center;
 }
 
@@ -598,43 +681,32 @@ main {
   justify-content: center;
   flex-wrap: nowrap;
   /* gap: var(--default-rem-size); */
-  background-color: var(--rose-lt);
+  /* background-color: var(--gold-lt); */
   border: 2px solid var(--frog-black);
   border-radius: var(--border-radius-outer);
   box-shadow: var(--box-shadow);
   /* margin: 0 var(--default-rem-size); */
   padding: var(--default-rem-size);
-
 }
 
-label {
-  font-weight: 600;
-  text-transform: capitalize;
-}
-
-input {
-  height: 1.65rem;
-  width: 100%;
-    border-radius: var(--border-radius-inner);
-    font-size: 1rem;
-    font-weight: 400;
-    margin-bottom: var(--default-rem-size);
-    padding: 0.25rem;
-    
+.create-item {
+  background-color: var(--gold-lt);
 }
 
 .price-cost-container {
+  width: 100%;
   display: flex;
   flex-direction: row;
   gap: var(--default-rem-size);
 }
 
 .create-item-col {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.create-item-col input {
+.create-item-col input{
     width: 100%;
 }
 
@@ -643,10 +715,6 @@ input {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
-}
-
-.create-view-button-container button {
-  width: 100%;
 }
 
 /* FOOTER */
@@ -677,11 +745,10 @@ ul {
 
 .errors li {
   color: var(--red-dk);
-  font-size: 1.125rem;
+  /* font-size: 1.125rem; */
   font-weight: 600;
   margin-bottom: 0.25rem;
 }
-
 
 /* MEDIA QUERIES */
 @media (min-width: 400px) {
@@ -695,12 +762,12 @@ ul {
     width: auto;
   }
 
-  .quick-view, .create-item {
+  .quick-view, .create-item, .update-item {
     width: 350px;
   }
 
   .notifications, .variant-details {
-    font-size: var(--default-font-size);
+    /* font-size: var(--default-font-size); */
   }
 }
 
@@ -730,7 +797,7 @@ ul {
     width: auto;
   }
 
-  .quick-view, .create-item {
+  .quick-view, .create-item, .update-item {
     width: 410px;
   }
 
@@ -759,6 +826,38 @@ ul {
     border: 2px solid var(--frog-black);
     border-radius: var(--border-radius-inner);
   }
+
+  /* .update-item-variant-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: var(--default-rem-size);
+  background-color: var(--frog-lt);
+  border-radius: var(--border-radius-inner);
+  color: var(--frog-black);
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+}
+
+.update-item-row .size {
+  width: 5ch;  
+}
+
+.update-item-row .barcode {
+  width: 15ch;  
+}
+
+.update-item-row .units {
+  width: 7ch;  
+}
+
+.update-item-row .storage {
+  width: 10ch;  
+} */
+
 }
 
 @media (min-width: 700px) {
@@ -795,7 +894,7 @@ ul {
     gap: var(--default-rem-size);
   }
 
-  .quick-view, .create-item {
+  .quick-view, .create-item, .update-item {
     width: 470px;
   }
 

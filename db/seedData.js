@@ -66,7 +66,7 @@ async function main() {
     product_id INT REFERENCES products(id) ON DELETE CASCADE,
     size_id INT REFERENCES sizes(id),
     sku TEXT UNIQUE,
-    barcode VARCHAR(12),
+    barcode TEXT,
     units INT,
     storage TEXT
   );
