@@ -9,20 +9,25 @@ const {
   getCreateItemPage,
   postNewProductItem,
   getUpdateForm,
-  putUpdateProduct,
+  putUpdateProductItem,
   deleteProductItem,
   //   getProductUniquePage,
 } = require("../controllers/productController");
 
 const productRouter = Router();
 
+// GET all product items
 productRouter.get("/", getProductsPage);
 
+// GET create form and POST new product item
 productRouter.get("/create", getCreateItemPage);
 productRouter.post("/create", postNewProductItem);
 
+// GET update form and PUT update of product item
 productRouter.get("/:id/update", getUpdateForm);
-productRouter.put("/:id", putUpdateProduct);
+// Using post rather than put to avoid additional modules and middleware
+// productRouter.put("/:id/update", putUpdateProductItem);
+productRouter.post("/:id/update", putUpdateProductItem);
 
 // Delete product item
 productRouter.post("/:id/delete", deleteProductItem);

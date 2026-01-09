@@ -1,12 +1,12 @@
 // Place button functionality and any other JS here
 
-// document.querySelectorAll("toggle-btn").addEventListener("click", () => {
+// document.querySelectorAll("toggle-additional-data ").addEventListener("click", () => {
 //   document.querySelectorAll(".additional-data").forEach((el) => {
 //     el.classList.toggle("hidden");
 //   });
 // });
 
-// document.querySelectorAll(".toggle-btn").forEach((btn) => {
+// document.querySelectorAll(".toggle-additional-data ").forEach((btn) => {
 //   btn.addEventListener("click", () => {
 //     const card = btn.closest(".quick-view-details-col");
 //     const additionalData = card.querySelector(".additional-data");
@@ -14,24 +14,24 @@
 //   });
 // });
 
-document.querySelectorAll(".toggle-btn").forEach((btn) => {
+document.querySelectorAll(".toggle-additional-data ").forEach((btn) => {
   btn.addEventListener("click", () => {
-    const card = btn.closest(".quick-view");
+    const card = btn.closest(".card");
     const additionalData = card.querySelector(".additional-data");
     additionalData.classList.toggle("hidden");
     // const fileTab = card.querySelector(".file-tab");
         if (!additionalData.classList.contains("hidden")) {
-      card.querySelector(".toggle-btn").style.backgroundColor = "var(--frog-dk)";
-      card.querySelector(".toggle-btn").style.color = "var(--gold)";
-      card.querySelector(".quick-view-details-adjustable").style.borderTopLeftRadius = "0.5rem";
+      card.querySelector(".toggle-additional-data ").style.backgroundColor = "var(--frog-dk)";
+      card.querySelector(".toggle-additional-data ").style.color = "var(--gold)";
+      card.querySelector(".col-row-adjustable").style.borderTopLeftRadius = "0.5rem";
       card.style.backgroundColor = "var(--rose-dk)";
       card.querySelector(".file-tab-text").innerHTML = "full view:&nbsp;";
     } else {
-      card.querySelector(".toggle-btn").style.backgroundColor = "var(--frog-white)";
-      card.querySelector(".toggle-btn").style.color =
+      card.querySelector(".toggle-additional-data ").style.backgroundColor = "var(--frog-white)";
+      card.querySelector(".toggle-additional-data ").style.color =
         "var(--frog-black)";
               card.querySelector(
-                ".quick-view-details-adjustable"
+                ".col-row-adjustable"
               ).style.borderTopLeftRadius = "0rem";
       card.style.backgroundColor = "var(--frog-lt)";
       card.querySelector(".file-tab-text").innerHTML = "quick view:&nbsp;";
@@ -46,8 +46,8 @@ document.querySelectorAll(".toggle-btn").forEach((btn) => {
 //   }
 // })
 
-document.querySelectorAll(".sizeUnitCount").forEach((el) => {
-  const unitCountMessage = el.querySelector(".quick-view-unit-message");
+document.querySelectorAll(".size-unit-count").forEach((el) => {
+  const unitCountMessage = el.querySelector(".unit-message");
   // Extract the numeric value from the .sizeUnitCount element's text content
   const unitCount = parseInt(el.textContent.trim(), 10); // Convert the string to a number
   if (unitCount === 0) {
@@ -56,7 +56,7 @@ document.querySelectorAll(".sizeUnitCount").forEach((el) => {
     unitCountMessage.style.borderRadius = "1rem";
     unitCountMessage.innerHTML = "&nbsp;&nbsp;Review&nbsp;&nbsp;";
   } else if (unitCount > 0 && unitCount < 100) {
-        unitCountMessage.style.color = "var(--gold)";
+    unitCountMessage.style.color = "var(--gold)";
     unitCountMessage.style.backgroundColor = "var(--red-dk)";
     unitCountMessage.style.borderRadius = "1rem";
     unitCountMessage.innerHTML = "&nbsp;&nbsp;Reorder&nbsp;&nbsp;";
@@ -75,8 +75,8 @@ document.querySelectorAll(".sizeUnitCount").forEach((el) => {
   }
 });
 
-document.querySelectorAll(".variant-reorder").forEach((el) => {
-const message = el.querySelector(".quick-view-unit-message");
+document.querySelectorAll(".inventory-reorder").forEach((el) => {
+const message = el.querySelector(".unit-message");
 const reorderButton = el.querySelector(".reorder-button");
 
 if (message.innerHTML === "&nbsp;&nbsp;Review&nbsp;&nbsp;") {
@@ -93,3 +93,33 @@ if (message.innerHTML === "&nbsp;&nbsp;Review&nbsp;&nbsp;") {
   
 });
 
+// document.querySelectorAll(".toggle-inv-btn").forEach((btn) => {
+//   btn.addEventListener("click", () => {
+//     const card = btn.closest(".update-item-details-col2");
+//     const hiddenInventory = card.querySelector(".hidden-inventory");
+//     hiddenInventory.classList.toggle("hidden");
+//     // const fileTab = card.querySelector(".file-tab");
+//     if (!hiddenInventory.classList.contains("hidden")) {
+//       card.querySelector(".toggle-inv-btn").style.backgroundColor =
+//         "var(--frog-dk)";
+//       card.querySelector(".toggle-inv-btn").style.color = "var(--gold)";
+//       card.style.backgroundColor = "var(--rose-dk)";
+//     } else {
+//       card.querySelector(".toggle-inv-btn").style.backgroundColor =
+//         "var(--frog-white)";
+//       card.querySelector(".toggle-inv-btn").style.color = "var(--frog-black)";
+//       card.style.backgroundColor = "var(--frog-lt)";
+//     }
+//   });
+// });
+
+document.querySelectorAll(".toggle-inventory").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault(); // prevents form submit on button click
+    const hiddenInventory = btn.nextElementSibling;
+    if (!hiddenInventory) return;
+    hiddenInventory.classList.toggle("hidden");
+    const isOpen = !hiddenInventory.classList.contains("hidden");
+    btn.style.backgroundColor = isOpen ? "var(--gold-lt)" : "var(--frog-white)";
+  });
+});

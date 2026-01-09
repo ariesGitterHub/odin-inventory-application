@@ -1,0 +1,127 @@
+/* VARIABLES */
+:root {
+  --frog-dk: #313d25;
+  --frog-lt: #bfcb99;
+  --frog-lt-trans: #bfcb99a9;
+  --frog-black: #060700;
+  --frog-white: #dadcd1;
+  --rose-dk: #be3b65;
+  --rose-lt: #eda1ae;
+  --gold-lt: #ffe463;
+  --gold: #ffc001;
+  --white: #ffffff;
+  --black: #1a1a1a;
+
+  --red-dk: #b00e0e;
+  --orange-dk: #eb9e0f;
+  --blue-dk: #124597;
+
+  --focus-blue: #4d90fe;
+
+  --font-title: "Slackey", sans-serif;
+  --font-text: "Rubik", sans-serif;
+
+  --border-radius-outer: 1rem;
+  --border-radius-inner: 0.5rem;
+
+  --default-fun-title: 1.25rem;
+  --default-text-title: 1.025rem;
+  --default-font-size: 1rem;
+  --default-rem-size: 0.65rem;
+
+  --box-shadow: inset 0 1px 5px var(--frog-black);
+}
+
+/* RESETS & PRESETS */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+}
+input {
+  margin: 0;
+}
+
+/* Generic focus-visible outline for accessibility */
+:focus-visible {
+  outline: 4px dashed var(--focus-blue);
+  outline-offset: 2px;
+}
+
+/* Optional: Add a border or change color for specific elements (like buttons) */
+button:focus-visible,
+a:focus-visible {
+  outline: 4px dashed var(--focus-blue);
+  outline-offset: 2px;
+}
+
+/* Optional: A subtle shadow to provide a nice effect */
+input:focus-visible {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 4px var(--gold);
+}
+
+/* Optional: Focus on links */
+a:focus-visible {
+  outline: 4px dashed var(--focus-blue);
+  outline-offset: 4px;
+}
+
+html,
+body {
+  flex: 1; /* Always a good reminder: this pushes the footer down */
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+/* THIS IS NEW FOR ME */
+/* REMOVE ARROWS FROM INPUT TYPE = NUMBER */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

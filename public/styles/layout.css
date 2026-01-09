@@ -1,0 +1,126 @@
+/* BODY */
+body {
+  flex: 1; /* Always a good reminder: this pushes the footer down */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  background: linear-gradient(05deg, var(--frog-lt), var(--frog-white));
+  color: var(--frog-black);
+  font-family: var(--font-text);
+  line-height: 1.5;
+}
+
+/* HEADER */
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* gap: var(--default-rem-size); */
+  gap: 0.25rem;
+  background-color: var(--frog-dk);
+  margin-bottom: var(--default-rem-size);
+  padding: var(--default-rem-size);
+}
+
+.logo {
+  display: none;
+  height: 3rem;
+  width: auto;
+}
+
+.logo-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--default-rem-size);
+}
+
+.title-text-container {
+  color: var(--rose-lt);
+  text-align: center;
+}
+
+.fun-title {
+  display: none;
+  font-family: var(--font-title);
+  font-size: var(--default-fun-title);
+}
+
+.text-title {
+  font-family: var(--font-text);
+  font-size: var(--default-text-title);
+  text-transform: uppercase;
+}
+
+/* NAV */
+nav .wide {
+  display: none;
+}
+
+.nav-item-short-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--default-rem-size);
+}
+
+nav .short {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--default-rem-size);
+}
+
+nav .short img {
+  height: 1.125rem;
+  width: auto;
+}
+
+nav h1 {
+  font-size: 1.25rem;
+}
+
+.nav-item-wide {
+  height: 2.25rem;
+  width: 10rem;
+}
+
+.nav-item-short {
+  height: fit-content;
+  width: fit-content;
+}
+
+/* MAIN */
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--default-rem-size);
+  margin-bottom: var(--default-rem-size);
+}
+
+/* FOOTER */
+footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  padding: var(--default-rem-size);
+  background-color: var(--frog-dk);
+  padding: var(--default-rem-size);
+  text-align: center;
+}

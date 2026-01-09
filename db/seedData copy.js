@@ -79,9 +79,12 @@ await client.query(`
     product_id INT REFERENCES products(id) ON DELETE CASCADE,
     size_id INT REFERENCES sizes(id),
     sku TEXT UNIQUE,
+    -- sku TEXT,
     barcode TEXT,
     units INT,
-    storage TEXT
+    storage TEXT,
+    /* NOTE - below was added to fix duplicate inventory units whenever base_sku was changed during updates */
+    -- CONSTRAINT unique_product_size UNIQUE (product_id, size_id)
   );
 `);
 
@@ -167,7 +170,7 @@ await client.query(`
         );
 
         const sizeId = sizeRes.rows[0].id;
-        const sku = `${item.base_sku}${size}`.toUpperCase();
+        const sku = `${item.base_sku}${size}`;
 
         //   await client.query(
         //     `
@@ -188,6 +191,16 @@ await client.query(`
             storage = EXCLUDED.storage,
             product_id = EXCLUDED.product_id,
             size_id = EXCLUDED.size_id; 
+
+        -- NOTE - below was changed to handle error in CONSTRAINT way above (CTRL + F), IT IS NOT WORKING PROPERLY...
+
+        /* INSERT INTO inventory (product_id, size_id, sku, barcode, units, storage)
+        VALUES ($1, $2, $3, $4, $5, $6)
+        ON CONFLICT (product_id, size_id) DO UPDATE
+        SET sku = EXCLUDED.sku,
+            barcode = EXCLUDED.barcode,
+            units = EXCLUDED.units,
+            storage = EXCLUDED.storage;*/
         `,
           [productId, sizeId, sku, barcode, units, storage]
         );

@@ -1190,7 +1190,7 @@ const items = [
     ],
   },
   {
-    animal_type: "T-Rex",
+    animal_type: "t-rex",
     item_type: "adult onesie",
     brand: "dinojama",
     price_unit: 39.99,

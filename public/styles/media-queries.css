@@ -1,0 +1,127 @@
+
+/* MEDIA QUERIES */
+@media (min-width: 400px) {
+  :root {
+    /* --default-fun-title: 1.55rem; */
+    --default-text-title: 1.25rem;
+  }
+
+  nav .short img {
+    height: 1.5rem;
+    width: auto;
+  }
+
+  .card {
+    width: 350px;
+  }
+
+}
+
+@media (min-width: 500px) {
+  :root {
+    --default-fun-title: 1.75rem;
+    --default-text-title: 1.4rem;
+    --default-rem-size: 0.75rem;
+  }
+
+  header {
+    gap: var(--default-rem-size);
+  }
+
+  .logo {
+    display: flex;
+    height: 4rem;
+    width: auto;
+  }
+
+  .fun-title {
+    display: block;
+  }
+
+  nav .short img {
+    height: 2rem;
+    width: auto;
+  }
+
+  .card {
+    width: 410px;
+  }
+
+  .col-row-adjustable {
+    flex-direction: row;
+    gap: var(--default-rem-size);
+  }
+
+
+  .product-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--default-rem-size);
+  }
+
+  .product-image {
+    height: 9rem;
+    width: 5rem;
+    border: 2px solid var(--frog-black);
+    border-radius: var(--border-radius-inner);
+  }
+
+
+}
+
+@media (min-width: 700px) {
+  :root {
+    --default-fun-title: 1.75rem;
+    --default-text-title: 1.45rem;
+    --default-rem-size: 1rem;
+  }
+
+  nav .wide {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--default-rem-size);
+  }
+
+  .nav-item-short-container {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--default-rem-size);
+  }
+
+  nav .short {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--default-rem-size);
+  }
+
+  .card {
+    width: 470px;
+  }
+}
+
+@media (min-width: 1950px) {
+  header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--default-rem-size);
+  }
+
+  .nav-item-wide {
+    height: 4rem;
+    width: 12rem;
+    font-size: 1.25rem;
+  }
+}

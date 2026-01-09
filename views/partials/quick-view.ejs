@@ -1,19 +1,19 @@
 <% if (products && products.length) { %> 
   <% products.sort((a, b) => a.animal_type.localeCompare(b.animal_type))
 .forEach(product => { %>
-    <div class="quick-view">
-      <div class="quick-view-details-col main-data">
+    <div class="card quick-view-colors">
+      <div class="main-data">
           <h1>
             <span class="file-tab-span">
               <span class="file-tab-text">quick view:&nbsp;</span> 
-              <span class="highlight-color"><%= product.animal_type %></span>
+              <span class="highlight-color1"><%= product.animal_type %></span>
             </span>
           </h1>
-          <div class="quick-view-details-adjustable">
-            <div class="quick-view-image-container">
+          <div class="col-row-adjustable">
+            <div class="product-image-container">
               <% product.imagesByType.front && product.imagesByType.front.forEach(filename_or_link => { %>
               <img
-                class="quick-view-image"
+                class="product-image"
                 src="<%= filename_or_link.startsWith('http') ? filename_or_link : '/images/' + filename_or_link %>"
                 alt="<%= product.animal_type %> front view"
               />
@@ -21,20 +21,20 @@
               <% product.imagesByType.rear &&
               product.imagesByType.rear.forEach(filename_or_link => { %>
               <img
-                class="quick-view-image"
+                class="product-image"
                 src="<%= filename_or_link.startsWith('http') ? filename_or_link : '/images/' + filename_or_link %>"
                 alt="<%= product.animal_type %> rear view"
               />
               <% }) %>
             </div>
-            <div class="quick-view-details-row">            
-              <div class="quick-view-category">
+            <div class="row-container">            
+              <div class="product-category">
                 <p>brand</p>
                 <p>item type</p>        
-                <div class="quick-view-money1">
+                <div>
                   <p>($) price/unit</p>
                   <p>($) cost/unit</p>
-                  <p class="quick-view-profit1">($) profit/unit</p>
+                  <p class="profit-line1">($) profit/unit</p>
               </div>
               <p>variants</p>
               <p>base sku</p>
@@ -45,13 +45,13 @@
               <p>sizing image</p>
               <p></p>
             </div>
-            <div class="quick-view-data overflow-wide">
+            <div class="product-data overflow-wide">
               <p class="uppercase"><%= product.brand %></p>
               <p><%= product.item_type %></p>
-              <div class="quick-view-money2">
+              <div class="currency-backdrop">
                 <p><%= product.price_unit %></p>
                 <p>-<%= product.cost_unit %></p>
-                <p class="quick-view-profit2">
+                <p class="profit-line2">
                   <span class="highlight-color2"><%= product.profit_per_unit %></span>
                 </p>
               </div>
@@ -75,56 +75,59 @@
               <p></p>
             </div></div>
           </div>
-          <div class="quick-view-button-container1">
-            <button class="quick-view-button1 toggle-btn color-button">toggle</button>
+          <div class="button-container1">
+            <button class="card-button1 toggle-additional-data">toggle</button>
               <form action="/<%= product.id %>/update" method="GET">
-              <button class="quick-view-button1">update</button>
+              <button class="card-button1">update</button>
             </form>
             <form action="/<%= product.id %>/delete" method="POST">
-              <button class="quick-view-button1" onclick="return confirm('Are you sure you want to delete this product?');">delete</button>
+              <button class="card-button1" onclick="return confirm('Are you sure you want to delete this product?');">delete</button>
             </form>
           </div>
-          <div class="quick-view-notifications">
-            <h2>inventory notifications</h2> 
+          <div class="inventory-notifications">
+            <h2 class="uppercase">inventory notifications</h2> 
             <% if (product.inventoryBySize && Object.keys(product.inventoryBySize).length > 0) { %>
             <% const customSizeOrder = ['S', 'M', 'L', 'XL']; %>
             <% const sizeCodes = Object.keys(product.inventoryBySize).sort((a, b) => customSizeOrder.indexOf(a) - customSizeOrder.indexOf(b)); %>
             <% sizeCodes.forEach(function(sizeCode) { %>
               <% const size = product.inventoryBySize[sizeCode]; %>
-                <div class="notifications">
-                  <p class="capitalize">&nbsp;➤&nbsp;size (<%= sizeCode %>) @ 
+                <div class="inventory-notice">
+                  <p class="capitalize">&nbsp;•&nbsp;size (<%= sizeCode %>) @ 
                     <% size.forEach(function(variantSize) { %>
-                      <span class="sizeUnitCount"><%= variantSize.units %> units <span class="quick-view-unit-message"></span></span>
+                      <span class="size-unit-count"><%= variantSize.units %> units <span class="unit-message"></span></span>
                     <% }); %>
                 </div>
             <% }); %>
             <% } else { %>
-              <p>No messages.</p>
+              <p class="capitalize">no current messages</p>
             <% } %>
           </div>         
-          <div class="quick-view-details-col additional-data hidden">
-            <div class="quick-view-tags">
-              <h2>search tags</h2>
+          <div class="additional-data hidden">
+            <div class="product-tags">
+              <h2 class="uppercase">search tags</h2>
+              <% if (product.tags.length > 0) { %>
               <p><%= product.tags.join(", ") %> %></p>
+              <% } else { %>
+              <p class="capitalize">no current tags</p>
+            <% } %>
             </div>
-            <div class="quick-view-button-container2">
-              <button class="quick-view-button2">Add/View Notes</button>
-              <button class="quick-view-button2">Rating History</button>
-              <button class="quick-view-button2">Pricing History</button>
+            <div class="button-container2">
+              <button class="card-button2">Add/View Notes</button>
+              <button class="card-button2">Rating History</button>
+              <button class="card-button2">Pricing History</button>
             </div>
-            <div class="quick-view-button-container2">
-              <button class="quick-view-button2">Sales History</button>
-              <button class="quick-view-button2">Storage History</button>
-              <button class="quick-view-button2">Order History</button>
+            <div class="button-container2">
+              <button class="card-button2">Sales History</button>
+              <button class="card-button2">Storage History</button>
+              <button class="card-button2">Order History</button>
             </div>
-            <%#// HOLDER CODE %>
           <% if (product.inventoryBySize && Object.keys(product.inventoryBySize).length > 0) { %>
             <% const customSizeOrder = ['S', 'M', 'L', 'XL']; %>
             <% const sizeCodes = Object.keys(product.inventoryBySize).sort((a, b) => customSizeOrder.indexOf(a) - customSizeOrder.indexOf(b)); %>
             <% sizeCodes.forEach(function(sizeCode) { %>
               <% const size = product.inventoryBySize[sizeCode]; %>
-                <div class="quick-view-details-row variant-details">
-                  <div class="quick-view-category variant-category">
+                <div class="row-container inventory-detail">
+                  <div class="product-category">
                     <p>variant</p>
                     <p>sku</p>
                     <p>barcode</p>
@@ -132,15 +135,15 @@
                     <p>units</p>
                     <br>
                   </div>
-                  <div class="quick-view-data variant-data variant-reorder">
+                  <div class="product-data inventory-reorder">
                     <p class="uppercase"> size (<%= sizeCode %>)</p>
                     <% size.forEach(function(variantSize) { %>
                       <p><%= variantSize.sku %></p>
                       <p><%= variantSize.barcode %></p>
                       <p><%= variantSize.storage %></p>      
-                      <p class="sizeUnitCount">
+                      <p class="size-unit-count">
                         <%= variantSize.units %>
-                        <span class="quick-view-unit-message"></span>
+                        <span class="unit-message"></span>
                       </p>
                       <button class="reorder-button"></button>
                     <% }); %>
@@ -156,5 +159,5 @@
   <% }) %>
   <script src="/js/main.js"></script>
 <% } else { %>
-  <p class="uppercase">No products found.</p>
+  <p class="uppercase">no products found</p>
 <% } %>

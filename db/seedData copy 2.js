@@ -167,7 +167,7 @@ await client.query(`
         );
 
         const sizeId = sizeRes.rows[0].id;
-        const sku = `${item.base_sku}${size}`.toUpperCase();
+        const sku = `${item.base_sku}${size}`;
 
         //   await client.query(
         //     `

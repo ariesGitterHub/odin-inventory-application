@@ -205,141 +205,8 @@ async function getProductById(productId) {
 }
 
 
-// --- Post a new product item ---
-// async function postNewProduct({
-//   animal_type,
-//   item_type,
-//   brand,
-//   price_unit,
-//   cost_unit,
-//   base_sku,
-//   rating,
-//   review_count,
-//   images = {},
-//   tags = [],
-//   stock = [],
-// }) {
-//   const client = await pool.connect();
-
-//   try {
-//     await client.query("BEGIN");
-
-//     /* 1️⃣ Insert product */
-//     const productRes = await client.query(
-//       `
-//       INSERT INTO products (
-//         animal_type,
-//         item_type,
-//         brand,
-//         price_unit,
-//         cost_unit,
-//         base_sku,
-//         rating,
-//         review_count
-//       )
-//       VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
-//       RETURNING id;
-//       `,
-//       [
-//         animal_type,
-//         item_type,
-//         brand,
-//         price_unit,
-//         cost_unit,
-//         base_sku,
-//         rating,
-//         review_count,
-//       ]
-//     );
-
-//     const productId = productRes.rows[0].id;
-
-//     /* 2️⃣ Insert images */
-//     for (const [type, filename_or_link] of Object.entries(images)) {
-//       await client.query(
-//         `
-//         INSERT INTO product_images (product_id, type, filename_or_link)
-//         VALUES ($1, $2, $3);
-//         `,
-//         [productId, type, filename_or_link]
-//       );
-//     }
-
-//     /* 3️⃣ Insert tags */
-//     for (const tag of tags) {
-//       const tagRes = await client.query(
-//         `
-//         INSERT INTO tags (name)
-//         VALUES ($1)
-//         ON CONFLICT (name) DO UPDATE SET name = EXCLUDED.name
-//         RETURNING id;
-//         `,
-//         [tag]
-//       );
-
-//       const tagId = tagRes.rows[0].id;
-
-//       await client.query(
-//         `
-//         INSERT INTO product_tags (product_id, tag_id)
-//         VALUES ($1, $2)
-//         ON CONFLICT DO NOTHING;
-//         `,
-//         [productId, tagId]
-//       );
-//     }
-
-//     /* 4️⃣ Insert inventory */
-//     for (const { size, barcode, units, storage } of stock) {
-//       const sizeRes = await client.query(
-//         `
-//         INSERT INTO sizes (code)
-//         VALUES ($1)
-//         ON CONFLICT (code) DO UPDATE SET code = EXCLUDED.code
-//         RETURNING id;
-//         `,
-//         [size]
-//       );
-
-//       const sizeId = sizeRes.rows[0].id;
-//       const sku = `${base_sku}${size}`;
-
-//       await client.query(
-//         `
-//         INSERT INTO inventory (
-//           product_id,
-//           size_id,
-//           sku,
-//           barcode,
-//           units,
-//           storage
-//         )
-//         VALUES ($1, $2, $3, $4, $5, $6)
-//         ON CONFLICT (sku) DO UPDATE
-//         SET units = EXCLUDED.units,
-//             barcode = EXCLUDED.barcode,
-//             storage = EXCLUDED.storage,
-//             product_id = EXCLUDED.product_id,
-//             size_id = EXCLUDED.size_id;
-//         `,
-//         [productId, sizeId, sku, barcode, units, storage]
-//       );
-//     }
-
-//     await client.query("COMMIT");
-
-//     return productId;
-//   } catch (err) {
-//     await client.query("ROLLBACK");
-//     throw err;
-//   } finally {
-//     client.release();
-//   }
-// }
-
-// Using UPSERT, this allows me to combine insert and update into one
-async function upsertProduct({
-  productId = null, // optional
+// --- POST a new product item ---
+async function postNewProduct({
   animal_type,
   item_type,
   brand,
@@ -357,88 +224,48 @@ async function upsertProduct({
   try {
     await client.query("BEGIN");
 
-    /* 1️⃣ Insert or update product */
-    if (productId) {
-      // UPDATE existing product
-      await client.query(
-        `
-        UPDATE products
-        SET animal_type = $1,
-            item_type = $2,
-            brand = $3,
-            price_unit = $4,
-            cost_unit = $5,
-            base_sku = $6,
-            rating = $7,
-            review_count = $8
-        WHERE id = $9
-        `,
-        [
-          animal_type,
-          item_type,
-          brand,
-          price_unit,
-          cost_unit,
-          base_sku,
-          rating,
-          review_count,
-          productId,
-        ]
-      );
-    } else {
-      // INSERT new product
-      const productRes = await client.query(
-        `
-        INSERT INTO products (
-          animal_type,
-          item_type,
-          brand,
-          price_unit,
-          cost_unit,
-          base_sku,
-          rating,
-          review_count
-        )
-        VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
-        RETURNING id;
-        `,
-        [
-          animal_type,
-          item_type,
-          brand,
-          price_unit,
-          cost_unit,
-          base_sku,
-          rating,
-          review_count,
-        ]
-      );
-      productId = productRes.rows[0].id;
-    }
+    /* 1️⃣ Insert product */
+    const productRes = await client.query(
+      `
+      INSERT INTO products (
+        animal_type,
+        item_type,
+        brand,
+        price_unit,
+        cost_unit,
+        base_sku,
+        rating,
+        review_count
+      )
+      VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
+      RETURNING id;
+      `,
+      [
+        animal_type,
+        item_type,
+        brand,
+        price_unit,
+        cost_unit,
+        base_sku,
+        rating,
+        review_count,
+      ]
+    );
 
-    /* 2️⃣ Upsert images */
-    // Delete old images if updating
-    if (images && Object.keys(images).length && productId) {
-      await client.query(`DELETE FROM product_images WHERE product_id = $1`, [
-        productId,
-      ]);
-    }
+    const productId = productRes.rows[0].id;
 
+    /* 2️⃣ Insert images */
     for (const [type, filename_or_link] of Object.entries(images)) {
       await client.query(
-        `INSERT INTO product_images (product_id, type, filename_or_link)
-         VALUES ($1, $2, $3)`,
+        `
+        INSERT INTO product_images (product_id, type, filename_or_link)
+        VALUES ($1, $2, $3);
+        `,
         [productId, type, filename_or_link]
       );
     }
 
-    /* 3️⃣ Upsert tags */
-    if (tags && tags.length && productId) {
-      await client.query(`DELETE FROM product_tags WHERE product_id = $1`, [
-        productId,
-      ]);
-    }
-
+    /* 3️⃣ Insert tags */
     for (const tag of tags) {
       const tagRes = await client.query(
         `
@@ -449,38 +276,51 @@ async function upsertProduct({
         `,
         [tag]
       );
+
       const tagId = tagRes.rows[0].id;
 
       await client.query(
-        `INSERT INTO product_tags (product_id, tag_id)
-         VALUES ($1, $2)
-         ON CONFLICT DO NOTHING`,
+        `
+        INSERT INTO product_tags (product_id, tag_id)
+        VALUES ($1, $2)
+        ON CONFLICT DO NOTHING;
+        `,
         [productId, tagId]
       );
     }
 
-    /* 4️⃣ Upsert inventory */
+    /* 4️⃣ Insert inventory */
     for (const { size, barcode, units, storage } of stock) {
       const sizeRes = await client.query(
-        `INSERT INTO sizes (code)
-         VALUES ($1)
-         ON CONFLICT (code) DO UPDATE SET code = EXCLUDED.code
-         RETURNING id`,
+        `
+        INSERT INTO sizes (code)
+        VALUES ($1)
+        ON CONFLICT (code) DO UPDATE SET code = EXCLUDED.code
+        RETURNING id;
+        `,
         [size]
       );
+
       const sizeId = sizeRes.rows[0].id;
       const sku = `${base_sku}${size}`;
 
       await client.query(
         `
-        INSERT INTO inventory (product_id, size_id, sku, barcode, units, storage)
+        INSERT INTO inventory (
+          product_id,
+          size_id,
+          sku,
+          barcode,
+          units,
+          storage
+        )
         VALUES ($1, $2, $3, $4, $5, $6)
         ON CONFLICT (sku) DO UPDATE
         SET units = EXCLUDED.units,
             barcode = EXCLUDED.barcode,
             storage = EXCLUDED.storage,
             product_id = EXCLUDED.product_id,
-            size_id = EXCLUDED.size_id
+            size_id = EXCLUDED.size_id;
         `,
         [productId, sizeId, sku, barcode, units, storage]
       );
@@ -497,6 +337,301 @@ async function upsertProduct({
   }
 }
 
+// PUT/update an item from the db
+async function putUpdateProduct(
+  productId,
+  {
+    animal_type,
+    item_type,
+    brand,
+    price_unit,
+    cost_unit,
+    base_sku,
+    rating,
+    review_count,
+    images = {},
+    tags = [],
+    stock = [],
+  }
+) {
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    // 1️⃣ Update product
+    await client.query(
+      `
+      UPDATE products SET
+        animal_type = $1,
+        item_type = $2,
+        brand = $3,
+        price_unit = $4,
+        cost_unit = $5,
+        base_sku = $6,
+        rating = $7,
+        review_count = $8
+      WHERE id = $9;
+      `,
+      [
+        animal_type,
+        item_type,
+        brand,
+        price_unit,
+        cost_unit,
+        base_sku,
+        rating,
+        review_count,
+        productId,
+      ]
+    );
+
+    // 2️⃣ Images
+    await client.query(`DELETE FROM product_images WHERE product_id = $1`, [
+      productId,
+    ]);
+    for (const [type, filename_or_link] of Object.entries(images)) {
+      await client.query(
+        `
+        INSERT INTO product_images (product_id, type, filename_or_link)
+        VALUES ($1, $2, $3);
+        `,
+        [productId, type, filename_or_link]
+      );
+    }
+
+    // 3️⃣ Tags
+    await client.query(`DELETE FROM product_tags WHERE product_id = $1`, [
+      productId,
+    ]);
+    for (const tag of tags) {
+      const tagRes = await client.query(
+        `
+        INSERT INTO tags (name)
+        VALUES ($1)
+        ON CONFLICT (name) DO UPDATE SET name = EXCLUDED.name
+        RETURNING id;
+        `,
+        [tag]
+      );
+
+      await client.query(
+        `
+        INSERT INTO product_tags (product_id, tag_id)
+        VALUES ($1, $2)
+        ON CONFLICT DO NOTHING;
+        `,
+        [productId, tagRes.rows[0].id]
+      );
+    }
+
+    // 4️⃣ Inventory
+    for (const { size, barcode, units, storage } of stock) {
+      const sizeRes = await client.query(
+        `
+        INSERT INTO sizes (code)
+        VALUES ($1)
+        ON CONFLICT (code) DO UPDATE SET code = EXCLUDED.code
+        RETURNING id;
+        `,
+        [size]
+      );
+
+      const sizeId = sizeRes.rows[0].id;
+      const sku = `${base_sku}${size}`;
+
+      await client.query(
+        `
+        INSERT INTO inventory (
+          product_id,
+          size_id,
+          sku,
+          barcode,
+          units,
+          storage
+        )
+        VALUES ($1, $2, $3, $4, $5, $6)
+        ON CONFLICT (sku) DO UPDATE
+        SET units = EXCLUDED.units,
+            barcode = EXCLUDED.barcode,
+            storage = EXCLUDED.storage,
+            product_id = EXCLUDED.product_id,
+            size_id = EXCLUDED.size_id;
+        `,
+        [productId, sizeId, sku, barcode, units, storage]
+      );
+    }
+
+    await client.query("COMMIT");
+  } catch (err) {
+    await client.query("ROLLBACK");
+    throw err;
+  } finally {
+    client.release();
+  }
+}
+
+
+// NOT USING THIS..buggy on put. UPSERT/combo post/put -  this allows me to combine insert and update into one, BUT this works for POST of new products but not for PUT updates. Go back to basics and separate out POST and PUT from queries to controllers to routes...
+// async function upsertProduct({
+//   productId = null, // optional
+//   animal_type,
+//   item_type,
+//   brand,
+//   price_unit,
+//   cost_unit,
+//   base_sku,
+//   rating,
+//   review_count,
+//   images = {},
+//   tags = [],
+//   stock = [],
+// }) {
+//   const client = await pool.connect();
+
+//   try {
+//     await client.query("BEGIN");
+
+//     /* 1️⃣ Insert or update product */
+//     if (productId) {
+//       // UPDATE existing product
+//       await client.query(
+//         `
+//         UPDATE products
+//         SET animal_type = $1,
+//             item_type = $2,
+//             brand = $3,
+//             price_unit = $4,
+//             cost_unit = $5,
+//             base_sku = $6,
+//             rating = $7,
+//             review_count = $8
+//         WHERE id = $9
+//         `,
+//         [
+//           animal_type,
+//           item_type,
+//           brand,
+//           price_unit,
+//           cost_unit,
+//           base_sku,
+//           rating,
+//           review_count,
+//           productId,
+//         ]
+//       );
+//     } else {
+//       // INSERT new product
+//       const productRes = await client.query(
+//         `
+//         INSERT INTO products (
+//           animal_type,
+//           item_type,
+//           brand,
+//           price_unit,
+//           cost_unit,
+//           base_sku,
+//           rating,
+//           review_count
+//         )
+//         VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
+//         RETURNING id;
+//         `,
+//         [
+//           animal_type,
+//           item_type,
+//           brand,
+//           price_unit,
+//           cost_unit,
+//           base_sku,
+//           rating,
+//           review_count,
+//         ]
+//       );
+//       productId = productRes.rows[0].id;
+//     }
+
+//     /* 2️⃣ Upsert images */
+//     // Delete old images if updating
+//     if (images && Object.keys(images).length && productId) {
+//       await client.query(`DELETE FROM product_images WHERE product_id = $1`, [
+//         productId,
+//       ]);
+//     }
+
+//     for (const [type, filename_or_link] of Object.entries(images)) {
+//       await client.query(
+//         `INSERT INTO product_images (product_id, type, filename_or_link)
+//          VALUES ($1, $2, $3)`,
+//         [productId, type, filename_or_link]
+//       );
+//     }
+
+//     /* 3️⃣ Upsert tags */
+//     if (tags && tags.length && productId) {
+//       await client.query(`DELETE FROM product_tags WHERE product_id = $1`, [
+//         productId,
+//       ]);
+//     }
+
+//     for (const tag of tags) {
+//       const tagRes = await client.query(
+//         `
+//         INSERT INTO tags (name)
+//         VALUES ($1)
+//         ON CONFLICT (name) DO UPDATE SET name = EXCLUDED.name
+//         RETURNING id;
+//         `,
+//         [tag]
+//       );
+//       const tagId = tagRes.rows[0].id;
+
+//       await client.query(
+//         `INSERT INTO product_tags (product_id, tag_id)
+//          VALUES ($1, $2)
+//          ON CONFLICT DO NOTHING`,
+//         [productId, tagId]
+//       );
+//     }
+
+//     /* 4️⃣ Upsert inventory */
+//     for (const { size, barcode, units, storage } of stock) {
+//       const sizeRes = await client.query(
+//         `INSERT INTO sizes (code)
+//          VALUES ($1)
+//          ON CONFLICT (code) DO UPDATE SET code = EXCLUDED.code
+//          RETURNING id`,
+//         [size]
+//       );
+//       const sizeId = sizeRes.rows[0].id;
+//       const sku = `${base_sku}${size}`;
+
+//       await client.query(
+//         `
+//         INSERT INTO inventory (product_id, size_id, sku, barcode, units, storage)
+//         VALUES ($1, $2, $3, $4, $5, $6)
+//         ON CONFLICT (sku) DO UPDATE
+//         SET units = EXCLUDED.units,
+//             barcode = EXCLUDED.barcode,
+//             storage = EXCLUDED.storage,
+//             product_id = EXCLUDED.product_id,
+//             size_id = EXCLUDED.size_id
+//         `,
+//         [productId, sizeId, sku, barcode, units, storage]
+//       );
+//     }
+
+//     await client.query("COMMIT");
+
+//     return productId;
+//   } catch (err) {
+//     await client.query("ROLLBACK");
+//     throw err;
+//   } finally {
+//     client.release();
+//   }
+// }
+
 
 // --- Delete a product item by id ---
 async function deleteProduct(id) {
@@ -506,7 +641,8 @@ async function deleteProduct(id) {
 module.exports = {
   getAllProducts,
   getProductById,
-  // postNewProduct,
-  upsertProduct,
+  postNewProduct,
+  putUpdateProduct,
+  // upsertProduct,
   deleteProduct,
 };

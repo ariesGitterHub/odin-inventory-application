@@ -5,15 +5,14 @@
   </head>
   <body>
     <%- include('./partials/header.ejs') %>
-    <main>
+    <!-- <main> -->
       <%- include("partials/errors.ejs") %>
-      <div class="create-item-view">
-        <h1 class="create-item-title">Create New Item</h1>
-        <form class="create-item" method="POST" action="/create">
+      <div class="card create-item-colors">
+        <h1 class="page-title black capitalize">create new item</h1>
+        <form class="create-item-form" method="POST" action="/create">
           <%#- include('./partials/errors.ejs') %>
           <label for="animal_type">onesie animal type</label>
           <input
-            class="lowercase"
             type="text"
             id="animal_type"
             name="animal_type"
@@ -23,7 +22,6 @@
 
           <label for="brand">brand</label>
           <input
-            class="lowercase"
             type="text"
             id="brand"
             name="brand"
@@ -33,7 +31,6 @@
 
           <label for="item_type">item type</label>
           <input
-            class="lowercase"
             type="text"
             id="item_type"
             name="item_type"
@@ -44,7 +41,7 @@
             <!-- TODO - validate these as currency -->
               <!-- placeholder="They pay (00.00)" -->
               <!-- placeholder="You paid (00.00)" -->
-            <div class="create-item-col">
+            <div class="col-container">
               <label for="price_unit">price per unit</label>
               <input
                 type="number"
@@ -52,10 +49,9 @@
                 id="price_unit"
                 name="price_unit"
                 value=00.00
-                required
               />
             </div>
-            <div class="create-item-col">
+            <div class="col-container">
               <label for="cost_unit">cost per unit</label>
               <input
                 type="number"
@@ -63,13 +59,12 @@
                 id="cost_unit"
                 name="cost_unit"
                 value=00.00
-                required
               />
             </div>
           </div>
 
           <!-- TODO - definitely enforce validation pattern on base sku -->
-          <label for="base_sku">base sku</label>
+          <label for="base_sku">base sku <span class="lowercase italic">(pattern: <span class="uppercase">XXXXX123YYY-</span>)</span></label>
           <input
             class="uppercase"
             type="text"
@@ -93,29 +88,29 @@
             hidden
           />
 
-          <label for="front">front image link</label>
+          <label for="front">front image <span class="lowercase italic">(filename or link)</span></label>
           <input
             type="text"
             id="front"
             name="front"
             placeholder="Enter the front view url"
-            
+            required
           />
-          <label for="rear">rear image link</label>
+          <label for="rear">rear image <span class="lowercase italic">(filename or link)</span></label>
           <input
             type="text"
             id="rear"
             name="rear"
             placeholder="Enter the rear view url"
-            
+            required
           />
-          <label for="size">sizing image link</label>
+          <label for="size">sizing image <span class="lowercase italic">(filename or link)</span></label>
           <input
             type="text" 
             id="size"
             name="size"
             placeholder="Enter the sizing view url"
-            
+            required
           />
 
           <!-- TODO - figure out starting tags -->
@@ -131,30 +126,31 @@
           <label hidden>initial inventory</label>
 
           <input type="text" name="sizes[]" value="S" hidden />
-          <input type="text" name="barcodes[]" value="n/a (add)" hidden />
-          <input type="number" name="units[]" value="0" hidden />
-          <input type="text" name="storage[]" value="n/a (add)" hidden />
+          <input type="text" name="barcodes[]" value="n/a" hidden />
+          <input type="number" name="units[]" value=0 hidden />
+          <input type="text" name="storage[]" value="n/a" hidden />
 
           <input type="text" name="sizes[]" value="M" hidden />
-          <input type="text" name="barcodes[]" value="n/a (add)" hidden />
-          <input type="number" name="units[]" value="0" hidden />
-          <input type="text" name="storage[]" value="n/a (add)" hidden />
+          <input type="text" name="barcodes[]" value="n/a" hidden />
+          <input type="number" name="units[]" value=0 hidden />
+          <input type="text" name="storage[]" value="n/a" hidden />
 
           <input type="text" name="sizes[]" value="L" hidden />
-          <input type="text" name="barcodes[]" value="n/a (add)" hidden />
-          <input type="number" name="units[]" value="0" hidden />
-          <input type="text" name="storage[]" value="n/a (add)" hidden />
+          <input type="text" name="barcodes[]" value="n/a" hidden />
+          <input type="number" name="units[]" value=0 hidden />
+          <input type="text" name="storage[]" value="n/a" hidden />
 
           <input type="text" name="sizes[]" value="XL" hidden />
-          <input type="text" name="barcodes[]" value="n/a (add)" hidden />
-          <input type="number" name="units[]" value="0" hidden />
-          <input type="text" name="storage[]" value="n/a (add)" hidden />
-          <div class="create-view-button-container">
-            <button class="submit-button" type="submit">Submit Newly Created Item</button>   
+          <input type="text" name="barcodes[]" value="n/a" hidden />
+          <input type="number" name="units[]" value=0 hidden />
+          <input type="text" name="storage[]" value="n/a" hidden />
+          <div class="button-container3">
+            <a class="cancel-button" href="/">Cancel</a> 
+            <button class="submit-button" type="submit">Submit</button>   
           </div>      
         </form>
       </div>
-    </main>
+    <!-- </main> -->
     <%#- include('./partials/footer.ejs') %>
   </body>
 </html>

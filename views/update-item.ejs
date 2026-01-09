@@ -5,21 +5,16 @@
   </head>
   <body>
     <%- include('./partials/header.ejs') %>
-    <main>
-      <div class="update-item-view">
-        <h1 class="create-item-title">Update Item</h1>
-
-        <form method="POST" action="/products/<%= product.id %>?_method=PUT">
-          <div class="update-item">
-            <div class="update-item-details-col">
-              <h1>
-                <span class="file-tab-span">
-                  <span class="file-tab-text">update this product</span>
-                </span>
-              </h1>
-              <div class="update-item-details-adjustable">
-                <div class="update-item-grid overflow-wide">
-                  <label for="animal_type">animal</label>
+      <div class="card update-item-colors1">
+        <h1 class="page-title white capitalize">update existing item</h1>
+          <!-- <form method="POST" action="/<%#= product.id %>/update?_method=PUT">
+            <input type="hidden" name="_method" value="PUT"> -->
+          <form class="update-item-form" method="POST" action="/<%= product.id %>/update">
+          <div>
+            <div class="col-container">
+              <!-- <div class="col-row-adjustable"> -->
+                <div class="update-item-grid1">
+                  <label for="animal_type">animal type</label>
                   <input
                     class="lowercase"
                     type="text"
@@ -72,6 +67,16 @@
                     value="<%= product.base_sku %>"
                     required
                   />
+                  <label for="rating" hidden>rating</label>
+                  <input type="number" id="rating" name="rating" value="0" hidden />
+                  <label for="review_count" hidden>reviews</label>
+                  <input
+                    type="number"
+                    id="review_count"
+                    name="review_count"
+                    value="0"
+                    hidden
+                  />
                   <label for="front">front image</label>
                   <input
                     type="text"
@@ -94,63 +99,47 @@
                     value="<%= product.imagesByType?.size?.[0] || '' %>"
                   />
                 </div>
-              </div>
-              <div class="update-item-details-col">
-                <div class="update-item-tags">
-                  <h2>search tags</h2>
-                  <input
-                    type="text"
-                    id="tags"
-                    name="tags"
-                    value="<%= product.tags.join(', ') %>"
-                  />
-                </div>
-
-                <% const sizes = ['S','M','L','XL']; sizes.forEach(size => {
-                const inv = product.inventoryBySize?.[size]?.[0]; %>
-
-                <div class="quick-view-details-row variant-details">
-                  <div class="quick-view-category variant-category">
-                    <p>variant</p>
-                    <p>barcode</p>
-                    <p>storage</p>
-                    <p>units</p>
-                  </div>
-                  <div class="quick-view-data variant-data variant-reorder">
+              <!-- </div> -->
+                <div class="product-tags">
+                  <!-- <div class="product-tags"> -->
+                    <h2 class="uppercase">tags (comma separated)</h2>
                     <input
-                      class="size"
                       type="text"
-                      name="sizes[]"
-                      value="<%= size %>"
-                    />
-                    <input
-                      class="barcode"
-                      type="text"
-                      name="barcodes[]"
-                      value="<%= inv?.barcode || 'n/a (add)' %>"
-                    />
-                    <input
-                      class="storage"
-                      type="text"
-                      name="storage[]"
-                      value="<%= inv?.storage || 'n/a (add)' %>"
-                    />
-                    <input
-                      class="units"
-                      type="number"
-                      name="units[]"
-                      value="<%= inv?.units ?? 0 %>"
+                      id="tags"
+                      name="tags"
+                      value="<%= product.tags.join(', ') %>"
                     />
                   </div>
+                  <div class="col-container">
+                    <% const sizes = ['S','M','L','XL']; sizes.forEach(size => {
+                    const inv = product.inventoryBySize?.[size]?.[0]; %>
+                    <button type="button" class="show-inventory-type-button toggle-inventory">size (<%= size %>) inventory data</button>
+                    <div class="update-item-grid2 update-item-colors2 hidden-inventory hidden">
+                      <label for="sizes[]">size variant</label>
+                      <input class="size" type="text" name="sizes[]" value="<%= size %>" />
+                      <label for="barcodes[]">barcode</label>
+                      <input class="barcode" type="text" name="barcodes[]" value="<%= inv?.barcode || 'n/a' %>" />    
+                      <label for="storage[]">storage</label>
+                      <input class="storage" type="text" name="storage[]" value="<%= inv?.storage || 'n/a' %>" />    
+                      <label for="units[]">units</label>
+                      <input class="units" type="number" name="units[]" value="<%= inv?.units ?? 0 %>" /> 
+                    </div>
+                   <% }) %>
+                    <script src="/js/main.js"></script>
+                  </div>
+                  <div class="button-container3">
+                    <a class="cancel-button" href="/">Cancel</a>  
+                    <button class="submit-button" type="submit" onclick="return confirm('WARNING: changing the base sku may cause inventory issues. Are you sure you want to update this product?')">Update</button>  
+                  </div> 
                 </div>
-                <% }) %>
+
               </div>
+
             </div>
+
           </div>
         </form>
       </div>
-    </main>
-
     <%#- include('./partials/footer.ejs') %>
-  </body>
+  </body> 
 </html>

@@ -1,0 +1,96 @@
+/* BUTTON AND BUTTON-LIKE ELEMENTS */
+a,
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--frog-white);
+  border: 2px solid var(--frog-black);
+  border-radius: var(--border-radius-inner);
+  box-shadow: var(--box-shadow);
+  color: var(--frog-black);
+  font-family: var(--font-title);
+  text-transform: uppercase;
+  padding: 0.25rem var(--default-rem-size);
+  white-space: nowrap;
+}
+
+a:hover,
+button:hover {
+  border: 2px solid var(--frog-black);
+  transform: scale(1.1);
+}
+
+a:active,
+button:active {
+  transform: scale(0.9);
+}
+
+/* CARDS */
+
+/* TOOLTIPS */
+/* FOR NAV BUTTONS IN SMALLER VIEWPORTS */
+/* Tooltip text */
+.nav-item-short .tooltiptext {
+  visibility: hidden;
+  width: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: var(--rose-dk);
+  border: 2px solid var(--white);
+  color: var(--white);
+  /* font-size: 0.8rem; */
+  /* font-size: var(--default-font-size); */
+  font-family: var(--font-text);
+  padding: 0.25rem;
+  text-align: center;
+  border-radius: var(--border-radius-inner);
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -30px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.nav-item-short .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--white) transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.nav-item-short:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ERROR COMPONENTS */
+.errors,
+ul {
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  margin: 0.25rem 0 0 0.25rem;
+}
+
+.errors li {
+  color: var(--red-dk);
+  /* font-size: 1.125rem; */
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
