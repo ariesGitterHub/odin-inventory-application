@@ -2,6 +2,7 @@
 const { 
   getAllProducts,
   getProductById,
+ getAllTags,
   postNewProduct,
   putUpdateProduct,
   // upsertProduct,
@@ -41,7 +42,10 @@ async function getProductsPage(req, res, next) {
 
 async function getCreateItemPage(req, res, next) {
   try {
-    res.render("create-item");
+    const tags = await getAllTags();
+    res.render("create-item", {
+      tags,
+    });
   } catch (err) {
     next(err);
   }

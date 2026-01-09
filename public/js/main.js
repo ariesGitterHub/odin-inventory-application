@@ -123,3 +123,5 @@ document.querySelectorAll(".toggle-inventory").forEach((btn) => {
     btn.style.backgroundColor = isOpen ? "var(--gold-lt)" : "var(--frog-white)";
   });
 });
+
+

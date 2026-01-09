@@ -145,6 +145,17 @@ return result.rows.map((p) => {
 
 }
 
+// --- Get all tags for create-item.ejs ---
+async function getAllTags() {
+  const result = await pool.query(`
+    SELECT id, name
+    FROM tags
+    ORDER BY name;
+  `);
+
+  return result.rows;
+}
+
 async function getProductById(productId) {
   const client = await pool.connect();
   try {
@@ -640,6 +651,7 @@ async function deleteProduct(id) {
 
 module.exports = {
   getAllProducts,
+  getAllTags,
   getProductById,
   postNewProduct,
   putUpdateProduct,

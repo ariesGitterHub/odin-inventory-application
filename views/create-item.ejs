@@ -109,18 +109,30 @@
             type="text" 
             id="size"
             name="size"
-            placeholder="Enter the sizing view url"
+            value="n/a (add during a review update)"
             required
           />
 
           <!-- TODO - figure out starting tags -->
-          <label for="tags">tags (comma separated)</label>
+          <label for="tags">tags <span class="lowercase italic">(comma separated)</span></label>
           <input
             type="text"
             id="tags"
             name="tags"
-            placeholder="mammal, fruit, vegetable"
+            placeholder="E.g., bear, mammal, fruit, vegetable"
           />
+          <div class="tag-cloud">
+            <% if (tags && tags.length > 0) { %> 
+              <% tags.forEach(tag => { %>
+                <button type="button" class="tag-cloud-item-button" onclick="addTag('<%= tag.name %>')">
+                  <%= tag.name %>
+                </button>
+              <% }) %>
+              <% } else { %>
+                <p class="capitalize">no current tags found</p>
+              <% } %>    
+            <script src="/helpers/addTag.js"></script>
+          </div>
 
           <!-- TODO - figure out starting inventory with size, barcode, units, storage-->
           <label hidden>initial inventory</label>
