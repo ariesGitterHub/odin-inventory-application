@@ -2,7 +2,7 @@
 
 function normalizeProductForm(body) {
   const {
-    animal_type,
+    product_name,
     item_type,
     brand,
     price_unit,
@@ -54,7 +54,7 @@ function normalizeProductForm(body) {
   }
 
 //   return {
-//     animal_type,
+//     product_name,
 //     item_type,
 //     brand,
 //     price_unit,
@@ -67,8 +67,8 @@ function normalizeProductForm(body) {
 //     stock,
 //   };
 return {
-  animal_type:
-    typeof animal_type === "string" ? animal_type.trim().toLowerCase() : null,
+  product_name:
+    typeof product_name === "string" ? product_name.trim().toLowerCase() : null,
 
   item_type:
     typeof item_type === "string" ? item_type.trim().toLowerCase() : null,

@@ -2,7 +2,7 @@
 
 const items = [
   {
-    animal_type: "alpaca",
+    product_name: "alpaca",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 32.99,
@@ -24,7 +24,7 @@ const items = [
     ],
   },
   {
-    animal_type: "axolotl",
+    product_name: "axolotl",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -46,7 +46,7 @@ const items = [
     ],
   },
   {
-    animal_type: "bear",
+    product_name: "bear",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -68,7 +68,7 @@ const items = [
     ],
   },
   {
-    animal_type: "bee",
+    product_name: "bee",
     item_type: "adult onesie",
     brand: "spanko",
     price_unit: 32.99,
@@ -90,7 +90,7 @@ const items = [
     ],
   },
   {
-    animal_type: "black bear",
+    product_name: "black bear",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -112,7 +112,7 @@ const items = [
     ],
   },
   {
-    animal_type: "black dragon",
+    product_name: "black dragon",
     item_type: "adult onesie",
     brand: "dinojama",
     price_unit: 36.99,
@@ -134,7 +134,7 @@ const items = [
     ],
   },
   {
-    animal_type: "blue dragon",
+    product_name: "blue dragon",
     item_type: "adult onesie",
     brand: "dinojama",
     price_unit: 36.99,
@@ -156,7 +156,7 @@ const items = [
     ],
   },
   {
-    animal_type: "bull",
+    product_name: "bull",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 36.99,
@@ -178,7 +178,7 @@ const items = [
     ],
   },
   {
-    animal_type: "butterfly",
+    product_name: "butterfly",
     item_type: "adult onesie",
     brand: "mooshi-doo",
     price_unit: 38.99,
@@ -200,7 +200,7 @@ const items = [
     ],
   },
   {
-    animal_type: "caracal",
+    product_name: "caracal",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -222,7 +222,7 @@ const items = [
     ],
   },
   {
-    animal_type: "cardinal",
+    product_name: "cardinal",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 38.99,
@@ -244,7 +244,7 @@ const items = [
     ],
   },
   {
-    animal_type: "chameleon",
+    product_name: "chameleon",
     item_type: "adult onesie",
     brand: "plushies",
     price_unit: 42.99,
@@ -266,7 +266,7 @@ const items = [
     ],
   },
   {
-    animal_type: "crow",
+    product_name: "crow",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 36.99,
@@ -288,7 +288,7 @@ const items = [
     ],
   },
   {
-    animal_type: "dalmatian",
+    product_name: "dalmatian",
     item_type: "adult onesie",
     brand: "spanko",
     price_unit: 32.99,
@@ -310,7 +310,7 @@ const items = [
     ],
   },
   {
-    animal_type: "deer",
+    product_name: "deer",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 32.99,
@@ -332,7 +332,7 @@ const items = [
     ],
   },
   {
-    animal_type: "dinosaur",
+    product_name: "dinosaur",
     item_type: "adult onesie",
     brand: "dinojama",
     price_unit: 36.99,
@@ -354,7 +354,7 @@ const items = [
     ],
   },
   {
-    animal_type: "donkey",
+    product_name: "donkey",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -376,7 +376,7 @@ const items = [
     ],
   },
   {
-    animal_type: "eagle",
+    product_name: "eagle",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 36.99,
@@ -398,7 +398,7 @@ const items = [
     ],
   },
   {
-    animal_type: "flamingo",
+    product_name: "flamingo",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 36.99,
@@ -420,7 +420,7 @@ const items = [
     ],
   },
   {
-    animal_type: "flying squirrel",
+    product_name: "flying squirrel",
     item_type: "adult onesie",
     brand: "plushies",
     price_unit: 42.99,
@@ -442,7 +442,7 @@ const items = [
     ],
   },
   {
-    animal_type: "fox",
+    product_name: "fox",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -464,7 +464,7 @@ const items = [
     ],
   },
   {
-    animal_type: "frog",
+    product_name: "frog",
     item_type: "adult onesie",
     brand: "plushies",
     price_unit: 42.99,
@@ -486,7 +486,7 @@ const items = [
     ],
   },
   {
-    animal_type: "giraffe",
+    product_name: "giraffe",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -508,7 +508,7 @@ const items = [
     ],
   },
   {
-    animal_type: "housefly",
+    product_name: "housefly",
     item_type: "adult onesie",
     brand: "spanko",
     price_unit: 32.99,
@@ -530,7 +530,7 @@ const items = [
     ],
   },
   {
-    animal_type: "kangaroo",
+    product_name: "kangaroo",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 36.99,
@@ -552,7 +552,7 @@ const items = [
     ],
   },
   {
-    animal_type: "koala",
+    product_name: "koala",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -574,7 +574,7 @@ const items = [
     ],
   },
   {
-    animal_type: "leopard",
+    product_name: "leopard",
     item_type: "adult onesie",
     brand: "spanko",
     price_unit: 32.99,
@@ -596,7 +596,7 @@ const items = [
     ],
   },
   {
-    animal_type: "lion",
+    product_name: "lion",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -618,7 +618,7 @@ const items = [
     ],
   },
   {
-    animal_type: "macaw",
+    product_name: "macaw",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 36.99,
@@ -640,7 +640,7 @@ const items = [
     ],
   },
   {
-    animal_type: "mallard",
+    product_name: "mallard",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 36.99,
@@ -662,7 +662,7 @@ const items = [
     ],
   },
   {
-    animal_type: "monkey",
+    product_name: "monkey",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -684,7 +684,7 @@ const items = [
     ],
   },
   {
-    animal_type: "moose",
+    product_name: "moose",
     item_type: "adult onesie",
     brand: "plushies",
     price_unit: 42.99,
@@ -706,7 +706,7 @@ const items = [
     ],
   },
   {
-    animal_type: "moth",
+    product_name: "moth",
     item_type: "adult onesie",
     brand: "mooshi-doo",
     price_unit: 38.99,
@@ -728,7 +728,7 @@ const items = [
     ],
   },
   {
-    animal_type: "mouse",
+    product_name: "mouse",
     item_type: "adult onesie",
     brand: "spanko",
     price_unit: 32.99,
@@ -750,7 +750,7 @@ const items = [
     ],
   },
   {
-    animal_type: "panda",
+    product_name: "panda",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -772,7 +772,7 @@ const items = [
     ],
   },
   {
-    animal_type: "penguin",
+    product_name: "penguin",
     item_type: "adult onesie",
     brand: "spanko",
     price_unit: 32.99,
@@ -794,7 +794,7 @@ const items = [
     ],
   },
   {
-    animal_type: "pig",
+    product_name: "pig",
     item_type: "adult onesie",
     brand: "spanko",
     price_unit: 32.99,
@@ -816,7 +816,7 @@ const items = [
     ],
   },
   {
-    animal_type: "pigeon",
+    product_name: "pigeon",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 36.99,
@@ -838,7 +838,7 @@ const items = [
     ],
   },
   {
-    animal_type: "rabbit",
+    product_name: "rabbit",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -860,7 +860,7 @@ const items = [
     ],
   },
   {
-    animal_type: "raccoon",
+    product_name: "raccoon",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 36.99,
@@ -882,7 +882,7 @@ const items = [
     ],
   },
   {
-    animal_type: "rat",
+    product_name: "rat",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -904,7 +904,7 @@ const items = [
     ],
   },
   {
-    animal_type: "red panda",
+    product_name: "red panda",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -926,7 +926,7 @@ const items = [
     ],
   },
   {
-    animal_type: "rhino",
+    product_name: "rhino",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -948,7 +948,7 @@ const items = [
     ],
   },
   {
-    animal_type: "rooster",
+    product_name: "rooster",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 36.99,
@@ -970,7 +970,7 @@ const items = [
     ],
   },
   {
-    animal_type: "sand cat",
+    product_name: "sand cat",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -992,7 +992,7 @@ const items = [
     ],
   },
   {
-    animal_type: "seagull",
+    product_name: "seagull",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 38.99,
@@ -1014,7 +1014,7 @@ const items = [
     ],
   },
   {
-    animal_type: "sea otter",
+    product_name: "sea otter",
     item_type: "adult onesie",
     brand: "plushies",
     price_unit: 42.99,
@@ -1036,7 +1036,7 @@ const items = [
     ],
   },
   {
-    animal_type: "sloth",
+    product_name: "sloth",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -1058,7 +1058,7 @@ const items = [
     ],
   },
   {
-    animal_type: "spider",
+    product_name: "spider",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -1080,7 +1080,7 @@ const items = [
     ],
   },
   {
-    animal_type: "squirrel",
+    product_name: "squirrel",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -1102,7 +1102,7 @@ const items = [
     ],
   },
   {
-    animal_type: "stegosaurus",
+    product_name: "stegosaurus",
     item_type: "adult onesie",
     brand: "dinojama",
     price_unit: 42.99,
@@ -1124,7 +1124,7 @@ const items = [
     ],
   },
   {
-    animal_type: "tiger",
+    product_name: "tiger",
     item_type: "adult onesie",
     brand: "spanko",
     price_unit: 32.99,
@@ -1146,7 +1146,7 @@ const items = [
     ],
   },
   {
-    animal_type: "triceratops",
+    product_name: "triceratops",
     item_type: "adult onesie",
     brand: "dinojama",
     price_unit: 42.99,
@@ -1168,7 +1168,7 @@ const items = [
     ],
   },
   {
-    animal_type: "turkey",
+    product_name: "turkey",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 38.99,
@@ -1190,7 +1190,7 @@ const items = [
     ],
   },
   {
-    animal_type: "t-rex",
+    product_name: "t-rex",
     item_type: "adult onesie",
     brand: "dinojama",
     price_unit: 39.99,
@@ -1212,7 +1212,7 @@ const items = [
     ],
   },
   {
-    animal_type: "unicorn",
+    product_name: "unicorn",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -1234,7 +1234,7 @@ const items = [
     ],
   },
   {
-    animal_type: "wendigo",
+    product_name: "wendigo",
     item_type: "adult onesie",
     brand: "spanko",
     price_unit: 32.99,
@@ -1256,7 +1256,7 @@ const items = [
     ],
   },
   {
-    animal_type: "wolf",
+    product_name: "wolf",
     item_type: "adult onesie",
     brand: "jammy mart",
     price_unit: 34.99,
@@ -1278,7 +1278,7 @@ const items = [
     ],
   },
   {
-    animal_type: "zebra",
+    product_name: "zebra",
     item_type: "adult onesie",
     brand: "spanko",
     price_unit: 32.99,

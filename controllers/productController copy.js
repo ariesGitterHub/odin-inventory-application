@@ -17,7 +17,7 @@ const currencyErr = "must be in currency format, e.g., 3.00 or 15.99.";
 // Validation array
 // const validateUser = [
 //   // Animal Type
-//   body("animal_type")
+//   body("product_name")
 //     .trim()
 //     .matches(/^[a-z]+$/)
 //     .withMessage(`Animal type ${alphaErr}`)
@@ -117,7 +117,7 @@ async function getCreateItemPage(req, res, next) {
 
 //     // Get validated data
 //     const {
-//       animal_type,
+//       product_name,
 //       item_type,
 //       brand,
 //       price_unit,
@@ -130,7 +130,7 @@ async function getCreateItemPage(req, res, next) {
 
 //     // Insert new product
 //     const newProduct = await postNewProduct({
-//       animal_type,
+//       product_name,
 //       item_type,
 //       brand,
 //       price_unit,

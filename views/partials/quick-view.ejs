@@ -1,12 +1,12 @@
 <% if (products && products.length) { %> 
-  <% products.sort((a, b) => a.animal_type.localeCompare(b.animal_type))
+  <% products.sort((a, b) => a.product_name.localeCompare(b.product_name))
 .forEach(product => { %>
     <div class="card quick-view-colors">
       <div class="main-data">
           <h1>
             <span class="file-tab-span">
               <span class="file-tab-text">quick view:&nbsp;</span> 
-              <span class="highlight-color1"><%= product.animal_type %></span>
+              <span class="highlight-color1"><%= product.product_name %></span>
             </span>
           </h1>
           <div class="col-row-adjustable">
@@ -15,7 +15,7 @@
               <img
                 class="product-image"
                 src="<%= filename_or_link.startsWith('http') ? filename_or_link : '/images/' + filename_or_link %>"
-                alt="<%= product.animal_type %> front view"
+                alt="<%= product.product_name %> front view"
               />
               <% }) %> 
               <% product.imagesByType.rear &&
@@ -23,7 +23,7 @@
               <img
                 class="product-image"
                 src="<%= filename_or_link.startsWith('http') ? filename_or_link : '/images/' + filename_or_link %>"
-                alt="<%= product.animal_type %> rear view"
+                alt="<%= product.product_name %> rear view"
               />
               <% }) %>
             </div>

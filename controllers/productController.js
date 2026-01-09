@@ -61,7 +61,7 @@ async function getCreateItemPage(req, res, next) {
 // async function postNewProductItem(req, res, next) {
 //   try {
 //     const {
-//       animal_type,
+//       product_name,
 //       item_type,
 //       brand,
 //       price_unit,
@@ -114,7 +114,7 @@ async function getCreateItemPage(req, res, next) {
 
 //     await postNewProduct({
 //     // await upsertProduct({
-//       animal_type,
+//       product_name,
 //       item_type,
 //       brand,
 //       price_unit,

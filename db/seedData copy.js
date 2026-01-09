@@ -26,7 +26,7 @@ async function main() {
   -- CREATE TABLE IF NOT EXISTS products (
   CREATE TABLE products (
     id SERIAL PRIMARY KEY,
-    animal_type TEXT,
+    product_name TEXT,
     item_type TEXT,
     brand TEXT,
     price_unit NUMERIC(10,2),
@@ -96,7 +96,7 @@ await client.query(`
       const productRes = await client.query(
         `
       INSERT INTO products (
-        animal_type,
+        product_name,
         item_type,
         brand,
         price_unit,
@@ -109,7 +109,7 @@ await client.query(`
       RETURNING id;
       `,
         [
-          item.animal_type,
+          item.product_name,
           item.item_type,
           item.brand,
           item.price_unit,

@@ -7,7 +7,7 @@ async function getAllProducts() {
   const result = await pool.query(`
     SELECT
       p.id,
-      p.animal_type,
+      p.product_name,
       p.item_type,
       p.brand,
       p.price_unit,
@@ -207,7 +207,7 @@ async function getProductById(productId) {
 
 // --- POST a new product item ---
 async function postNewProduct({
-  animal_type,
+  product_name,
   item_type,
   brand,
   price_unit,
@@ -228,7 +228,7 @@ async function postNewProduct({
     const productRes = await client.query(
       `
       INSERT INTO products (
-        animal_type,
+        product_name,
         item_type,
         brand,
         price_unit,
@@ -241,7 +241,7 @@ async function postNewProduct({
       RETURNING id;
       `,
       [
-        animal_type,
+        product_name,
         item_type,
         brand,
         price_unit,
@@ -341,7 +341,7 @@ async function postNewProduct({
 async function putUpdateProduct(
   productId,
   {
-    animal_type,
+    product_name,
     item_type,
     brand,
     price_unit,
@@ -363,7 +363,7 @@ async function putUpdateProduct(
     await client.query(
       `
       UPDATE products SET
-        animal_type = $1,
+        product_name = $1,
         item_type = $2,
         brand = $3,
         price_unit = $4,
@@ -374,7 +374,7 @@ async function putUpdateProduct(
       WHERE id = $9;
       `,
       [
-        animal_type,
+        product_name,
         item_type,
         brand,
         price_unit,
@@ -475,7 +475,7 @@ async function putUpdateProduct(
 // NOT USING THIS..buggy on put. UPSERT/combo post/put -  this allows me to combine insert and update into one, BUT this works for POST of new products but not for PUT updates. Go back to basics and separate out POST and PUT from queries to controllers to routes...
 // async function upsertProduct({
 //   productId = null, // optional
-//   animal_type,
+//   product_name,
 //   item_type,
 //   brand,
 //   price_unit,
@@ -498,7 +498,7 @@ async function putUpdateProduct(
 //       await client.query(
 //         `
 //         UPDATE products
-//         SET animal_type = $1,
+//         SET product_name = $1,
 //             item_type = $2,
 //             brand = $3,
 //             price_unit = $4,
@@ -509,7 +509,7 @@ async function putUpdateProduct(
 //         WHERE id = $9
 //         `,
 //         [
-//           animal_type,
+//           product_name,
 //           item_type,
 //           brand,
 //           price_unit,
@@ -525,7 +525,7 @@ async function putUpdateProduct(
 //       const productRes = await client.query(
 //         `
 //         INSERT INTO products (
-//           animal_type,
+//           product_name,
 //           item_type,
 //           brand,
 //           price_unit,
@@ -538,7 +538,7 @@ async function putUpdateProduct(
 //         RETURNING id;
 //         `,
 //         [
-//           animal_type,
+//           product_name,
 //           item_type,
 //           brand,
 //           price_unit,
