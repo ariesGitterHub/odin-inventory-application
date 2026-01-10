@@ -15,7 +15,7 @@ const items = [
       rear: "alpac001r.jpg",
       size: "siz_jam001.jpg",
     },
-    tags: ["mammals", "camelids"],
+    tags: ["mammals"],
     stock: [
       { size: "S", units: 105, barcode: 739482100011, storage: "jam-01-s" },
       { size: "M", units: 93, barcode: 739482100028, storage: "jam-01-m" },
@@ -37,7 +37,7 @@ const items = [
       rear: "axolo001r.jpg",
       size: "siz_jam001.jpg",
     },
-    tags: ["amphibians", "salamanders"],
+    tags: ["amphibians"],
     stock: [
       { size: "S", units: 265, barcode: 739482103015, storage: "jam-02-s" },
       { size: "M", units: 98, barcode: 739482103022, storage: "jam-02-m" },
@@ -59,7 +59,7 @@ const items = [
       rear: "bearx001r.jpg",
       size: "siz_jam001.jpg",
     },
-    tags: ["mammals", "ursines"],
+    tags: ["mammals"],
     stock: [
       { size: "S", units: 94, barcode: 739482101019, storage: "jam-03-s" },
       { size: "M", units: 254, barcode: 739482101026, storage: "jam-03-m" },
@@ -103,7 +103,7 @@ const items = [
       rear: "blabe001r.jpg",
       size: "siz_jam001.jpg",
     },
-    tags: ["mammals", "ursines"],
+    tags: ["mammals"],
     stock: [
       { size: "S", units: 123, barcode: 739482102017, storage: "jam-04-s" },
       { size: "M", units: 189, barcode: 739482102024, storage: "jam-04-m" },
@@ -125,7 +125,7 @@ const items = [
       rear: "bladr001r.jpg",
       size: "siz_din001.jpg",
     },
-    tags: ["reptiles", "mythical", "lizards"],
+    tags: ["reptiles", "mythical"],
     stock: [
       { size: "S", units: 124, barcode: 692840310517, storage: "din-01-s" },
       { size: "M", units: 99, barcode: 692840310624, storage: "din-01-m" },
@@ -147,7 +147,7 @@ const items = [
       rear: "bludr001r.jpg",
       size: "siz_din001.jpg",
     },
-    tags: ["reptiles", "mythical", "lizards"],
+    tags: ["reptiles", "mythical"],
     stock: [
       { size: "S", units: 95, barcode: 692840311506, storage: "din-02-s" },
       { size: "M", units: 94, barcode: 692840311613, storage: "din-02-m" },
@@ -213,7 +213,7 @@ const items = [
       rear: "carac001r.jpg",
       size: "siz_jam001.jpg",
     },
-    tags: ["mammals", "felines", "cats"],
+    tags: ["mammals", "cats"],
     stock: [
       { size: "S", units: 272, barcode: 739482105011, storage: "jam-06-s" },
       { size: "M", units: 299, barcode: 739482105028, storage: "jam-06-m" },
@@ -257,7 +257,7 @@ const items = [
       rear: "chame001r.jpg",
       size: "siz_plu001.jpg",
     },
-    tags: ["reptiles", "lizards"],
+    tags: ["reptiles"],
     stock: [
       { size: "S", units: 115, barcode: 517936420518, storage: "plu-01-s" },
       { size: "M", units: 89, barcode: 517936420625, storage: "plu-01-m" },
@@ -301,7 +301,7 @@ const items = [
       rear: "dalma001r.jpg",
       size: "siz_spa001.jpg",
     },
-    tags: ["mammals", "canines", "doggos"],
+    tags: ["mammals", "dogs"],
     stock: [
       { size: "S", units: 167, barcode: 845731203113, storage: "spa-02-s" },
       { size: "M", units: 213, barcode: 845731203283, storage: "spa-02-m" },
@@ -345,7 +345,7 @@ const items = [
       rear: "dinos001r.jpg",
       size: "siz_din001.jpg",
     },
-    tags: ["reptiles", "dinosaurs", "lizards"],
+    tags: ["reptiles", "dinosaurs"],
     stock: [
       { size: "S", units: 99, barcode: 692840312594, storage: "din-03-s" },
       { size: "M", units: 193, barcode: 692840312601, storage: "din-03-m" },
@@ -367,7 +367,7 @@ const items = [
       rear: "donke001r.jpg",
       size: "siz_jam001.jpg",
     },
-    tags: ["mammals", "horseys"],
+    tags: ["mammals"],
     stock: [
       { size: "S", units: 397, barcode: 739482109013, storage: "jam-10-s" },
       { size: "M", units: 281, barcode: 739482109020, storage: "jam-10-m" },
@@ -455,7 +455,7 @@ const items = [
       rear: "foxxx001r.jpg",
       size: "siz_jam001.jpg",
     },
-    tags: ["mammals", "canines", "doggos"],
+    tags: ["mammals", "dogs"],
     stock: [
       { size: "S", units: 365, barcode: 739482112017, storage: "jam-13-s" },
       { size: "M", units: 273, barcode: 739482112024, storage: "jam-13-m" },
@@ -587,7 +587,7 @@ const items = [
       rear: "leopa001r.jpg",
       size: "siz_spa001.jpg",
     },
-    tags: ["mammals", "felines", "cats"],
+    tags: ["mammals", "cats"],
     stock: [
       { size: "S", units: 275, barcode: 845731205115, storage: "spa-04-s" },
       { size: "M", units: 175, barcode: 845731205285, storage: "spa-04-m" },
@@ -609,7 +609,7 @@ const items = [
       rear: "lionx001r.jpg",
       size: "siz_jam001.jpg",
     },
-    tags: ["mammals", "felines", "cats"],
+    tags: ["mammals", "cats"],
     stock: [
       { size: "S", units: 125, barcode: 739482116019, storage: "jam-17-s" },
       { size: "M", units: 257, barcode: 739482116026, storage: "jam-17-m" },
@@ -763,7 +763,7 @@ const items = [
       rear: "panda001r.jpg",
       size: "siz_jam001.jpg",
     },
-    tags: ["mammals", "ursines"],
+    tags: ["mammals"],
     stock: [
       { size: "S", units: 175, barcode: 739482120011, storage: "jam-21-s" },
       { size: "M", units: 277, barcode: 739482120028, storage: "jam-21-m" },
@@ -983,7 +983,7 @@ const items = [
       rear: "sanca001r.jpg",
       size: "siz_jam001.jpg",
     },
-    tags: ["mammals", "felines", "cats"],
+    tags: ["mammals", "cats"],
     stock: [
       { size: "S", units: 104, barcode: 739482128015, storage: "jam-29-s" },
       { size: "M", units: 199, barcode: 739482128022, storage: "jam-29-m" },
@@ -1115,7 +1115,7 @@ const items = [
       rear: "stego001r.jpg",
       size: "siz_din001.jpg",
     },
-    tags: ["reptiles", "dinosaurs", "lizards"],
+    tags: ["reptiles", "dinosaurs"],
     stock: [
       { size: "S", units: 89, barcode: 692840313583, storage: "din-04-s" },
       { size: "M", units: 106, barcode: 692840313690, storage: "din-04-m" },
@@ -1137,7 +1137,7 @@ const items = [
       rear: "tiger001r.jpg",
       size: "siz_spa001.jpg",
     },
-    tags: ["mammals", "felines", "cats"],
+    tags: ["mammals", "cats"],
     stock: [
       { size: "S", units: 209, barcode: 845731209119, storage: "spa-08-s" },
       { size: "M", units: 311, barcode: 845731209289, storage: "spa-08-m" },
@@ -1159,7 +1159,7 @@ const items = [
       rear: "trice001r.jpg",
       size: "siz_din001.jpg",
     },
-    tags: ["reptiles", "dinosaurs", "lizards"],
+    tags: ["reptiles", "dinosaurs"],
     stock: [
       { size: "S", units: 101, barcode: 692840314572, storage: "din-05-s" },
       { size: "M", units: 165, barcode: 692840314689, storage: "din-05-m" },
@@ -1203,7 +1203,7 @@ const items = [
       rear: "trexx001r.jpg",
       size: "siz_din001.jpg",
     },
-    tags: ["reptiles", "dinosaurs", "lizards"],
+    tags: ["reptiles", "dinosaurs"],
     stock: [
       { size: "S", units: 274, barcode: 692840315561, storage: "din-06-s" },
       { size: "M", units: 136, barcode: 692840315678, storage: "din-06-m" },
@@ -1225,7 +1225,7 @@ const items = [
       rear: "unico001r.jpg",
       size: "siz_jam001.jpg",
     },
-    tags: ["mammals", "horseys", "mythical"],
+    tags: ["mammals", "mythical"],
     stock: [
       { size: "S", units: 501, barcode: 739482134013, storage: "jam-35-s" },
       { size: "M", units: 222, barcode: 739482134020, storage: "jam-35-m" },
@@ -1269,7 +1269,7 @@ const items = [
       rear: "wolfx001r.jpg",
       size: "siz_jam001.jpg",
     },
-    tags: ["mammals", "canines", "doggos"],
+    tags: ["mammals", "dogs"],
     stock: [
       { size: "S", units: 291, barcode: 739482135011, storage: "jam-36-s" },
       { size: "M", units: 154, barcode: 739482135028, storage: "jam-36-m" },
@@ -1291,12 +1291,78 @@ const items = [
       rear: "zebra001r.jpg",
       size: "siz_spa001.jpg",
     },
-    tags: ["mammals", "horseys"],
+    tags: ["mammals"],
     stock: [
       { size: "S", units: 159, barcode: 845731201111, storage: "spa-10-s" },
       { size: "M", units: 105, barcode: 845731201281, storage: "spa-10-m" },
       { size: "L", units: 156, barcode: 845731201351, storage: "spa-10-l" },
       { size: "XL", units: 99, barcode: 845731201421, storage: "spa-10-xl" },
+    ],
+  },
+  {
+    product_name: "lady wolf",
+    item_type: "adult onesie",
+    brand: "woozies",
+    price_unit: 49.99,
+    cost_unit: 15.32,
+    base_sku: "LADWO001WOO-",
+    rating: 4.4,
+    number_reviews: 18,
+    images: {
+      front: "https://m.media-amazon.com/images/I/71tTvMWAX6L._AC_SY550_.jpg",
+      rear: "https://m.media-amazon.com/images/I/71ZqT76tM2S._AC_SY550_.jpg",
+      size: "n/a",
+    },
+    tags: ["mammals", "dogs", "sexy"],
+    stock: [
+      { size: "S", units: 199, barcode: 687523587111, storage: "woo-01-s" },
+      { size: "M", units: 177, barcode: 6875235871281, storage: "woo-01-m" },
+      { size: "L", units: 356, barcode: 687523587351, storage: "woo-01-l" },
+      { size: "XL", units: 199, barcode: 687523587421, storage: "woo-01-xl" },
+    ],
+  },
+  {
+    product_name: "honey bear",
+    item_type: "adult onesie",
+    brand: "woozies",
+    price_unit: 17.99,
+    cost_unit: 5.84,
+    base_sku: "HONBE001WOO-",
+    rating: 4.2,
+    number_reviews: 13,
+    images: {
+      front: "https://m.media-amazon.com/images/I/71PRs9ctVSL._AC_SX569_.jpg",
+      rear: "https://m.media-amazon.com/images/I/81hHFJ3oVWL._AC_SX569_.jpg",
+      size: "n/a",
+    },
+    tags: ["mammals", "sexy"],
+    stock: [
+      { size: "S", units: 199, barcode: 687523587111, storage: "woo-02-s" },
+      { size: "M", units: 177, barcode: 6875235871281, storage: "woo-02-m" },
+      { size: "L", units: 356, barcode: 687523587351, storage: "woo-02-l" },
+      { size: "XL", units: 199, barcode: 687523587421, storage: "woo-02-xl" },
+    ],
+  },
+  {
+    product_name: "cheeky monkey",
+    item_type: "adult onesie",
+    brand: "woozies",
+    price_unit: 17.99,
+    cost_unit: 5.84,
+    base_sku: "CHEMO001WOO-",
+    rating: 4.2,
+    number_reviews: 13,
+    images: {
+      front: "https://m.media-amazon.com/images/I/61qPWTrsMNL._AC_SY445_.jpg",
+      rear: "https://m.media-amazon.com/images/I/61YH0vJ17jL._AC_SY445_.jpg",
+      size: "n/a",
+    },
+    tags: ["mammals", "sexy"],
+    stock: [
+      { size: "S", units: 239, barcode: 687523587111, storage: "woo-03-s" },
+      { size: "M", units: 137, barcode: 6875235871281, storage: "woo-03-m" },
+      { size: "L", units: 333, barcode: 687523587351, storage: "woo-03-l" },
+      { size: "XL", units: 129, barcode: 687523587421, storage: "woo-03-xl" },
     ],
   },
 ];

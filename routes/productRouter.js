@@ -11,6 +11,7 @@ const {
   getUpdateForm,
   putUpdateProductItem,
   deleteProductItem,
+  getUnderConstructionPage,
   //   getProductUniquePage,
 } = require("../controllers/productController");
 
@@ -31,5 +32,8 @@ productRouter.post("/:id/update", putUpdateProductItem);
 
 // Delete product item
 productRouter.post("/:id/delete", deleteProductItem);
+
+// Under construction page, catch-all for anything not done or needed per this assignment
+productRouter.get("/under-construction", getUnderConstructionPage);
 
 module.exports = productRouter;

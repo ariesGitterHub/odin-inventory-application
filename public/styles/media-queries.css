@@ -51,8 +51,7 @@
     flex-direction: row;
     gap: var(--default-rem-size);
   }
-
-
+  
   .product-image-container {
     display: flex;
     flex-direction: column;
@@ -111,6 +110,9 @@
 }
 
 @media (min-width: 1950px) {
+  :root {
+    --default-font-size: 1.125rem;
+  }
   header {
     flex-direction: row;
     align-items: center;

@@ -98,6 +98,7 @@ nav h1 {
 .nav-item-short {
   height: fit-content;
   width: fit-content;
+  padding: var(--default-rem-size);
 }
 
 /* MAIN */

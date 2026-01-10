@@ -1,6 +1,8 @@
 /* BUTTON AND BUTTON-LIKE ELEMENTS */
 a,
 button {
+  height: fit-content;
+  width: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,8 +12,10 @@ button {
   box-shadow: var(--box-shadow);
   color: var(--frog-black);
   font-family: var(--font-title);
+  font-size: var(--default-font-size);
   text-transform: uppercase;
-  padding: 0.25rem var(--default-rem-size);
+  /* padding: 0.25rem var(--default-rem-size); */
+  /* padding: var(--default-rem-size); */
   white-space: nowrap;
 }
 

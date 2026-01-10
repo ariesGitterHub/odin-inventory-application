@@ -29,7 +29,7 @@
   --default-font-size: 1rem;
   --default-rem-size: 0.65rem;
 
-  --box-shadow: inset 0 1px 5px var(--frog-black);
+  --box-shadow: 0 1px 5px var(--frog-black);
 }
 
 /* RESETS & PRESETS */

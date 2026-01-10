@@ -10,6 +10,7 @@
   gap: var(--default-rem-size);
   border-radius: var(--border-radius-outer);
   box-shadow: var(--box-shadow);
+  font-size: var(--default-font-size);
   padding: var(--default-rem-size);
 }
 
@@ -18,7 +19,7 @@
 } */
 
 .main-data h1 {
-  font-size: var(--default-font-size);
+  /* font-size: var(--default-font-size); */
   margin-bottom: -0.875rem;
   text-transform: uppercase;
 }
@@ -30,6 +31,7 @@
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
   color: var(--white);
+  font-size: var(--default-font-size);
   margin-bottom: 0.875rem;
   padding: 0.25rem;
 }
@@ -72,8 +74,8 @@
   justify-content: space-around;
   gap: var(--default-rem-size);
   background-color: var(--rose-lt);
-  /* margin: var(--default-rem-size) 0; */
-  margin: auto 0;
+  margin: var(--default-rem-size) 0;
+  /* margin: auto 0; */
   padding: var(--default-rem-size) 0;
 }
 
@@ -137,7 +139,7 @@
 .page-title {
   font-family: var(--font-title);
   font-size: var(--default-fun-title);
-  margin-bottom: var(--default-rem-size);
+  /* margin-bottom: var(--default-rem-size); */
   text-align: center;
 }
 
@@ -161,13 +163,10 @@
 .tag-cloud {
 display: flex;
 flex-wrap: wrap;
-gap: 10px;
-padding: 20px;
-border-radius: 10px;
-background: #fff;
-box-shadow: 0px 10px 30px -5px 
-rgba(0, 0, 0, 0.1);
-margin-top: 20px;
+gap: var(--default-rem-size);
+background: var(--rose-lt);
+border-radius: var(--border-radius-inner);
+padding: var(--default-rem-size);
 }
 
 .update-item-form {
@@ -204,6 +203,14 @@ margin-top: 20px;
   overflow-x: scroll;
 }
 
+.page-not-found-image {
+  height: 21rem;
+  width: auto;
+  /* border: 2px solid var(--frog-black); */
+  /* border-radius: var(--border-radius-inner); */
+  object-fit: fit;
+}
+
 /* BUTTON-CONTAINERS for all pages */
 .button-container1, .button-container2, .button-container3  {
   display: flex;
@@ -231,7 +238,7 @@ margin-top: 20px;
 /* PAGE SPECIFIC BUTTONS for all pages */
 .card-button1, .card-button2, .reorder-button, .submit-button,
 .cancel-button, .show-inventory-type-button {
-    font-size: var(--default-font-size);
+    /* font-size: var(--default-font-size); */
 }
 
 .card-button1,
@@ -253,16 +260,18 @@ margin-top: 20px;
 .card-button2 {
   height: 3rem;
   width: 6rem;
+  text-align: center;
 }
 
 .reorder-button {
-  width: 7.75rem;
+  width: 8rem;
   font-family: var(--font-text);
+  /* padding: 0 1rem 0 1rem; */
 }
 
 .submit-button,
 .cancel-button {
-  font-size: var(--default-font-size);
+  /* font-size: var(--default-font-size); */
 }
 
 .submit-button:hover,
@@ -288,8 +297,16 @@ margin-top: 20px;
 }
 
 .tag-cloud-item-button {
-  height: 2rem;
+  height: 1.75rem;
   width: fit-content;
+  font-family: var(--font-text);
+  font-size: var(--default-rem-size);
+  padding: 0 0.25rem;  
+}
+
+.tag-cloud-item-button:hover {
+  background-color: var(--frog-black);
+  color: var(--gold);
 }
 
 /* FORM ELEMENTS */
@@ -340,6 +357,11 @@ background: linear-gradient(05deg, var(--rose-dk), var(--rose-lt));
 
 .update-item-form {
 background: linear-gradient(05deg, var(--rose-dk), var(--rose-lt));
+}
+
+.page-not-found-colors {
+background: linear-gradient(05deg, var(--frog-white), var(--white));
+  color: var(--frog-dk);
 }
 
 .currency-backdrop {

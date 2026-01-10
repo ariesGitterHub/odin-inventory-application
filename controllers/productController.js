@@ -195,6 +195,14 @@ async function deleteProductItem(req, res, next) {
   }
 }
 
+async function getUnderConstructionPage(req, res, next) {
+  try {
+    res.render("under-construction");
+  } catch (err) {
+    next(err);
+  }
+}
+
 module.exports = {
   getProductsPage,
   // getCreateItemPage,
@@ -204,4 +212,5 @@ module.exports = {
   getUpdateForm,
   putUpdateProductItem,
   deleteProductItem,
+  getUnderConstructionPage,
 };

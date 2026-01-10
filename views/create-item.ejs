@@ -119,21 +119,24 @@
             type="text"
             id="tags"
             name="tags"
-            placeholder="E.g., bear, mammal, fruit, vegetable"
+            placeholder="E.g., mammal, fruit, vegetable"
           />
           <div class="tag-cloud">
             <% if (tags && tags.length > 0) { %> 
               <% tags.forEach(tag => { %>
-                <button type="button" class="tag-cloud-item-button" onclick="addTag('<%= tag.name %>')">
+                <button 
+                type="button" 
+                class="tag-cloud-item-button" 
+                data-tag="<%= tag.name %>"
+                >
                   <%= tag.name %>
                 </button>
               <% }) %>
               <% } else { %>
                 <p class="capitalize">no current tags found</p>
               <% } %>    
-            <script src="/helpers/addTag.js"></script>
           </div>
-
+          <script src="/helpers/addTag.js"></script>
           <!-- TODO - figure out starting inventory with size, barcode, units, storage-->
           <label hidden>initial inventory</label>
 

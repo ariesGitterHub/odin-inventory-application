@@ -23,6 +23,17 @@ app.use(express.urlencoded({ extended: true }));
 // 5. Routers (mount here)
 app.use("/", productRouter);
 
+// 404 handler (always last!)
+app.use((req, res, next) => {
+  res.status(404).render("404", { url: req.originalUrl });
+});
+
+// Optional general error handler (500)
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).render("500", { error: err });
+});
+
 
 // 6. Server startup
 const PORT = process.env.PORT || 3000;
