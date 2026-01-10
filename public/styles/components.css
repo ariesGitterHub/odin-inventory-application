@@ -1,8 +1,8 @@
 /* BUTTON AND BUTTON-LIKE ELEMENTS */
 a,
 button {
-  height: fit-content;
-  width: fit-content;
+  /* height: fit-content;
+  width: fit-content; */
   display: flex;
   align-items: center;
   justify-content: center;

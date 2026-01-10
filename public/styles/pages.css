@@ -258,7 +258,7 @@ padding: var(--default-rem-size);
 }
 
 .card-button2 {
-  height: 3rem;
+  height: 3.25rem;
   width: 6rem;
   text-align: center;
 }
@@ -271,7 +271,9 @@ padding: var(--default-rem-size);
 
 .submit-button,
 .cancel-button {
+  width: 8rem;
   /* font-size: var(--default-font-size); */
+  padding: 0 0.25rem;
 }
 
 .submit-button:hover,
