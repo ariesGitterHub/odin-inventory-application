@@ -203,7 +203,7 @@ padding: var(--default-rem-size);
   overflow-x: scroll;
 }
 
-.page-not-found-image {
+.page-not-found-image, .under-construction-image {
   height: 21rem;
   width: auto;
   /* border: 2px solid var(--frog-black); */
@@ -237,8 +237,8 @@ padding: var(--default-rem-size);
 
 /* PAGE SPECIFIC BUTTONS for all pages */
 .card-button1, .card-button2, .reorder-button, .submit-button,
-.cancel-button, .show-inventory-type-button {
-    /* font-size: var(--default-font-size); */
+.cancel-button, .show-inventory-type-button, .tag-cloud-item-button {
+padding: 0.25rem;
 }
 
 .card-button1,
@@ -271,9 +271,10 @@ padding: var(--default-rem-size);
 
 .submit-button,
 .cancel-button {
+  height: 2rem;
   width: 8rem;
   /* font-size: var(--default-font-size); */
-  padding: 0 0.25rem;
+  /* padding: 0.25rem; */
 }
 
 .submit-button:hover,
@@ -282,6 +283,7 @@ padding: var(--default-rem-size);
   color: var(--gold);
   transform: scale(1.1);
 }
+
 .submit-button:active,
 .cancel-button:active {
   transform: scale(0.9);
@@ -291,6 +293,7 @@ padding: var(--default-rem-size);
   width: 100%;
   font-family: var(--font-text);
   margin-bottom: 0.25rem;
+  /* padding: 0.25rem; */
 }
 
 .show-inventory-type-button:hover {
@@ -303,7 +306,7 @@ padding: var(--default-rem-size);
   width: fit-content;
   font-family: var(--font-text);
   font-size: var(--default-rem-size);
-  padding: 0 0.25rem;  
+  /* padding: 0.25rem;   */
 }
 
 .tag-cloud-item-button:hover {
@@ -361,7 +364,7 @@ background: linear-gradient(05deg, var(--rose-dk), var(--rose-lt));
 background: linear-gradient(05deg, var(--rose-dk), var(--rose-lt));
 }
 
-.page-not-found-colors {
+.page-not-found-colors,.under-construction-colors  {
 background: linear-gradient(05deg, var(--frog-white), var(--white));
   color: var(--frog-dk);
 }
