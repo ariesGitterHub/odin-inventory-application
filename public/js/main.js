@@ -126,3 +126,64 @@ document.querySelectorAll(".toggle-filter-container").forEach((btn) => {
     filterContainer.classList.toggle("hidden");
   });
 });
+
+// =======================
+// ADMIN MODAL CONTROLLER
+// =======================
+
+const adminModal = document.getElementById("adminModal");
+let pendingForm = null;
+
+if (adminModal) {
+  const closeButton = adminModal.querySelector(".close-button");
+  const adminForm = adminModal.querySelector("#adminLoginForm");
+  const adminError = adminModal.querySelector("#adminError");
+
+  window.openAdminModal = function () {
+    adminModal.classList.remove("hidden");
+  };
+
+  function closeAdminModal() {
+    adminModal.classList.add("hidden");
+    if (adminError) adminError.textContent = "";
+    adminForm.reset();
+  }
+
+  closeButton.addEventListener("click", closeAdminModal);
+
+  window.addEventListener("click", (e) => {
+    if (e.target === adminModal) {
+      closeAdminModal();
+    }
+  });
+
+  // Handle admin password submit
+  adminForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const password = adminForm.querySelector("input[name='password']").value;
+
+    const res = await fetch("/auth/admin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password })
+    });
+
+    if (res.ok) {
+      closeAdminModal();
+      if (pendingForm) pendingForm.submit();
+    } else {
+      adminError.textContent = "Incorrect admin password";
+    }
+  });
+}
+
+
+document.querySelectorAll(".delete-form-action").forEach((form) => {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    pendingForm = form;
+    openAdminModal();
+  });
+});
+

@@ -280,29 +280,105 @@ async function getUpdateForm(req, res, next) {
   }
 }
 
+// async function putUpdateProductItem(req, res, next) {
+//   try {
+//     // helper in action below
+//     const data = normalizeProductForm(req.body);
+
+//     await putUpdateProduct(req.params.id, data);
+
+//     // res.redirect(`/products/${req.params.id}`);
+//     res.redirect("/products");
+//   } catch (err) {
+//     next(err);
+//   }
+// }
+
 async function putUpdateProductItem(req, res, next) {
   try {
-    // helper in action below
-    const data = normalizeProductForm(req.body);
+    // 1. Validate ID
+    const id = Number(req.params.id);
+    if (!Number.isInteger(id)) {
+      return res.status(400).send("Invalid product ID");
+    }
 
-    await putUpdateProduct(req.params.id, data);
+    // 2. Validation errors (reuse express-validator)
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).render("update-item", {
+        errors: errors.array(),
+        product: { id, ...req.body },
+      });
+    }
 
-    // res.redirect(`/products/${req.params.id}`);
+    // 3. Ensure product exists
+    const existingProduct = await getProductById(id);
+    if (!existingProduct) {
+      return res.status(404).send("Product not found");
+    }
+
+    // 4. Whitelist allowed fields
+    const allowedFields = [
+      "name",
+      "brand",
+      "price",
+      "cost",
+      "quantity",
+      "tags",
+      "filename",
+    ];
+
+    const safeBody = {};
+    for (const key of allowedFields) {
+      if (req.body[key] !== undefined) {
+        safeBody[key] = req.body[key];
+      }
+    }
+
+    const data = normalizeProductForm(safeBody);
+
+    await putUpdateProduct(id, data);
+
     res.redirect("/products");
   } catch (err) {
     next(err);
   }
 }
+
 
 // DELETE product item
+// async function deleteProductItem(req, res, next) {
+//   try {
+//     await deleteProduct(req.params.id);
+//     res.redirect("/products");
+//   } catch (err) {
+//     next(err);
+//   }
+// }
+
 async function deleteProductItem(req, res, next) {
   try {
-    await deleteProduct(req.params.id);
+    // 1. Validate ID
+    const id = Number(req.params.id);
+    if (!Number.isInteger(id)) {
+      return res.status(400).send("Invalid product ID");
+    }
+
+    // 2. Ensure product exists
+    const product = await getProductById(id);
+    if (!product) {
+      return res.status(404).send("Product not found");
+    }
+
+    // 3. Perform delete
+    await deleteProduct(id);
+
     res.redirect("/products");
   } catch (err) {
     next(err);
   }
 }
+
 
 async function getUnderConstructionPage(req, res, next) {
   try {

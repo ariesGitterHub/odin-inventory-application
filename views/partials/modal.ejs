@@ -1,0 +1,38 @@
+<!-- <div id="adminModal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Admin Login</h2>
+
+    <form id="adminLoginForm" method="POST" action="/admin">
+      <label for="adminPassword">Password</label>
+      <input type="password" id="adminPassword" name="password" placeholder="Enter password..." required />
+      <button class="submit-button" type="submit">Login</button>
+    </form>
+
+    <p id="adminError" style="color:red; <%#= adminLoginError ? '' : 'display:none;' %>">
+      <%#= adminLoginError %>
+    </p>
+  </div>
+</div>
+ -->
+
+ <div id="adminModal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Admin Login</h2>
+    <form id="adminLoginForm">
+      <label for="adminPassword" hidden>Password</label>
+      <input
+        type="password"
+        id="adminPassword"
+        name="password"
+        placeholder="Enter password..."
+        required
+      />
+      <button class="submit-button" type="submit">
+        Login
+      </button>
+    </form>
+    <p class="admin-error-message uppercase" id="adminError" style="color:red"></p>
+  </div>
+</div>

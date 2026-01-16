@@ -274,6 +274,7 @@ padding: 0.25rem;
   height: 3.25rem;
   width: 6rem;
   text-align: center;
+  padding: 0;
 }
 
 .reorder-button {
@@ -423,7 +424,8 @@ background: linear-gradient(05deg, var(--frog-white), var(--white));
 } */
 
 .card.expanded {
-  background-color: var(--rose-dk);
+  /* background-color: var(--rose-dk); */
+    background: linear-gradient(05deg, var(--frog-dk), var(--frog-lt));
 }
 
 /* .card .toggle-additional-data {
@@ -440,9 +442,9 @@ background: linear-gradient(05deg, var(--frog-white), var(--white));
   border-top-left-radius: 0;
 } */
 
-.card.expanded .col-row-adjustable {
+/* .card.expanded .col-row-adjustable {
   border-top-left-radius: 0.5rem;
-}
+} */
 
 /* SIZE UNIT MESSAGES */
 .unit-message {
@@ -608,3 +610,54 @@ ul {
   display: block;
   text-align: left;
 } */
+
+/* ADMIN PASSWORD MODAL */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--frog-lt-trans);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  /* gap: var(--default-rem-size); */
+}
+
+.modal form input {
+  margin-bottom: 1rem;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  height: fit-content;
+  width: 300px;
+  background: var(--white);
+  border: 2px solid var(--black);
+  border-radius: var(--border-radius-inner);
+  padding: 1rem;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 2rem;
+}
+
+.admin-error-message {
+  margin: var(--default-rem-size) 0;
+}
