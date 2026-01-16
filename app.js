@@ -17,16 +17,44 @@ app.set("view engine", "ejs");
 // 4. Middleware
 app.use(express.urlencoded({ extended: true }));
 
+// 4.25 Current route middleware (ADD HERE)
+app.use((req, res, next) => {
+  res.locals.currentPath = req.path;
+  next();
+});
+
 // 4.5 Method override (BEFORE routes)
 // app.use(methodOverride('_method'));
 
+// 4.75 Fixes undefined 500 errors for filterOptions and activeFilters
+app.use((req, res, next) => {
+  if (!("filterOptions" in res.locals)) {
+    res.locals.filterOptions = { brands: [], price: [], rating: [] };
+  }
+
+  if (!("activeFilters" in res.locals)) {
+    res.locals.activeFilters = {};
+  }
+
+  next();
+});
+
+
 // 5. Routers (mount here)
-app.use("/", productRouter);
+app.use("/products", productRouter);
 
 // 404 handler (always last!)
+// app.use((req, res, next) => {
+//   res.status(404).render("404", { url: req.originalUrl });
+// });
 app.use((req, res, next) => {
-  res.status(404).render("404", { url: req.originalUrl });
+  res.status(404).render("404", {
+    url: req.originalUrl,
+    filterOptions: { brands: [], price: [], rating: [] },
+    activeFilters: {},
+  });
 });
+
 
 // Optional general error handler (500)
 app.use((err, req, res, next) => {

@@ -3,169 +3,8 @@
 const pool = require("./pool");
 
 // --- Get all products...the basic first step ---
-// async function getAllProducts() {
-//   const result = await pool.query(`
-//     SELECT
-//       p.id,
-//       p.product_name,
-//       p.item_type,
-//       p.brand,
-//       p.price_unit,
-//       p.cost_unit,
-//       p.base_sku,
-//       p.rating,
-//       p.review_count,
-
-//       -- images
-//       COALESCE(
-//         json_agg(
-//           DISTINCT jsonb_build_object(
-//             'type', pi.type,
-//             'filename_or_link', pi.filename_or_link
-//           )
-//         ) FILTER (WHERE pi.id IS NOT NULL),
-//         '[]'
-//       ) AS images,
-
-//       -- tags
-//       COALESCE(
-//         json_agg(
-//           DISTINCT t.name
-//         ) FILTER (WHERE t.id IS NOT NULL),
-//         '[]'
-//       ) AS tags,
-
-//       -- inventory
-//       COALESCE(
-//         json_agg(
-//           DISTINCT jsonb_build_object(
-//             'size', s.code,
-//             'sku', i.sku,
-//             'barcode', i.barcode,
-//             'units', i.units,
-//             'storage', i.storage
-//           )
-//         ) FILTER (WHERE i.id IS NOT NULL),
-//         '[]'
-//       ) AS inventory
-
-//     FROM products p
-//     LEFT JOIN product_images pi ON pi.product_id = p.id
-//     LEFT JOIN product_tags pt ON pt.product_id = p.id
-//     LEFT JOIN tags t ON t.id = pt.tag_id
-//     LEFT JOIN inventory i ON i.product_id = p.id
-//     LEFT JOIN sizes s ON s.id = i.size_id
-
-//     GROUP BY p.id
-//     ORDER BY p.id;
-//   `);
-
-//   // return result.rows.map((p) => ({
-//   //   ...p,
-
-//   //   // numeric safety
-//   //   price_unit: Number(p.price_unit),
-//   //   cost_unit: Number(p.cost_unit),
-
-//   //   profit_per_unit: Number(
-//   //     (Number(p.price_unit) - Number(p.cost_unit)).toFixed(2)
-//   //   ),
-
-//   //   // Organizing images by type (front, rear, size)
-//   //   imagesByType: p.images.reduce((acc, img) => {
-//   //     acc[img.type] = acc[img.type] || [];
-//   //     acc[img.type].push(img.filename_or_link);
-//   //     return acc;
-//   //   }, {}),
-
-//   //   // Tags as a comma-separated string
-//   //   // tags: p.tags.join(", "),
-//   //   tags: p.tags,
-
-//   //   // Organize inventory by size
-//   //   inventoryBySize: p.inventory.reduce((acc, inv) => {
-//   //     acc[inv.size] = acc[inv.size] || [];
-//   //     acc[inv.size].push({
-//   //       // size: inv.size,
-//   //       sku: inv.sku,
-//   //       barcode: inv.barcode,
-//   //       units: inv.units,
-//   //       storage: inv.storage,
-//   //     });
-//   //     return acc;
-//   //   }, {}),
-
-//   //   // Parse JSON arrays if needed (in case they're strings)
-//   //   images: typeof p.images === "string" ? JSON.parse(p.images) : p.images,
-//   //   tags: typeof p.tags === "string" ? JSON.parse(p.tags) : p.tags,
-//   //   inventory:
-//   //     typeof p.inventory === "string" ? JSON.parse(p.inventory) : p.inventory,
-//   // }));
-
-// return result.rows.map((p) => {
-//   // Ensure arrays
-//   const images = typeof p.images === "string" ? JSON.parse(p.images) : p.images;
-//   const tags = typeof p.tags === "string" ? JSON.parse(p.tags) : p.tags;
-//   const inventory =
-//     typeof p.inventory === "string" ? JSON.parse(p.inventory) : p.inventory;
-
-//   // Organize images by type
-//   const imagesByType = images.reduce((acc, img) => {
-//     acc[img.type] = acc[img.type] || [];
-//     acc[img.type].push(img.filename_or_link);
-//     return acc;
-//   }, {});
-
-//   // Organize inventory by size
-//   const inventoryBySize = inventory.reduce((acc, inv) => {
-//     acc[inv.size] = acc[inv.size] || [];
-//     acc[inv.size].push({
-//       sku: inv.sku,
-//       barcode: inv.barcode,
-//       units: inv.units,
-//       storage: inv.storage,
-//     });
-//     return acc;
-//   }, {});
-
-//   return {
-//     ...p,
-//     price_unit: Number(p.price_unit),
-//     cost_unit: Number(p.cost_unit),
-//     profit_per_unit: Number(
-//       (Number(p.price_unit) - Number(p.cost_unit)).toFixed(2)
-//     ),
-//     images,
-//     tags,
-//     inventory,
-//     imagesByType,
-//     inventoryBySize,
-//   };
-// });
-
-// }
-
-// NEW - this will replace getAllProducts and allow for search and filter
-
-async function getAllSearchFilterProducts(filters = {}) {
-  const {
-    search = null,
-    brand = null,
-    price_min = null,
-    price_max = null,
-    cost_min = null,
-    cost_max = null,
-    profit_min = null,
-    profit_max = null,
-    rating_min = null,
-    rating_max = null,
-    review_min = null,
-    review_max = null,
-  } = filters;
-
-  const brands = Array.isArray(brand) ? brand : brand ? [brand] : [];
-
-  let sql = `
+async function getAllProducts() {
+  const result = await pool.query(`
     SELECT
       p.id,
       p.product_name,
@@ -216,146 +55,369 @@ async function getAllSearchFilterProducts(filters = {}) {
     LEFT JOIN tags t ON t.id = pt.tag_id
     LEFT JOIN inventory i ON i.product_id = p.id
     LEFT JOIN sizes s ON s.id = i.size_id
-  `;
 
-  const whereClauses = [];
-  const values = [];
-
-  if (search) {
-    values.push(`%${search}%`);
-    whereClauses.push(`p.product_name ILIKE $${values.length}`);
-  }
-
-  if (brands.length) {
-    const placeholders = brands.map((_, i) => `$${values.length + i + 1}`);
-    values.push(...brands);
-    whereClauses.push(`p.brand IN (${placeholders.join(",")})`);
-  }
-
-  if (price_min != null) {
-    values.push(price_min);
-    whereClauses.push(`p.price_unit >= $${values.length}`);
-  }
-
-  if (price_max != null) {
-    values.push(price_max);
-    whereClauses.push(`p.price_unit <= $${values.length}`);
-  }
-
-  if (cost_min != null) {
-    values.push(cost_min);
-    whereClauses.push(`p.cost_unit >= $${values.length}`);
-  }
-
-  if (cost_max != null) {
-    values.push(cost_max);
-    whereClauses.push(`p.cost_unit <= $${values.length}`);
-  }
-
-  if (profit_min != null) {
-    values.push(profit_min);
-    whereClauses.push(`(p.price_unit - p.cost_unit) >= $${values.length}`);
-  }
-
-  if (profit_max != null) {
-    values.push(profit_max);
-    whereClauses.push(`(p.price_unit - p.cost_unit) <= $${values.length}`);
-  }
-
-  if (rating_min != null) {
-    values.push(rating_min);
-    whereClauses.push(`p.rating >= $${values.length}`);
-  }
-
-  if (rating_max != null) {
-    values.push(rating_max);
-    whereClauses.push(`p.rating <= $${values.length}`);
-  }
-
-  if (review_min != null) {
-    values.push(review_min);
-    whereClauses.push(`p.review_count >= $${values.length}`);
-  }
-
-  if (review_max != null) {
-    values.push(review_max);
-    whereClauses.push(`p.review_count <= $${values.length}`);
-  }
-
-  if (whereClauses.length) {
-    sql += ` WHERE ` + whereClauses.join(" AND ");
-  }
-
-  sql += ` GROUP BY p.id ORDER BY p.id;`;
-
-  const result = await pool.query(sql, values);
-
-  return result.rows.map((p) => {
-    const images =
-      typeof p.images === "string" ? JSON.parse(p.images) : p.images;
-    const tags = typeof p.tags === "string" ? JSON.parse(p.tags) : p.tags;
-    const inventory =
-      typeof p.inventory === "string" ? JSON.parse(p.inventory) : p.inventory;
-
-    const imagesByType = images.reduce((acc, img) => {
-      acc[img.type] = acc[img.type] || [];
-      acc[img.type].push(img.filename_or_link);
-      return acc;
-    }, {});
-
-    const inventoryBySize = inventory.reduce((acc, inv) => {
-      acc[inv.size] = acc[inv.size] || [];
-      acc[inv.size].push({
-        sku: inv.sku,
-        barcode: inv.barcode,
-        units: inv.units,
-        storage: inv.storage,
-      });
-      return acc;
-    }, {});
-
-    const price = Number(p.price_unit);
-    const cost = Number(p.cost_unit);
-
-    return {
-      ...p,
-      price_unit: price,
-      cost_unit: cost,
-      profit_per_unit: Number((price - cost).toFixed(2)),
-      images,
-      tags,
-      inventory,
-      imagesByType,
-      inventoryBySize,
-    };
-  });
-}
-
-async function getFilterOptions() {
-  const brandResult = await pool.query(
-    `SELECT DISTINCT brand FROM products ORDER BY brand;`
-  );
-
-  const numericResult = await pool.query(`
-    SELECT
-      MIN(price_unit) AS min_price,
-      MAX(price_unit) AS max_price,
-      MIN(cost_unit) AS min_cost,
-      MAX(cost_unit) AS max_cost,
-      MIN(price_unit - cost_unit) AS min_profit,
-      MAX(price_unit - cost_unit) AS max_profit,
-      MIN(rating) AS min_rating,
-      MAX(rating) AS max_rating,
-      MIN(review_count) AS min_review,
-      MAX(review_count) AS max_review
-    FROM products;
+    GROUP BY p.id
+    ORDER BY p.id;
   `);
 
+  // return result.rows.map((p) => ({
+  //   ...p,
+
+  //   // numeric safety
+  //   price_unit: Number(p.price_unit),
+  //   cost_unit: Number(p.cost_unit),
+
+  //   profit_per_unit: Number(
+  //     (Number(p.price_unit) - Number(p.cost_unit)).toFixed(2)
+  //   ),
+
+  //   // Organizing images by type (front, rear, size)
+  //   imagesByType: p.images.reduce((acc, img) => {
+  //     acc[img.type] = acc[img.type] || [];
+  //     acc[img.type].push(img.filename_or_link);
+  //     return acc;
+  //   }, {}),
+
+  //   // Tags as a comma-separated string
+  //   // tags: p.tags.join(", "),
+  //   tags: p.tags,
+
+  //   // Organize inventory by size
+  //   inventoryBySize: p.inventory.reduce((acc, inv) => {
+  //     acc[inv.size] = acc[inv.size] || [];
+  //     acc[inv.size].push({
+  //       // size: inv.size,
+  //       sku: inv.sku,
+  //       barcode: inv.barcode,
+  //       units: inv.units,
+  //       storage: inv.storage,
+  //     });
+  //     return acc;
+  //   }, {}),
+
+  //   // Parse JSON arrays if needed (in case they're strings)
+  //   images: typeof p.images === "string" ? JSON.parse(p.images) : p.images,
+  //   tags: typeof p.tags === "string" ? JSON.parse(p.tags) : p.tags,
+  //   inventory:
+  //     typeof p.inventory === "string" ? JSON.parse(p.inventory) : p.inventory,
+  // }));
+
+return result.rows.map((p) => {
+  // Ensure arrays
+  const images = typeof p.images === "string" ? JSON.parse(p.images) : p.images;
+  const tags = typeof p.tags === "string" ? JSON.parse(p.tags) : p.tags;
+  const inventory =
+    typeof p.inventory === "string" ? JSON.parse(p.inventory) : p.inventory;
+
+  // Organize images by type
+  const imagesByType = images.reduce((acc, img) => {
+    acc[img.type] = acc[img.type] || [];
+    acc[img.type].push(img.filename_or_link);
+    return acc;
+  }, {});
+
+  // Organize inventory by size
+  const inventoryBySize = inventory.reduce((acc, inv) => {
+    acc[inv.size] = acc[inv.size] || [];
+    acc[inv.size].push({
+      sku: inv.sku,
+      barcode: inv.barcode,
+      units: inv.units,
+      storage: inv.storage,
+    });
+    return acc;
+  }, {});
+
   return {
-    brands: brandResult.rows.map((r) => r.brand),
-    numeric: numericResult.rows[0],
+    ...p,
+    price_unit: Number(p.price_unit),
+    cost_unit: Number(p.cost_unit),
+    profit_per_unit: Number(
+      (Number(p.price_unit) - Number(p.cost_unit)).toFixed(2)
+    ),
+    images,
+    tags,
+    inventory,
+    imagesByType,
+    inventoryBySize,
   };
+});
+
 }
+
+// --- Search through products ---
+// Returns products that match the selected filters.
+/**
+ * Get products with optional filters
+ * @param {Object} filters
+ * @param {string} [filters.search] - search term for product_name
+ */
+// async function getSearchProducts(filters = {}) {
+//   const values = [];
+//   const whereClauses = [];
+
+//   if (filters.search) {
+//     values.push(`%${filters.search}%`);
+//     whereClauses.push(`p.product_name ILIKE $${values.length}`);
+//   }
+
+//   const whereSQL = whereClauses.length
+//     ? `WHERE ${whereClauses.join(" AND ")}`
+//     : "";
+
+//   const query = `
+//     SELECT
+//       p.id,
+//       p.product_name,
+//       p.item_type,
+//       p.brand,
+//       p.price_unit,
+//       p.cost_unit,
+//       p.base_sku,
+//       p.rating,
+//       p.review_count,
+
+//       COALESCE(
+//         json_agg(
+//           DISTINCT jsonb_build_object(
+//             'type', pi.type,
+//             'filename_or_link', pi.filename_or_link
+//           )
+//         ) FILTER (WHERE pi.id IS NOT NULL),
+//         '[]'
+//       ) AS images,
+
+//       COALESCE(
+//         json_agg(
+//           DISTINCT t.name
+//         ) FILTER (WHERE t.id IS NOT NULL),
+//         '[]'
+//       ) AS tags,
+
+//       COALESCE(
+//         json_agg(
+//           DISTINCT jsonb_build_object(
+//             'size', s.code,
+//             'sku', i.sku,
+//             'barcode', i.barcode,
+//             'units', i.units,
+//             'storage', i.storage
+//           )
+//         ) FILTER (WHERE i.id IS NOT NULL),
+//         '[]'
+//       ) AS inventory
+
+//     FROM products p
+//     LEFT JOIN product_images pi ON pi.product_id = p.id
+//     LEFT JOIN product_tags pt ON pt.product_id = p.id
+//     LEFT JOIN tags t ON t.id = pt.tag_id
+//     LEFT JOIN inventory i ON i.product_id = p.id
+//     LEFT JOIN sizes s ON s.id = i.size_id
+
+//     ${whereSQL}
+
+//     GROUP BY p.id
+//     ORDER BY p.id;
+//   `;
+
+//   const result = await pool.query(query, values);
+
+//   return result.rows.map((p) => {
+//     const images =
+//       typeof p.images === "string" ? JSON.parse(p.images) : p.images;
+//     const tags = typeof p.tags === "string" ? JSON.parse(p.tags) : p.tags;
+//     const inventory =
+//       typeof p.inventory === "string" ? JSON.parse(p.inventory) : p.inventory;
+
+//     const imagesByType = images.reduce((acc, img) => {
+//       acc[img.type] = acc[img.type] || [];
+//       acc[img.type].push(img.filename_or_link);
+//       return acc;
+//     }, {});
+
+//     const inventoryBySize = inventory.reduce((acc, inv) => {
+//       acc[inv.size] = acc[inv.size] || [];
+//       acc[inv.size].push({
+//         sku: inv.sku,
+//         barcode: inv.barcode,
+//         units: inv.units,
+//         storage: inv.storage,
+//       });
+//       return acc;
+//     }, {});
+
+//     return {
+//       ...p,
+//       price_unit: Number(p.price_unit),
+//       cost_unit: Number(p.cost_unit),
+//       profit_per_unit: Number(
+//         (Number(p.price_unit) - Number(p.cost_unit)).toFixed(2)
+//       ),
+//       images,
+//       tags,
+//       inventory,
+//       imagesByType,
+//       inventoryBySize,
+//     };
+//   });
+// }
+
+// --- Filter assortment ---
+// Returns metadata for the filter UI, not products.
+
+// async function getSearchProducts(filters = {}) {
+//   const values = [];
+//   const whereClauses = [];
+
+//   if (filters.search) {
+//     values.push(`%${filters.search}%`);
+//     whereClauses.push(`p.product_name ILIKE $${values.length}`);
+//   }
+
+//   if (filters.brand) {
+//     const brands = Array.isArray(filters.brand)
+//       ? filters.brand
+//       : [filters.brand];
+//     const brandPlaceholders = brands.map((_, i) => `$${values.length + i + 1}`);
+//     values.push(...brands);
+//     whereClauses.push(`p.brand IN (${brandPlaceholders.join(", ")})`);
+//   }
+
+//   if (filters.price_min) {
+//     values.push(filters.price_min);
+//     whereClauses.push(`p.price_unit >= $${values.length}`);
+//   }
+//   if (filters.price_max) {
+//     values.push(filters.price_max);
+//     whereClauses.push(`p.price_unit <= $${values.length}`);
+//   }
+
+//   // Repeat for cost, profit, rating, review_count as needed
+//   if (filters.cost_min) {
+//     values.push(filters.cost_min);
+//     whereClauses.push(`p.cost_unit >= $${values.length}`);
+//   }
+//   if (filters.cost_max) {
+//     values.push(filters.cost_max);
+//     whereClauses.push(`p.cost_unit <= $${values.length}`);
+//   }
+
+//   if (filters.profit_min) {
+//     values.push(filters.profit_min);
+//     whereClauses.push(`(p.price_unit - p.cost_unit) >= $${values.length}`);
+//   }
+//   if (filters.profit_max) {
+//     values.push(filters.profit_max);
+//     whereClauses.push(`(p.price_unit - p.cost_unit) <= $${values.length}`);
+//   }
+
+//   if (filters.rating_min) {
+//     values.push(filters.rating_min);
+//     whereClauses.push(`p.rating >= $${values.length}`);
+//   }
+//   if (filters.rating_max) {
+//     values.push(filters.rating_max);
+//     whereClauses.push(`p.rating <= $${values.length}`);
+//   }
+
+//   if (filters.review_min) {
+//     values.push(filters.review_min);
+//     whereClauses.push(`p.review_count >= $${values.length}`);
+//   }
+//   if (filters.review_max) {
+//     values.push(filters.review_max);
+//     whereClauses.push(`p.review_count <= $${values.length}`);
+//   }
+
+//   const whereSQL = whereClauses.length
+//     ? `WHERE ${whereClauses.join(" AND ")}`
+//     : "";
+
+//   const query = `
+//     SELECT
+//       p.*,
+//       COALESCE(json_agg(DISTINCT jsonb_build_object('type', pi.type, 'filename_or_link', pi.filename_or_link)) FILTER (WHERE pi.id IS NOT NULL),'[]') AS images,
+//       COALESCE(json_agg(DISTINCT t.name) FILTER (WHERE t.id IS NOT NULL),'[]') AS tags,
+//       COALESCE(json_agg(DISTINCT jsonb_build_object('size', s.code, 'sku', i.sku, 'barcode', i.barcode, 'units', i.units, 'storage', i.storage)) FILTER (WHERE i.id IS NOT NULL),'[]') AS inventory
+//     FROM products p
+//     LEFT JOIN product_images pi ON pi.product_id = p.id
+//     LEFT JOIN product_tags pt ON pt.product_id = p.id
+//     LEFT JOIN tags t ON t.id = pt.tag_id
+//     LEFT JOIN inventory i ON i.product_id = p.id
+//     LEFT JOIN sizes s ON s.id = i.size_id
+//     ${whereSQL}
+//     GROUP BY p.id
+//     ORDER BY p.id;
+//   `;
+
+//   const result = await pool.query(query, values);
+
+//   // parse JSON arrays and organize as before...
+//   return result.rows.map((p) => {
+//     const images =
+//       typeof p.images === "string" ? JSON.parse(p.images) : p.images;
+//     const tags = typeof p.tags === "string" ? JSON.parse(p.tags) : p.tags;
+//     const inventory =
+//       typeof p.inventory === "string" ? JSON.parse(p.inventory) : p.inventory;
+
+//     const imagesByType = images.reduce((acc, img) => {
+//       acc[img.type] = acc[img.type] || [];
+//       acc[img.type].push(img.filename_or_link);
+//       return acc;
+//     }, {});
+//     const inventoryBySize = inventory.reduce((acc, inv) => {
+//       acc[inv.size] = acc[inv.size] || [];
+//       acc[inv.size].push({
+//         sku: inv.sku,
+//         barcode: inv.barcode,
+//         units: inv.units,
+//         storage: inv.storage,
+//       });
+//       return acc;
+//     }, {});
+
+//     return {
+//       ...p,
+//       images,
+//       tags,
+//       inventory,
+//       imagesByType,
+//       inventoryBySize,
+//       price_unit: Number(p.price_unit),
+//       cost_unit: Number(p.cost_unit),
+//       profit_per_unit: Number(
+//         (Number(p.price_unit) - Number(p.cost_unit)).toFixed(2)
+//       ),
+//     };
+//   });
+// }
+
+// async function getFilterOptions() {
+//   const brandResult = await pool.query(
+//     `SELECT DISTINCT brand FROM products ORDER BY brand;`
+//   );
+
+//   const numericResult = await pool.query(`
+//     SELECT
+//       MIN(price_unit) AS min_price,
+//       MAX(price_unit) AS max_price,
+//       MIN(cost_unit) AS min_cost,
+//       MAX(cost_unit) AS max_cost,
+//       MIN(price_unit - cost_unit) AS min_profit,
+//       MAX(price_unit - cost_unit) AS max_profit,
+//       MIN(rating) AS min_rating,
+//       MAX(rating) AS max_rating,
+//       MIN(review_count) AS min_review,
+//       MAX(review_count) AS max_review
+//     FROM products;
+//   `);
+
+//   return {
+//     brands: brandResult.rows.map((r) => r.brand),
+//     numeric: numericResult.rows[0],
+//   };
+// }
+
 
 // --- Get all tags for create-item.ejs ---
 async function getAllTags() {
@@ -862,11 +924,9 @@ async function deleteProduct(id) {
 }
 
 module.exports = {
-  // getAllProducts,
+  getAllProducts,
   // getSearchProducts,
   // getFilterOptions,
-  getAllSearchFilterProducts,
-  getFilterOptions,
   getAllTags,
   getProductById,
   postNewProduct,

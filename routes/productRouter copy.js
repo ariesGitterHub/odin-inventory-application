@@ -1,10 +1,12 @@
 // THIS CODE SHOULD ONLY BE USED TO MAP URLS TO CONTROLLER METHODS
 
 const { Router } = require("express");
-const { body } = require("express-validator");
-
 const {
   getProductsPage,
+  // getCreateItemPage,
+  // postCreateItemPage,
+  // getProductsWithProfit,
+  // getSearchesOnProductsPage,
   getCreateItemPage,
   postNewProductItem,
   getUpdateForm,
@@ -17,34 +19,14 @@ const {
 const productRouter = Router();
 
 // GET all product items
-// productRouter.get("/", getProductsPage);
+productRouter.get("/", getProductsPage);
 
-// New issue - I overloaded GET / with filter state, but your create/update flows still assume / is a neutral landing page.
-// So separate listing route
-productRouter.get("/", getProductsPage);       // no filters
-productRouter.get("/list", getProductsPage);   // search + filters
-
-
-// GET search of products 
-// TODO - USING HEADER BELOW NEEDS TO BE FIXED
-// NOTE - below is commented out until I get search working again, then get filter working
+// GET search of products
 // productRouter.get("/header", getSearchesOnProductsPage);
 
 // GET create form and POST new product item
 productRouter.get("/create", getCreateItemPage);
-// productRouter.post("/create", postNewProductItem);
-productRouter.post(
-  "/create",
-  [
-    body("base_sku")
-      .matches(/^[A-Z]{5}[0-9]{3}[A-Z]{3}-$/i) // 'i' makes it case-insensitive
-      .withMessage(
-        "Base SKU must match pattern: 5 letters + 3 digits + 3 letters + '-' (total 12 characters)"
-      ),
-  ],
-  postNewProductItem
-);
-
+productRouter.post("/create", postNewProductItem);
 
 // GET update form and PUT update of product item
 productRouter.get("/:id/update", getUpdateForm);

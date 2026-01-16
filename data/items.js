@@ -1365,6 +1365,28 @@ const items = [
       { size: "XL", units: 129, barcode: 687523587421, storage: "woo-03-xl" },
     ],
   },
+  {
+    product_name: "lady lion",
+    item_type: "adult onesie",
+    brand: "squeekers",
+    price_unit: 37.99,
+    cost_unit: 15.84,
+    base_sku: "LADLI001SQU-",
+    rating: 3.9,
+    number_reviews: 3,
+    images: {
+      front: "https://m.media-amazon.com/images/I/5188gV6jluL._AC_SX522_.jpg",
+      rear: "https://m.media-amazon.com/images/I/519xFsK4ZrL._AC_SX522_.jpg",
+      size: "n/a",
+    },
+    tags: ["mammals", "cats", "sexy"],
+    stock: [
+      { size: "S", units: 139, barcode: 657823587111, storage: "squ-01-s" },
+      { size: "M", units: 117, barcode: 6578235871281, storage: "squ-01-m" },
+      { size: "L", units: 133, barcode: 657823587351, storage: "squ-01-l" },
+      { size: "XL", units: 130, barcode: 657823587421, storage: "squ-01-xl" },
+    ],
+  },
 ];
 
 module.exports = {

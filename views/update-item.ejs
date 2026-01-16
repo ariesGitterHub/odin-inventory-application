@@ -7,9 +7,9 @@
     <%- include('./partials/header.ejs') %>
       <div class="card update-item-colors1">
         <h1 class="page-title white capitalize">update existing item</h1>
-          <!-- <form method="POST" action="/<%#= product.id %>/update?_method=PUT">
+          <!-- <form method="POST" action="/products/update?_method=PUT/<%#= product.id %>">
             <input type="hidden" name="_method" value="PUT"> -->
-          <form class="update-item-form" method="POST" action="/<%= product.id %>/update">
+          <form class="update-item-form" method="POST" action="/products/<%= product.id %>/update">
           <div>
             <div class="col-container">
               <!-- <div class="col-row-adjustable"> -->
@@ -129,7 +129,7 @@
                     <script src="/js/main.js"></script>
                   </div>
                   <div class="button-container3">
-                    <a class="cancel-button" href="/">Cancel</a>  
+                    <a class="cancel-button" href="/products">Cancel</a>  
                     <button class="submit-button" type="submit" onclick="return confirm('WARNING: changing the base sku may cause inventory issues. Are you sure you want to update this product?')">Update</button>  
                   </div> 
                 </div>

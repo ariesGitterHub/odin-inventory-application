@@ -1,4 +1,6 @@
 <nav>
+  <% const isHome = currentPath === '/products' || currentPath.startsWith('/products/list') %>
+
   <div class="wide">
     <a
       class="nav-item-wide"
@@ -6,11 +8,15 @@
       target="_blank"
       >visit store</a
     >
-    <a class="nav-item-wide" href="/">home</a>
-    <button class="nav-item-wide">search</button>
-    <button class="nav-item-wide">filter</button>
-    <a class="nav-item-wide" href="/under-construction">bulk actions</a>
-    <a class="nav-item-wide" href="/create">create item</a>
+    <a class="nav-item-wide" href="/products">home</a>
+    <!-- <button class="nav-item-wide">search</button>
+    <button class="nav-item-wide toggle-filter-container">filter</button> -->
+    <% if (isHome) { %>
+    <button class="nav-item-wide toggle-search-container">search</button>
+    <button class="nav-item-wide toggle-filter-container">filter</button>
+    <% } %>
+    <a class="nav-item-wide" href="/products/under-construction">bulk actions</a>
+    <a class="nav-item-wide" href="/products/create">create item</a>
   </div>
   <div class="nav-item-short-container">
     <div class="short">
@@ -19,54 +25,46 @@
         href="https://ariesgitterhub-odin-shopping-cart.netlify.app/shop"
         target="_blank"
       >
-        <img src="../images/navButtons/visitStore.svg" alt="Store icon" />
+        <img src="/images/navButtons/visitStore.svg" alt="Store icon" />
         <span class="tooltiptext">Store</span>
       </a>
-      <a class="nav-item-short" href="/">
-        <img src="../images/navButtons/home.svg" alt="Home icon" />
+      <a class="nav-item-short" href="/products">
+        <img src="/images/navButtons/home.svg" alt="Home icon" />
         <span class="tooltiptext">Home</span>
       </a>
-      <button class="nav-item-short">
-        <img src="../images/navButtons/search.svg" alt="Search icon" />
+      <!-- <button class="nav-item-short">
+        <img src="/images/navButtons/search.svg" alt="Search icon" />
+        <span class="tooltiptext">Search</span>
+      </button> -->
+      <% if (isHome) { %>
+      <button class="nav-item-short toggle-search-container">
+        <img src="/images/navButtons/search.svg" alt="Search icon" />
         <span class="tooltiptext">Search</span>
       </button>
+      <% } %>
     </div>
     <div class="short">
-      <button class="nav-item-short">
-        <img src="../images/navButtons/filter.svg" alt="Filter icon" />
+      <!-- <button class="nav-item-short toggle-filter-container">
+        <img src="/images/navButtons/filter.svg" alt="Filter icon" />
+        <span class="tooltiptext">Filter</span>
+      </button> -->
+      <% if (isHome) { %>
+      <button class="nav-item-short toggle-filter-container">
+        <img src="/images/navButtons/filter.svg" alt="Filter icon" />
         <span class="tooltiptext">Filter</span>
       </button>
-      <a class="nav-item-short" href="/under-construction">
+      <% } %>
+      <a class="nav-item-short" href="/products/under-construction">
         <img
-          src="../images/navButtons/bulkActions.svg"
+          src="/images/navButtons/bulkActions.svg"
           alt="Bulk actions icon"
         />
         <span class="tooltiptext">Bulk Actions</span>
       </a>
-      <a class="nav-item-short" href="/create">
-        <img src="../images/navButtons/createItem.svg" alt="Create item icon" />
+      <a class="nav-item-short" href="/products/create">
+        <img src="/images/navButtons/createItem.svg" alt="Create item icon" />
         <span class="tooltiptext">Create</span>
       </a>
-    </div>
-  </div>
-  <div class="filter-container">
-    <div class="brand-range">
-      <p>TEST</p>
-    </div>
-    <div class="price-range">
-      <p>TEST</p>
-    </div>
-    <div class="cost-range">
-      <p>TEST</p>
-    </div>
-    <div class="profit-range">
-      <p>TEST</p>
-    </div>
-    <div class="price-range">
-      <p>TEST</p>
-    </div>
-    <div class="rating-range">
-      <p>TEST</p>
     </div>
   </div>
 </nav>

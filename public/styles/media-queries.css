@@ -4,6 +4,7 @@
   :root {
     /* --default-fun-title: 1.55rem; */
     --default-text-title: 1.25rem;
+    --default-search-filter-w: 33ch;
   }
 
   nav .short img {
@@ -22,16 +23,15 @@
     --default-fun-title: 1.75rem;
     --default-text-title: 1.4rem;
     --default-rem-size: 0.75rem;
+    --default-search-filter-w: 41ch;
   }
 
-  header {
+  /* header {
     gap: var(--default-rem-size);
-  }
+  } */
 
-  .logo {
+  .logo-button {
     display: flex;
-    height: 4rem;
-    width: auto;
   }
 
   .fun-title {
@@ -53,6 +53,8 @@
   }
   
   .product-image-container {
+    height: fit-content;
+    width: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -112,18 +114,42 @@
 @media (min-width: 1950px) {
   :root {
     --default-font-size: 1.125rem;
+    --default-rem-size: 1.125rem;
   }
+
   header {
-    flex-direction: row;
+    /* flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: var(--default-rem-size);
+    flex-wrap: wrap; */
+    /* gap: var(--default-rem-size); */
   }
+
+  .title-nav-container {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* gap: 0.25rem; */
+     gap: var(--default-rem-size);
+}
 
   .nav-item-wide {
     height: 4rem;
     width: 12rem;
     font-size: 1.25rem;
   }
+
+    .product-image {
+    height: 10.5rem;
+    width: 6.5rem;
+  }
+
+  .card-button2 {
+  height: 3.75rem;
+}
+
+.reorder-button {
+  width: 10rem;
+}
 }

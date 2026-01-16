@@ -1,0 +1,167 @@
+<!-- Search -->
+<form class="search-container hidden" method="GET" action="/products/list">
+  <label class="uppercase white" for="search" hidden>Search</label>
+  <input
+    id="search"
+    name="q"
+    class="search-bar"
+    type="text"
+    placeholder="Search by onesie name..."
+    value="<%= typeof search !== 'undefined' && search ? search : '' %>"
+  />
+  <button class="submit-button" type="submit">Search</button>
+</form>
+
+<!-- Various Filters -->
+<form class="filter-container hidden" method="GET" action="/products/list">
+  <!-- Brand filter -->
+  <fieldset class="brand-fieldset">
+    <legend class="capitalize">select one or more brands</legend>
+    <% if (filterOptions?.brands) { %> <% filterOptions.brands.forEach(brand =>
+    { %>
+    <label>
+      <%= brand %> <input type="checkbox" name="brand" value="<%= brand %>" <%=
+      Array.isArray(activeFilters?.brand) ? activeFilters.brand.includes(brand)
+      ? "checked" : "" : activeFilters?.brand === brand ? "checked" : "" %> >
+    </label>
+    <% }) %> <% } %>
+  </fieldset>
+  <div class="filter-ranges-container">
+    <fieldset class="range-fieldset">
+      <legend>Price Range</legend>
+      <label for="price_min">
+        min
+        <input
+          id="price_min"
+          type="number"
+          name="price_min"
+          step="0.01"
+          placeholder="0.00"
+          value="<%= activeFilters?.price_min || '' %>"
+        />
+      </label>
+      <span aria-hidden="true">-</span>
+      <label for="price_max">
+        max
+        <input
+          id="price_max"
+          type="number"
+          name="price_max"
+          step="0.01"
+          placeholder="0.00"
+          value="<%= activeFilters?.price_max || '' %>"
+        />
+      </label>
+    </fieldset>
+    <fieldset class="range-fieldset">
+      <legend>Cost Range</legend>
+      <label for="cost_min">
+        min
+        <input
+          id="cost_min"
+          type="number"
+          name="cost_min"
+          step="0.01"
+          placeholder="0.00"
+          value="<%= activeFilters?.cost_min || '' %>"
+        />
+      </label>
+      <span aria-hidden="true">-</span>
+      <label for="cost_max">
+        max
+        <input
+          id="cost_max"
+          type="number"
+          name="cost_max"
+          step="0.01"
+          placeholder="0.00"
+          value="<%= activeFilters?.cost_max || '' %>"
+        />
+      </label>
+    </fieldset>
+    <fieldset class="range-fieldset">
+      <legend>Profit Range</legend>
+      <label for="profit_min">
+        min
+        <input
+          id="profit_min"
+          type="number"
+          name="profit_min"
+          step="0.01"
+          placeholder="0.00"
+          value="<%= activeFilters?.profit_min || '' %>"
+        />
+      </label>
+      <span aria-hidden="true">-</span>
+      <label for="profit_max">
+        max
+        <input
+          id="profit_max"
+          type="number"
+          name="profit_max"
+          step="0.01"
+          placeholder="0.00"
+          value="<%= activeFilters?.profit_max || '' %>"
+        />
+      </label>
+    </fieldset>
+    <fieldset class="range-fieldset">
+      <legend>Rating Range</legend>
+      <label for="rating_min">
+        min
+        <input
+          id="rating_min"
+          type="number"
+          name="rating_min"
+          step="0.1"
+          placeholder="0"
+          value="<%= activeFilters?.rating_min || '' %>"
+        />
+      </label>
+      <span aria-hidden="true">-</span>
+      <label for="rating_max">
+        max
+        <input
+          id="rating_max"
+          type="number"
+          name="rating_max"
+          step="0.1"
+          placeholder="0"
+          value="<%= activeFilters?.rating_max || '' %>"
+        />
+      </label>
+    </fieldset>
+    <fieldset class="range-fieldset">
+      <legend>Review Range</legend>
+      <label for="review_min">
+        min
+        <input
+          id="review_min"
+          type="number"
+          name="review_min"
+          placeholder="0"
+          value="<%= activeFilters?.review_min || '' %>"
+        />
+      </label>
+      <span aria-hidden="true">-</span>
+      <label for="review_max">
+        max
+        <input
+          id="review_max"
+          type="number"
+          name="review_max"
+          placeholder="0"
+          value="<%= activeFilters?.review_max || '' %>"
+        />
+      </label>
+    </fieldset>
+  </div>
+  <div class="button-container2">
+    <button class="submit-button apply-filters-button" type="reset">
+      Clear Filters
+    </button>
+    <button class="submit-button apply-filters-button" type="submit">
+      Apply Filters
+    </button>
+  </div>
+</form>

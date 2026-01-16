@@ -232,3 +232,60 @@
               value="<%= product.imagesByType?.size?.[0] || '' %>"
             />
           </div>
+
+
+
+
+1️⃣ Define ONE reusable base SQL
+
+Put this near the top of your controller file:
+
+          const BASE_PRODUCTS_SQL = `
+  SELECT
+    p.id,
+    p.product_name,
+    p.item_type,
+    p.brand,
+    p.price_unit,
+    p.cost_unit,
+    p.base_sku,
+    p.rating,
+    p.review_count,
+
+    COALESCE(
+      json_agg(
+        DISTINCT jsonb_build_object(
+          'type', pi.type,
+          'filename_or_link', pi.filename_or_link
+        )
+      ) FILTER (WHERE pi.id IS NOT NULL),
+      '[]'
+    ) AS images,
+
+    COALESCE(
+      json_agg(
+        DISTINCT t.name
+      ) FILTER (WHERE t.id IS NOT NULL),
+      '[]'
+    ) AS tags,
+
+    COALESCE(
+      json_agg(
+        DISTINCT jsonb_build_object(
+          'size', s.code,
+          'sku', i.sku,
+          'barcode', i.barcode,
+          'units', i.units,
+          'storage', i.storage
+        )
+      ) FILTER (WHERE i.id IS NOT NULL),
+      '[]'
+    ) AS inventory
+
+  FROM products p
+  LEFT JOIN product_images pi ON pi.product_id = p.id
+  LEFT JOIN product_tags pt ON pt.product_id = p.id
+  LEFT JOIN tags t ON t.id = pt.tag_id
+  LEFT JOIN inventory i ON i.product_id = p.id
+  LEFT JOIN sizes s ON s.id = i.size_id
+`;

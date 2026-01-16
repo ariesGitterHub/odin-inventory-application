@@ -1,10 +1,16 @@
 <header>
+  <div class="title-nav-container">
   <div class="logo-title-container">
-    <img class="logo" src="images/favIcon.svg" alt="" />
+    <button class="round-button logo-button toggle-all-additional-data" type="button"><img class="logo" src="/images/favIcon.svg" alt="" />
+    </button>
     <div class="title-text-container">
       <h1 class="fun-title">Funzy Onesies!</h1>
       <h1 class="text-title">Inventory Manager</h1>
     </div>
   </div>
-  <%- include('./nav.ejs') %>
+  <%- include('./nav.ejs') %> 
+  </div>
+    <%- include('./search-filter.ejs') %>
 </header>
+
+

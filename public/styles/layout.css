@@ -21,17 +21,28 @@ header {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  /* gap: var(--default-rem-size); */
-  gap: 0.25rem;
+  gap: var(--default-rem-size);
+  /* gap: 0.25rem; */
   background-color: var(--frog-dk);
   margin-bottom: var(--default-rem-size);
   padding: var(--default-rem-size);
 }
 
+.title-nav-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .logo {
-  display: none;
-  height: 3rem;
+  height: 4rem;
   width: auto;
+}
+
+.logo-button {
+  display: none;
 }
 
 .logo-title-container {

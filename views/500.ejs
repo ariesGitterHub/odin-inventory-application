@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Server Error</title>
+  <style>
+    body { font-family: sans-serif; background: #f2f2f2; text-align: left; padding: 3rem; }
+    h1 { color: #c00; }
+  </style>
+</head>
+<body class="error-500">
+  <h1>500 - Server Error</h1>
+  <p>Something went wrong on the server.</p>
+  <% if (error) { %>
+    <pre><%= error.stack %></pre>
+  <% } %>
+  <a href="/products">Back to Home</a>
+</body>
+</html>
