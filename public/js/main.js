@@ -139,9 +139,15 @@ if (adminModal) {
   const adminForm = adminModal.querySelector("#adminLoginForm");
   const adminError = adminModal.querySelector("#adminError");
 
-  window.openAdminModal = function () {
+  // window.openAdminModal = function () {
+  //   adminModal.classList.remove("hidden");
+  // };
+
+  window.openAdminModal = function (form) {
+    pendingForm = form;
     adminModal.classList.remove("hidden");
   };
+
 
   function closeAdminModal() {
     adminModal.classList.add("hidden");
@@ -156,6 +162,59 @@ if (adminModal) {
       closeAdminModal();
     }
   });
+
+  // adminForm.addEventListener("submit", async (e) => {
+  //   e.preventDefault();
+  //   const password = adminForm.querySelector("input[name='password']").value;
+
+  //   const res = await fetch("/auth/admin", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ password }),
+  //   });
+
+  //   if (res.ok) {
+  //     closeAdminModal();
+  //     if (pendingForm) {
+  //       console.log(
+  //         "Submitting form:",
+  //         pendingForm.className,
+  //         pendingForm.action
+  //       );
+  //       pendingForm.submit();
+  //     }
+  //   } else {
+  //     adminError.textContent = "Incorrect admin password";
+  //   }
+  // });
+
+  adminForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const password = adminForm.querySelector("input[name='password']").value;
+
+    const res = await fetch("/auth/admin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password }),
+    });
+
+    if (res.ok) {
+      closeAdminModal();
+      if (pendingForm) {
+        console.log(
+          "Submitting form:",
+          pendingForm.className,
+          pendingForm.action
+        );
+        pendingForm.submit(); // submit the form that triggered the modal
+        pendingForm = null; // reset to avoid stale reference
+      }
+    } else {
+      adminError.textContent = "Incorrect admin password";
+    }
+  });
+
 
   // Handle admin password submit
   adminForm.addEventListener("submit", async (e) => {
@@ -178,12 +237,42 @@ if (adminModal) {
   });
 }
 
-
-document.querySelectorAll(".delete-form-action").forEach((form) => {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    pendingForm = form;
-    openAdminModal();
+// NOTE - Using a handler for each class will cause race conditions and side-effects that I will not like! Use one handler as per below!
+// document
+//   .querySelectorAll(
+//     ".delete-form-action, .create-item-form-action, .update-item-form-action"
+//   )
+//   // .forEach((form) => {
+//   //   form.addEventListener("submit", (e) => {
+//   //     e.preventDefault();
+//   //     pendingForm = form;
+//   //     openAdminModal();
+//   //   });
+//   // });
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   pendingForm = e.target; // always the correct form
+//   openAdminModal();
+// });
+// document
+//   .querySelectorAll(
+//     ".delete-form-action, .create-item-form-action, .update-item-form-action"
+//   )
+//   .forEach((form) => {
+//     form.addEventListener("submit", (e) => {
+//       e.preventDefault();
+//       pendingForm = form; // always points to the form that triggered submit
+//       openAdminModal(form);
+//     });
+//   });
+document
+  .querySelectorAll(
+    ".delete-form-action, .create-item-form-action, .update-item-form-action"
+  )
+  .forEach((form) => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      pendingForm = e.target; // <-- always correct form
+      openAdminModal(form);
+    });
   });
-});
-

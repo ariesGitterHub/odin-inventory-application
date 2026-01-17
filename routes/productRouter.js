@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const createProductRules = require("../validators/productValidators");
+const { createProductRules } = require("../validators/productValidators");
 const requireAdmin = require("../middleware/requireAdmin");
 
 const {
@@ -21,7 +21,7 @@ productRouter.get("/list", getProductsPage);   // search + filters
 // GET/POST create products
 productRouter.get("/create", getCreateItemPage);
 // -- Only base_sku currently have validation
-productRouter.post("/create", createProductRules, postNewProductItem);
+productRouter.post("/create", createProductRules, requireAdmin, postNewProductItem);
 
 // Static, under construction page, catch-all for anything not done or needed per this assignment
 productRouter.get("/under-construction", getUnderConstructionPage);

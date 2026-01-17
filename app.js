@@ -118,6 +118,12 @@ app.post("/auth/admin", (req, res) => {
 // app.use(methodOverride('_method'));
 
 // 7. Routers (mount here)
+// Redirect root to /products
+app.get("/", (req, res) => {
+  res.redirect("/products");
+});
+
+// Mount product routes
 app.use("/products", productRouter);
 
 // 8. 404 handler (always goes last-ish!)

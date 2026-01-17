@@ -14,4 +14,4 @@ const createProductRules = [
   )
 ];
 
-module.exports = createProductRules;
+module.exports = { createProductRules };

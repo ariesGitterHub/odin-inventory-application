@@ -1,25 +1,7 @@
-<!-- <div id="adminModal" class="modal hidden">
+ <div id="adminModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="adminModalTitle">
   <div class="modal-content">
-    <span class="close-button">&times;</span>
-    <h2>Admin Login</h2>
-
-    <form id="adminLoginForm" method="POST" action="/admin">
-      <label for="adminPassword">Password</label>
-      <input type="password" id="adminPassword" name="password" placeholder="Enter password..." required />
-      <button class="submit-button" type="submit">Login</button>
-    </form>
-
-    <p id="adminError" style="color:red; <%#= adminLoginError ? '' : 'display:none;' %>">
-      <%#= adminLoginError %>
-    </p>
-  </div>
-</div>
- -->
-
- <div id="adminModal" class="modal hidden">
-  <div class="modal-content">
-    <span class="close-button">&times;</span>
-    <h2>Admin Login</h2>
+    <button class="close-button" aria-label="Close modal">&times;</button>
+    <h2 id="adminModalTitle">Admin Login</h2>
     <form id="adminLoginForm">
       <label for="adminPassword" hidden>Password</label>
       <input
@@ -27,12 +9,13 @@
         id="adminPassword"
         name="password"
         placeholder="Enter password..."
+        autocomplete="current-password"
         required
       />
       <button class="submit-button" type="submit">
         Login
       </button>
     </form>
-    <p class="admin-error-message uppercase" id="adminError" style="color:red"></p>
+    <p id="adminError" class="admin-error-message uppercase"></p>
   </div>
 </div>

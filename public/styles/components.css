@@ -11,6 +11,7 @@ button {
   border-radius: var(--border-radius-inner);
   box-shadow: var(--box-shadow);
   color: var(--frog-black);
+    cursor: pointer;
   font-family: var(--font-title);
   font-size: var(--default-font-size);
   text-transform: uppercase;
@@ -22,7 +23,7 @@ button {
 a:hover,
 button:hover {
   border: 2px solid var(--frog-black);
-  cursor: pointer;
+  /* cursor: pointer; */
   transform: scale(1.1);
 }
 

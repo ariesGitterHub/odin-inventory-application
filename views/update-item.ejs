@@ -9,7 +9,7 @@
         <h1 class="page-title white capitalize">update existing item</h1>
           <!-- <form method="POST" action="/products/update?_method=PUT/<%#= product.id %>">
             <input type="hidden" name="_method" value="PUT"> -->
-          <form class="update-item-form" method="POST" action="/products/<%= product.id %>/update">
+          <form class="update-item-form-action" method="POST" action="/products/<%= product.id %>/update">
           <div>
             <div class="col-container">
               <!-- <div class="col-row-adjustable"> -->
@@ -126,14 +126,14 @@
                       <input class="units" type="number" name="units[]" value="<%= inv?.units ?? 0 %>" /> 
                     </div>
                    <% }) %>
-                    <script src="/js/main.js"></script>
+
                   </div>
                   <div class="button-container3">
                     <a class="cancel-button" href="/products">Cancel</a>  
-                    <button class="submit-button" type="submit">Update</button>  
+                    <button class="submit-button" type="submit">Submit</button>  
                   </div> 
                 </div>
-
+             
               </div>
 
             </div>
@@ -142,5 +142,6 @@
         </form>
       </div>
     <%#- include('./partials/footer.ejs') %>
+      <script src="/js/main.js"></script>
   </body> 
 </html>

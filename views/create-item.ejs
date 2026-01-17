@@ -10,7 +10,7 @@
     <%#- include("partials/errors.ejs") %>
     <div class="card create-item-colors">
       <h1 class="page-title black capitalize">create new item</h1>
-      <form class="create-item-form" method="POST" action="/products/create">
+      <form class="create-item-form-action" method="POST" action="/products/create">
         <%#- include('./partials/errors.ejs') %>
         <label for="product_name">onesie name</label>
         <input
@@ -184,5 +184,6 @@
     </div>
     <!-- </main> -->
     <%#- include('./partials/footer.ejs') %>
+      <script src="/js/main.js"></script>
   </body>
 </html>

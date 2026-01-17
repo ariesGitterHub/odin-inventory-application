@@ -245,19 +245,55 @@ async function getCreateItemPage(req, res, next) {
 //   }
 // }
 
+// async function postNewProductItem(req, res, next) {
+//   try {
+//     // Check validation errors
+//     const errors = validationResult(req);
+//     if (!errors.isEmpty()) {
+//       // Re-render the form with validation errors
+//       return res.status(422).render("create-item", {
+//         errors: errors.array(), // array of error messages
+//         oldInput: req.body, // pre-fill form
+//       });
+//     }
+
+//     // No validation errors, proceed as normal
+//     const data = normalizeProductForm(req.body);
+//     await postNewProduct(data);
+
+//     res.redirect("/products");
+//   } catch (err) {
+//     next(err);
+//   }
+// }
+
 async function postNewProductItem(req, res, next) {
   try {
-    // Check validation errors
+    // Check validation errors from express-validator
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      // Re-render the form with validation errors
       return res.status(422).render("create-item", {
-        errors: errors.array(), // array of error messages
-        oldInput: req.body, // pre-fill form
+        errors: errors.array(),
+        oldInput: req.body,
       });
     }
 
-    // No validation errors, proceed as normal
+    // ==========================
+    // NEW: server-side safety checks
+    // ==========================
+    if (!req.body.sizes || !Array.isArray(req.body.sizes)) {
+      return res.status(400).send("Sizes data missing or invalid");
+    }
+    if (!req.body.units || !Array.isArray(req.body.units)) {
+      return res.status(400).send("Units data missing or invalid");
+    }
+
+    // Prevent null strings from breaking localeCompare or other string ops
+    if (!req.body.product_name) req.body.product_name = "";
+    if (!req.body.brand) req.body.brand = "";
+    if (!req.body.item_type) req.body.item_type = "";
+
+    // Now safe to normalize and post
     const data = normalizeProductForm(req.body);
     await postNewProduct(data);
 
@@ -266,6 +302,7 @@ async function postNewProductItem(req, res, next) {
     next(err);
   }
 }
+
 
 async function getUpdateForm(req, res, next) {
   try {
@@ -294,15 +331,64 @@ async function getUpdateForm(req, res, next) {
 //   }
 // }
 
+// async function putUpdateProductItem(req, res, next) {
+//   try {
+//     // 1. Validate ID
+//     const id = Number(req.params.id);
+//     if (!Number.isInteger(id)) {
+//       return res.status(400).send("Invalid product ID");
+//     }
+
+//     // 2. Validation errors (reuse express-validator)
+//     const errors = validationResult(req);
+//     if (!errors.isEmpty()) {
+//       return res.status(422).render("update-item", {
+//         errors: errors.array(),
+//         product: { id, ...req.body },
+//       });
+//     }
+
+//     // 3. Ensure product exists
+//     const existingProduct = await getProductById(id);
+//     if (!existingProduct) {
+//       return res.status(404).send("Product not found");
+//     }
+
+//     // 4. Whitelist allowed fields
+//     const allowedFields = [
+//       "name",
+//       "brand",
+//       "price",
+//       "cost",
+//       "quantity",
+//       "tags",
+//       "filename",
+//     ];
+
+//     const safeBody = {};
+//     for (const key of allowedFields) {
+//       if (req.body[key] !== undefined) {
+//         safeBody[key] = req.body[key];
+//       }
+//     }
+
+//     const data = normalizeProductForm(safeBody);
+
+//     await putUpdateProduct(id, data);
+
+//     res.redirect("/products");
+//   } catch (err) {
+//     next(err);
+//   }
+// }
+
 async function putUpdateProductItem(req, res, next) {
   try {
-    // 1. Validate ID
     const id = Number(req.params.id);
     if (!Number.isInteger(id)) {
       return res.status(400).send("Invalid product ID");
     }
 
-    // 2. Validation errors (reuse express-validator)
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).render("update-item", {
@@ -311,21 +397,42 @@ async function putUpdateProductItem(req, res, next) {
       });
     }
 
-    // 3. Ensure product exists
     const existingProduct = await getProductById(id);
     if (!existingProduct) {
       return res.status(404).send("Product not found");
     }
 
-    // 4. Whitelist allowed fields
+    // ==========================
+    // NEW: server-side safety checks
+    // ==========================
+    if (!req.body.sizes || !Array.isArray(req.body.sizes)) {
+      return res.status(400).send("Sizes data missing or invalid");
+    }
+    if (!req.body.units || !Array.isArray(req.body.units)) {
+      return res.status(400).send("Units data missing or invalid");
+    }
+
+    if (!req.body.product_name) req.body.product_name = "";
+    if (!req.body.brand) req.body.brand = "";
+    if (!req.body.item_type) req.body.item_type = "";
+
+    // Whitelist allowed fields
     const allowedFields = [
-      "name",
+      "product_name",
       "brand",
-      "price",
-      "cost",
-      "quantity",
+      "price_unit",
+      "cost_unit",
       "tags",
-      "filename",
+      "sizes",
+      "units",
+      "barcodes",
+      "storage",
+      "front",
+      "rear",
+      "size", // sizing image
+      "rating",
+      "review_count",
+      "base_sku",
     ];
 
     const safeBody = {};
@@ -336,7 +443,6 @@ async function putUpdateProductItem(req, res, next) {
     }
 
     const data = normalizeProductForm(safeBody);
-
     await putUpdateProduct(id, data);
 
     res.redirect("/products");

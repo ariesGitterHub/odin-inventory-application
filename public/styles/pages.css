@@ -148,7 +148,7 @@
   text-align: center;
 }
 
-.create-item-form input {
+.create-item-form-action input {
   margin-bottom: var(--default-rem-size);
 }
 
@@ -174,7 +174,7 @@ border-radius: var(--border-radius-inner);
 padding: var(--default-rem-size);
 }
 
-.update-item-form {
+.update-item-form-action {
  /* width: 100%; */
   /* background-color: var(--rose-dk); */
   border-radius: var(--border-radius-inner);
@@ -363,7 +363,7 @@ input {
   background: linear-gradient(05deg, var(--gold), var(--gold-lt));
 }
 
-/* .create-item-form {
+/* .create-item-form-action {
 background: linear-gradient(05deg, var(--rose-dk), var(--rose-lt));
 } */
 
@@ -378,7 +378,7 @@ background: linear-gradient(05deg, var(--rose-dk), var(--rose-lt));
   color: var(--frog-black);
 }
 
-.update-item-form {
+.update-item-form-action {
 background: linear-gradient(05deg, var(--rose-dk), var(--rose-lt));
 }
 
@@ -651,13 +651,31 @@ ul {
 }
 
 .close-button {
+  height: fit-content;
+  width: fit-content;
   position: absolute;
   right: 10px;
   top: 10px;
+  background-color: transparent;
+  border: none;
+  border-radius: none;
+  box-shadow: none;
   cursor: pointer;
   font-size: 2rem;
+  /* margin: 0;
+  padding: 0; */
+}
+
+.close-button:hover {
+  border: none;
+  color: var(--red-dk);
+  transform: scale(2);
 }
 
 .admin-error-message {
+  background-color: var(--gold);
+  border-radius: var(--border-radius-inner);
+  color: var(--red-dk);
   margin: var(--default-rem-size) 0;
+  text-align: center;
 }
