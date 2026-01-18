@@ -1,6 +1,5 @@
 <nav>
   <% const isHome = currentPath === '/products' || currentPath.startsWith('/products/list') %>
-
   <div class="wide">
     <a
       class="nav-item-wide"
@@ -9,8 +8,6 @@
       >visit store</a
     >
     <a class="nav-item-wide" href="/products">home</a>
-    <!-- <button class="nav-item-wide">search</button>
-    <button class="nav-item-wide toggle-filter-container">filter</button> -->
     <% if (isHome) { %>
     <button class="nav-item-wide toggle-search-container">search</button>
     <button class="nav-item-wide toggle-filter-container">filter</button>
@@ -32,10 +29,6 @@
         <img src="/images/navButtons/home.svg" alt="Home icon" />
         <span class="tooltiptext">Home</span>
       </a>
-      <!-- <button class="nav-item-short">
-        <img src="/images/navButtons/search.svg" alt="Search icon" />
-        <span class="tooltiptext">Search</span>
-      </button> -->
       <% if (isHome) { %>
       <button class="nav-item-short toggle-search-container">
         <img src="/images/navButtons/search.svg" alt="Search icon" />
@@ -44,10 +37,6 @@
       <% } %>
     </div>
     <div class="short">
-      <!-- <button class="nav-item-short toggle-filter-container">
-        <img src="/images/navButtons/filter.svg" alt="Filter icon" />
-        <span class="tooltiptext">Filter</span>
-      </button> -->
       <% if (isHome) { %>
       <button class="nav-item-short toggle-filter-container">
         <img src="/images/navButtons/filter.svg" alt="Filter icon" />

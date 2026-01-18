@@ -1,13 +1,13 @@
 /* NOTE - Start with a mobile first mindset */
 /* ...and use media queries for larger views */
 
-/* VARIABLES, RESETS & PRESETS */
+/* VARIABLES, PRESETS & RESETS */
 @import "./base.css";
 
 /* BODY, HEADER, NAV, MAIN, FOOTER */
 @import "./layout.css";
 
-/* BUTTONS, BUTTON-LIKE ELEMENTS, CARDS, ERROR COMPONENTS */
+/* (GENERIC) BUTTONS, BUTTON-LIKE ELEMENTS, TOOLTIPS */
 @import "./components.css";
 
 /* QUICK-VIEW, CREATE-ITEM, UPDATE-ITEM, BUTTON CONTAINERS, PAGE SPECIFIC BUTTONS, VISUAL FLAIR, FORM ELEMENTS, AND MORE*/

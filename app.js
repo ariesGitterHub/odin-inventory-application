@@ -19,7 +19,7 @@ app.set("view engine", "ejs");
 
 // 4. Global middleware
 app.use(express.urlencoded({ extended: true }))
-// ???
+
 app.use(express.json());
 
 app.use(
@@ -65,42 +65,6 @@ app.post("/auth/admin", (req, res) => {
 })
 
 // 5 Admin login routes, NOTE - once my/your admin routes grow, move to their own route, e.g., routes/adminRouter.js with this code: const adminRouter = require("./routes/adminRouter"); app.use("/admin", adminRouter);
-// app.get("/admin", (req, res) => {
-//   res.render("admin-login");
-// });
-
-// app.post("/admin", (req, res) => {
-//   const { password } = req.body;
-
-//   if (password === process.env.ADMIN_PASSWORD) {
-//     req.session.isAdmin = true;
-//     return res.redirect("/products");
-//   }
-
-//   res.status(401).render("admin-login", {
-//     error: "Incorrect password",
-//   });
-// });
-
-// app.post("/admin", (req, res) => {
-//   const { password } = req.body;
-
-//   if (password === process.env.ADMIN_PASSWORD) {
-//     req.session.isAdmin = true;
-//     return res.redirect("/products");
-//   }
-
-//   // If using modal, render current page with error message
-//   res.status(401).render("index", {
-//     adminLoginError: "Incorrect password",
-//     // Keep other locals as needed
-//     products: [], // or pass products if on index
-//     filterOptions: { brands: [], price: [], rating: [] },
-//     activeFilters: {},
-//   });
-// });
-
-// ???
 // Admin auth endpoint (modal-based, no rendering)
 app.post("/auth/admin", (req, res) => {
   const { password } = req.body;

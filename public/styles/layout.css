@@ -1,6 +1,6 @@
 /* BODY */
 body {
-  flex: 1; /* Always a good reminder: this pushes the footer down */
+  flex: 1; /* Always a good reminder: this pushes the footer down - I don't know if this is working*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,7 +22,6 @@ header {
   justify-content: center;
   flex-wrap: wrap;
   gap: var(--default-rem-size);
-  /* gap: 0.25rem; */
   background-color: var(--frog-dk);
   margin-bottom: var(--default-rem-size);
   padding: var(--default-rem-size);

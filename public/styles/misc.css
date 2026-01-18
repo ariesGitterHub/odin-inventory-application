@@ -12,15 +12,15 @@
 }
 
 .italic {
-    font-style: italic;
+  font-style: italic;
 }
 
 .white {
-    color: var(--white);
+  color: var(--white);
 }
 
 .black {
-    color: var(--black);
+  color: var(--black);
 }
 
 .hidden {

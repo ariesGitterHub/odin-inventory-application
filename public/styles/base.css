@@ -33,7 +33,7 @@
   --box-shadow: 0 1px 5px var(--frog-black);
 }
 
-/* RESETS & PRESETS */
+/* PRESETS & RESETS */
 
 *,
 *::before,
@@ -97,7 +97,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-a, 
+a,
 button,
 h1,
 h2,

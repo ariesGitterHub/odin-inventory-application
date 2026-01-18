@@ -1,4 +1,4 @@
-// ALL CODE THAT TALKS TO THE DATABASE GOES HERE, SO ALL SQL AND SEARCH
+// ALL CODE THAT TALKS TO THE DATABASE GOES HERE - THIS MEANS ALL SQL AND SEARCH/FILTER
 
 const pool = require("./pool");
 
@@ -169,8 +169,8 @@ async function getAllSearchFilterProducts(filters = {}) {
     SELECT
       p.id,
       p.product_name,
-      p.item_type,
       p.brand,
+      p.item_type,
       p.price_unit,
       p.cost_unit,
       p.base_sku,
@@ -333,7 +333,7 @@ async function getAllSearchFilterProducts(filters = {}) {
 
 async function getFilterOptions() {
   const brandResult = await pool.query(
-    `SELECT DISTINCT brand FROM products ORDER BY brand;`
+    `SELECT DISTINCT brand FROM products ORDER BY brand;`,
   );
 
   const numericResult = await pool.query(`
@@ -371,18 +371,18 @@ async function getAllTags() {
 async function getProductById(productId) {
   const client = await pool.connect();
   try {
-    // 1️⃣ Get main product
+    // Get main product
     const productRes = await client.query(
       `SELECT * FROM products WHERE id = $1`,
-      [productId]
+      [productId],
     );
     const product = productRes.rows[0];
     if (!product) return null;
 
-    // 2️⃣ Get images
+    // Get images
     const imagesRes = await client.query(
       `SELECT type, filename_or_link FROM product_images WHERE product_id = $1`,
-      [productId]
+      [productId],
     );
     product.imagesByType = {};
     imagesRes.rows.forEach((row) => {
@@ -390,24 +390,24 @@ async function getProductById(productId) {
       product.imagesByType[row.type].push(row.filename_or_link);
     });
 
-    // 3️⃣ Get tags
+    // Get tags
     const tagsRes = await client.query(
       `SELECT t.name
        FROM tags t
        JOIN product_tags pt ON t.id = pt.tag_id
        WHERE pt.product_id = $1`,
-      [productId]
+      [productId],
     );
     product.tags = tagsRes.rows.map((r) => r.name);
 
-    // 4️⃣ Get inventory grouped by size
+    // Get inventory grouped by size
     const inventoryRes = await client.query(
       `SELECT s.code as size, i.sku, i.barcode, i.units, i.storage
        FROM inventory i
        JOIN sizes s ON i.size_id = s.id
        WHERE i.product_id = $1
        ORDER BY s.code`,
-      [productId]
+      [productId],
     );
     product.inventoryBySize = {};
     inventoryRes.rows.forEach((row) => {
@@ -427,12 +427,11 @@ async function getProductById(productId) {
   }
 }
 
-
 // --- POST a new product item ---
 async function postNewProduct({
   product_name,
-  item_type,
   brand,
+  item_type,
   price_unit,
   cost_unit,
   base_sku,
@@ -447,13 +446,13 @@ async function postNewProduct({
   try {
     await client.query("BEGIN");
 
-    /* 1️⃣ Insert product */
+    /* Insert product */
     const productRes = await client.query(
       `
       INSERT INTO products (
         product_name,
+        brand,        
         item_type,
-        brand,
         price_unit,
         cost_unit,
         base_sku,
@@ -465,30 +464,30 @@ async function postNewProduct({
       `,
       [
         product_name,
-        item_type,
         brand,
+        item_type,
         price_unit,
         cost_unit,
         base_sku,
         rating,
         review_count,
-      ]
+      ],
     );
 
     const productId = productRes.rows[0].id;
 
-    /* 2️⃣ Insert images */
+    /* Insert images */
     for (const [type, filename_or_link] of Object.entries(images)) {
       await client.query(
         `
         INSERT INTO product_images (product_id, type, filename_or_link)
         VALUES ($1, $2, $3);
         `,
-        [productId, type, filename_or_link]
+        [productId, type, filename_or_link],
       );
     }
 
-    /* 3️⃣ Insert tags */
+    /* Insert tags */
     for (const tag of tags) {
       const tagRes = await client.query(
         `
@@ -497,7 +496,7 @@ async function postNewProduct({
         ON CONFLICT (name) DO UPDATE SET name = EXCLUDED.name
         RETURNING id;
         `,
-        [tag]
+        [tag],
       );
 
       const tagId = tagRes.rows[0].id;
@@ -508,11 +507,11 @@ async function postNewProduct({
         VALUES ($1, $2)
         ON CONFLICT DO NOTHING;
         `,
-        [productId, tagId]
+        [productId, tagId],
       );
     }
 
-    /* 4️⃣ Insert inventory */
+    /* Insert inventory */
     for (const { size, barcode, units, storage } of stock) {
       const sizeRes = await client.query(
         `
@@ -521,7 +520,7 @@ async function postNewProduct({
         ON CONFLICT (code) DO UPDATE SET code = EXCLUDED.code
         RETURNING id;
         `,
-        [size]
+        [size],
       );
 
       const sizeId = sizeRes.rows[0].id;
@@ -545,7 +544,7 @@ async function postNewProduct({
             product_id = EXCLUDED.product_id,
             size_id = EXCLUDED.size_id;
         `,
-        [productId, sizeId, sku, barcode, units, storage]
+        [productId, sizeId, sku, barcode, units, storage],
       );
     }
 
@@ -565,8 +564,8 @@ async function putUpdateProduct(
   productId,
   {
     product_name,
-    item_type,
     brand,
+    item_type,
     price_unit,
     cost_unit,
     base_sku,
@@ -575,20 +574,20 @@ async function putUpdateProduct(
     images = {},
     tags = [],
     stock = [],
-  }
+  },
 ) {
   const client = await pool.connect();
 
   try {
     await client.query("BEGIN");
 
-    // 1️⃣ Update product
+    // Update product
     await client.query(
       `
       UPDATE products SET
         product_name = $1,
-        item_type = $2,
-        brand = $3,
+        brand = $2,        
+        item_type = $3,
         price_unit = $4,
         cost_unit = $5,
         base_sku = $6,
@@ -598,18 +597,18 @@ async function putUpdateProduct(
       `,
       [
         product_name,
-        item_type,
         brand,
+        item_type,
         price_unit,
         cost_unit,
         base_sku,
         rating,
         review_count,
         productId,
-      ]
+      ],
     );
 
-    // 2️⃣ Images
+    // Images
     await client.query(`DELETE FROM product_images WHERE product_id = $1`, [
       productId,
     ]);
@@ -619,11 +618,11 @@ async function putUpdateProduct(
         INSERT INTO product_images (product_id, type, filename_or_link)
         VALUES ($1, $2, $3);
         `,
-        [productId, type, filename_or_link]
+        [productId, type, filename_or_link],
       );
     }
 
-    // 3️⃣ Tags
+    // Tags
     await client.query(`DELETE FROM product_tags WHERE product_id = $1`, [
       productId,
     ]);
@@ -635,7 +634,7 @@ async function putUpdateProduct(
         ON CONFLICT (name) DO UPDATE SET name = EXCLUDED.name
         RETURNING id;
         `,
-        [tag]
+        [tag],
       );
 
       await client.query(
@@ -644,11 +643,11 @@ async function putUpdateProduct(
         VALUES ($1, $2)
         ON CONFLICT DO NOTHING;
         `,
-        [productId, tagRes.rows[0].id]
+        [productId, tagRes.rows[0].id],
       );
     }
 
-    // 4️⃣ Inventory
+    // Inventory
     for (const { size, barcode, units, storage } of stock) {
       const sizeRes = await client.query(
         `
@@ -657,7 +656,7 @@ async function putUpdateProduct(
         ON CONFLICT (code) DO UPDATE SET code = EXCLUDED.code
         RETURNING id;
         `,
-        [size]
+        [size],
       );
 
       const sizeId = sizeRes.rows[0].id;
@@ -681,7 +680,7 @@ async function putUpdateProduct(
             product_id = EXCLUDED.product_id,
             size_id = EXCLUDED.size_id;
         `,
-        [productId, sizeId, sku, barcode, units, storage]
+        [productId, sizeId, sku, barcode, units, storage],
       );
     }
 
@@ -693,7 +692,6 @@ async function putUpdateProduct(
     client.release();
   }
 }
-
 
 // NOT USING THIS..buggy on put. UPSERT/combo post/put -  this allows me to combine insert and update into one, BUT this works for POST of new products but not for PUT updates. Go back to basics and separate out POST and PUT from queries to controllers to routes...
 // async function upsertProduct({
@@ -855,22 +853,17 @@ async function putUpdateProduct(
 //   }
 // }
 
-
 // --- Delete a product item by id ---
 async function deleteProduct(id) {
   await pool.query("DELETE FROM products WHERE id = $1", [id]);
 }
 
 module.exports = {
-  // getAllProducts,
-  // getSearchProducts,
-  // getFilterOptions,
   getAllSearchFilterProducts,
   getFilterOptions,
   getAllTags,
   getProductById,
   postNewProduct,
   putUpdateProduct,
-  // upsertProduct,
   deleteProduct,
 };

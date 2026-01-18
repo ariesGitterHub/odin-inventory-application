@@ -1,4 +1,4 @@
-// The actual seed data that will will seeded in seedData.js
+// The actual data that will will seeded in seedData.js
 
 const items = [
   {
@@ -1389,6 +1389,4 @@ const items = [
   },
 ];
 
-module.exports = {
-  items,
-};
+module.exports = { items };

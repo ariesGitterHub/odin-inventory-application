@@ -3,8 +3,8 @@
 function normalizeProductForm(body) {
   const {
     product_name,
-    item_type,
     brand,
+    item_type,
     price_unit,
     cost_unit,
     base_sku,
@@ -20,13 +20,13 @@ function normalizeProductForm(body) {
     storage,
   } = body;
 
-  // images
+  // Images
   const images = {};
   if (front) images.front = front;
   if (rear) images.rear = rear;
   if (size) images.size = size;
 
-  // tags
+  // Tags
   const tagList = tags
     ? tags
         .split(",")
@@ -34,7 +34,7 @@ function normalizeProductForm(body) {
         .filter(Boolean)
     : [];
 
-  // stock
+  // Stock
   const stock = [];
 
   if (sizes) {
@@ -53,44 +53,47 @@ function normalizeProductForm(body) {
     }
   }
 
-//   return {
-//     product_name,
-//     item_type,
-//     brand,
-//     price_unit,
-//     cost_unit,
-//     base_sku,
-//     rating,
-//     review_count,
-//     images,
-//     tags: tagList,
-//     stock,
-//   };
-return {
-  product_name:
-    typeof product_name === "string" ? product_name.trim().toLowerCase() : null,
+  //   return {
+  //     product_name,
+  //     item_type,
+  //     brand,
+  //     price_unit,
+  //     cost_unit,
+  //     base_sku,
+  //     rating,
+  //     review_count,
+  //     images,
+  //     tags: tagList,
+  //     stock,
+  //   };
 
-  item_type:
-    typeof item_type === "string" ? item_type.trim().toLowerCase() : null,
+  return {
+    product_name:
+      typeof product_name === "string"
+        ? product_name.trim().toLowerCase()
+        : null,
 
-  brand: typeof brand === "string" ? brand.trim().toLowerCase() : null,
+    item_type:
+      typeof item_type === "string" ? item_type.trim().toLowerCase() : null,
 
-  price_unit,
-  cost_unit,
+    brand: typeof brand === "string" ? brand.trim().toLowerCase() : null,
 
-  base_sku: typeof base_sku === "string" ? base_sku.trim().toUpperCase() : null,
+    price_unit,
+    cost_unit,
 
-  rating,
-  review_count,
-  images,
+    base_sku:
+      typeof base_sku === "string" ? base_sku.trim().toUpperCase() : null,
 
-  tags: tagList
-    .filter((t) => typeof t === "string")
-    .map((t) => t.trim().toLowerCase()),
+    rating,
+    review_count,
+    images,
 
-  stock,
-};
+    tags: tagList
+      .filter((t) => typeof t === "string")
+      .map((t) => t.trim().toLowerCase()),
 
+    stock,
+  };
 }
 
 module.exports = normalizeProductForm;

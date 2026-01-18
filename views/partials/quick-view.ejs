@@ -1,6 +1,5 @@
 <% if (products && products.length) { %> 
-  <% products.sort((a, b) => a.product_name.localeCompare(b.product_name))
-.forEach(product => { %>
+  <% products.sort((a, b) => a.product_name.localeCompare(b.product_name)).forEach(product => { %>
     <div class="card quick-view-colors">
       <div class="main-data">
           <h1>
@@ -14,7 +13,7 @@
               <% product.imagesByType.front && product.imagesByType.front.forEach(filename_or_link => { %>
               <img
                 class="product-image"
-                src="<%= filename_or_link.startsWith('http') ? filename_or_link : '/images/' + filename_or_link %>"
+                src="<%= filename_or_link.startsWith('http') ? filename_or_link : '/images/products/' + filename_or_link %>"
                 alt="<%= product.product_name %> front view"
               />
               <% }) %> 
@@ -22,7 +21,7 @@
               product.imagesByType.rear.forEach(filename_or_link => { %>
               <img
                 class="product-image"
-                src="<%= filename_or_link.startsWith('http') ? filename_or_link : '/images/' + filename_or_link %>"
+                src="<%= filename_or_link.startsWith('http') ? filename_or_link : '/images/products/' + filename_or_link %>"
                 alt="<%= product.product_name %> rear view"
               />
               <% }) %>
@@ -157,7 +156,6 @@
       </div>
     </div>
   <% }) %>
-
 <% } else { %>
   <p class="uppercase">no products found</p>
 <% } %>

@@ -45,7 +45,7 @@ async function main() {
   );
 `);
 
-await client.query(`
+  await client.query(`
   -- CREATE TABLE IF NOT EXISTS sizes (
   CREATE TABLE sizes (
     id SERIAL PRIMARY KEY,
@@ -53,7 +53,7 @@ await client.query(`
   );
 `);
 
-await client.query(`
+  await client.query(`
   -- CREATE TABLE IF NOT EXISTS product_images (
   CREATE TABLE product_images (
     id SERIAL PRIMARY KEY,
@@ -114,7 +114,7 @@ await client.query(`
           item.base_sku,
           item.rating,
           item.number_reviews,
-        ]
+        ],
       );
 
       const productId = productRes.rows[0].id;
@@ -128,7 +128,7 @@ await client.query(`
         ON CONFLICT (name) DO UPDATE SET name = EXCLUDED.name
         RETURNING id;
         `,
-          [tag]
+          [tag],
         );
 
         const tagId = tagRes.rows[0].id;
@@ -139,7 +139,7 @@ await client.query(`
         VALUES ($1, $2)
         ON CONFLICT DO NOTHING;
         `,
-          [productId, tagId]
+          [productId, tagId],
         );
       }
 
@@ -150,7 +150,7 @@ await client.query(`
         INSERT INTO product_images (product_id, type, filename_or_link)
         VALUES ($1, $2, $3);
         `,
-          [productId, type, filename_or_link]
+          [productId, type, filename_or_link],
         );
       }
 
@@ -163,7 +163,7 @@ await client.query(`
         ON CONFLICT (code) DO UPDATE SET code = EXCLUDED.code
         RETURNING id;
         `,
-          [size]
+          [size],
         );
 
         const sizeId = sizeRes.rows[0].id;
@@ -178,8 +178,9 @@ await client.query(`
         //   );
 
         // comment out above/try below ... ERROR happens if you run it multiple times without cleaning the table, or if item.base_sku + size produces the same SKU more than once.
+
         await client.query(
-        `
+          `
         INSERT INTO inventory (product_id, size_id, sku, barcode, units, storage)
         VALUES ($1, $2, $3, $4, $5, $6)
         ON CONFLICT (sku) DO UPDATE
@@ -189,19 +190,19 @@ await client.query(`
             product_id = EXCLUDED.product_id,
             size_id = EXCLUDED.size_id; 
         `,
-          [productId, sizeId, sku, barcode, units, storage]
+          [productId, sizeId, sku, barcode, units, storage],
         );
       }
-      // ✅ All inserts for THIS item succeeded
+      // All inserts for THIS item succeeded
       await client.query("COMMIT");
     } catch (err) {
-      // ❌ Something failed for THIS item
+      // Something failed for THIS item
       await client.query("ROLLBACK");
       console.error("Failed seeding item:", item.base_sku, err.message);
-      throw err; // stop seeding and surface the error
+      throw err; // Stops seeding and surface the error
     }
   }
-  //  TODO - ON CONFLICT.....add barcode to this???
+
   await client.end();
   console.log("Product seeding complete!");
 }

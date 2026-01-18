@@ -1,4 +1,4 @@
-// decimals = number of decimal places you want (default 2 for currency)
+// Decimals = number of decimal places you want (default 2 for currency)
 
 // Multiply → round → divide avoids floating-point artifacts
 

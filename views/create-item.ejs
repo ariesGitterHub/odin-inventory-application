@@ -5,13 +5,11 @@
   </head>
   <body>
     <%- include('./partials/header.ejs') %>
-    <!-- <main> -->
-      <!-- NOTE - keep below commented out and use browser for validation warning messages; also keep the server-side validation check of ".matches(/^[A-Z]{5}[0-9]{3}[A-Z]{3}-$/i)" in productRouter.js  -->
+    <!-- NOTE - keep below commented out and use browser for validation warning messages; also keep the server-side validation check of ".matches(/^[A-Z]{5}[0-9]{3}[A-Z]{3}-$/i)" in productRouter.js  -->
     <%#- include("partials/errors.ejs") %>
     <div class="card create-item-colors">
       <h1 class="page-title black capitalize">create new item</h1>
       <form class="create-item-form-action" method="POST" action="/products/create">
-        <%#- include('./partials/errors.ejs') %>
         <label for="product_name">onesie name</label>
         <input
           type="text"
@@ -20,7 +18,6 @@
           placeholder="Enter animal type"
           required
         />
-
         <label for="brand">brand</label>
         <input
           type="text"
@@ -29,19 +26,15 @@
           placeholder="Enter brand name"
           required
         />
-
         <label for="item_type">item type</label>
         <input
           type="text"
           id="item_type"
           name="item_type"
-          value="adult onesie"
+          placeholder="Enter item type"
+          required
         />
-
         <div class="price-cost-container">
-          <!-- TODO - validate these as currency -->
-          <!-- placeholder="They pay (00.00)" -->
-          <!-- placeholder="You paid (00.00)" -->
           <div class="col-container">
             <label for="price_unit">price per unit</label>
             <input
@@ -63,8 +56,7 @@
             />
           </div>
         </div>
-
-        <!-- TODO - definitely enforce validation pattern on base sku -->
+        <!-- Definitely enforce validation pattern on base sku -->
         <label for="base_sku"
           >base sku
           <span class="lowercase italic"
@@ -81,10 +73,7 @@
           title="Requires: 5 letters + 3 digits + 3 letters + '-'"
           required
         />
-
-        <!-- TODO - rating and reviews start with a default of 0; 
-             
-            FUN FACT: an input's value will still be posted to the server if you use the hidden attribute-->
+        <!-- Rating and reviews start with a default of 0; FUN FACT: an input's value will still be posted to the server if you use the hidden attribute-->
         <label for="rating" hidden>rating</label>
         <input type="number" id="rating" name="rating" value="0" hidden />
         <label for="review_count" hidden>reviews</label>
@@ -95,7 +84,6 @@
           value="0"
           hidden
         />
-
         <label for="front"
           >front image
           <span class="lowercase italic">(filename or link)</span></label
@@ -129,8 +117,6 @@
           value="n/a (add during a review update)"
           required
         />
-
-        <!-- TODO - figure out starting tags -->
         <label for="tags"
           >tags <span class="lowercase italic">(comma separated)</span></label
         >
@@ -153,25 +139,20 @@
           <p class="capitalize">no current tags found</p>
           <% } %>
         </div>
-        <script src="/helpers/addTag.js"></script>
-        <!-- TODO - figure out starting inventory with size, barcode, units, storage-->
+        <script src="/js/modules/addTag.js"></script>
         <label hidden>initial inventory</label>
-
         <input type="text" name="sizes[]" value="S" hidden />
         <input type="text" name="barcodes[]" value="n/a" hidden />
         <input type="number" name="units[]" value="0" hidden />
         <input type="text" name="storage[]" value="n/a" hidden />
-
         <input type="text" name="sizes[]" value="M" hidden />
         <input type="text" name="barcodes[]" value="n/a" hidden />
         <input type="number" name="units[]" value="0" hidden />
         <input type="text" name="storage[]" value="n/a" hidden />
-
         <input type="text" name="sizes[]" value="L" hidden />
         <input type="text" name="barcodes[]" value="n/a" hidden />
         <input type="number" name="units[]" value="0" hidden />
         <input type="text" name="storage[]" value="n/a" hidden />
-
         <input type="text" name="sizes[]" value="XL" hidden />
         <input type="text" name="barcodes[]" value="n/a" hidden />
         <input type="number" name="units[]" value="0" hidden />
@@ -182,8 +163,7 @@
         </div>
       </form>
     </div>
-    <!-- </main> -->
     <%#- include('./partials/footer.ejs') %>
-      <script src="/js/main.js"></script>
+    <script src="/js/main.js"></script>
   </body>
 </html>
