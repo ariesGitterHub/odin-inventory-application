@@ -62,6 +62,15 @@
     border-radius: var(--border-radius-inner);
   }
 }
+@media (min-width: 572px) {
+  .brand-fieldset {
+    width: fit-content;
+  }
+
+    .range-fieldset {
+    width: fit-content;
+  }
+}
 
 @media (min-width: 700px) {
   :root {
