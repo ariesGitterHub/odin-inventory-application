@@ -17,5 +17,6 @@ module.exports = new Pool({
   port: Number(process.env.PG_PORT), // The default port
   max: 10, // Optional: max clients in the pool
   ssl: isLocal ? false : { rejectUnauthorized: false },
+  family: 4,
 });
 
