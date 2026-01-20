@@ -459,7 +459,8 @@ input {
 /* SEARCH and FILTER */
 .search-filter-container {
   min-width: 300px;
-  margin: auto 0;
+  /* margin: auto 0; */
+  padding: 0.25rem;
 }
 
 /* .search-container,
@@ -475,7 +476,7 @@ input {
   gap: var(--default-rem-size);
   font-family: var(--font-text);
   /* font-size: var(--default-font-size); */
-  margin-bottom: 0.125rem;
+  margin-bottom: 0.25rem;
 }
 
 .filter-container {
