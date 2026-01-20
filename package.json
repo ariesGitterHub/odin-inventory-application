@@ -18,7 +18,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node db/seedData.js",
     "start": "node app.js",
-    "prod": "NODE.ENV=production nom run seed && app.js",
+    "prod": "NODE.ENV=production npm run seed && app.js",
     "dev": "nodemon app.js"
   },
   "repository": {
