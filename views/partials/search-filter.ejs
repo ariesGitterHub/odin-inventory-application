@@ -1,12 +1,13 @@
+<div class="search-filter-container">
 <!-- Search -->
-<form class="search-container hidden" method="GET" action="/products/list">
+ <form class="search-container hidden" method="GET" action="/products/list">
   <label class="uppercase white" for="search" hidden>Search</label>
   <input
     id="search"
     name="q"
     class="search-bar"
     type="text"
-    placeholder="Search by onesie name..."
+    placeholder="Search by name..."
     value="<%= typeof search !== 'undefined' && search ? search : '' %>"
   />
   <button class="submit-button" type="submit">Search</button>
@@ -164,3 +165,5 @@
     </button>
   </div>
 </form>
+</div>
+

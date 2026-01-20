@@ -23,8 +23,9 @@ header {
   flex-wrap: wrap;
   gap: var(--default-rem-size);
   background-color: var(--frog-dk);
-  margin-bottom: var(--default-rem-size);
-  padding: var(--default-rem-size);
+  /* margin-bottom: var(--default-rem-size); */
+  margin-bottom: 0.25rem;
+  /* padding: var(--default-rem-size); */
 }
 
 .title-nav-container {
@@ -36,7 +37,7 @@ header {
 }
 
 .logo {
-  height: 4rem;
+  height: var(--default-logo-size);
   width: auto;
 }
 
@@ -92,7 +93,7 @@ nav .short {
 }
 
 nav .short img {
-  height: 1.125rem;
+  height: 1rem;
   width: auto;
 }
 

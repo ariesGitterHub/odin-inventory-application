@@ -2,7 +2,7 @@
 @media (min-width: 400px) {
   :root {
     --default-text-title: 1.25rem;
-    --default-search-filter-w: 33ch;
+    --default-search-bar-w: 23.5ch;
   }
 
   nav .short img {
@@ -10,17 +10,24 @@
     width: auto;
   }
 
-  .card {
+  /* .card {
     width: 350px;
+  } */
+}
+
+@media (min-width: 450px) {
+  .card {
+    width: 410px;
   }
 }
 
 @media (min-width: 500px) {
   :root {
-    --default-fun-title: 1.75rem;
-    --default-text-title: 1.4rem;
-    --default-rem-size: 0.75rem;
-    --default-search-filter-w: 41ch;
+    --default-fun-title: 1.5rem;
+    --default-text-title: 1.25rem;
+    --default-font-size: 1rem;
+    --default-rem-size: 0.7rem;
+    --default-search-bar-w: 40.5ch;
   }
 
   .logo-button {
@@ -36,9 +43,6 @@
     width: auto;
   }
 
-  .card {
-    width: 410px;
-  }
 
   .col-row-adjustable {
     flex-direction: row;
@@ -76,6 +80,7 @@
   :root {
     --default-fun-title: 1.75rem;
     --default-text-title: 1.45rem;
+    --default-logo-size: 4rem;
     --default-rem-size: 1rem;
   }
 
@@ -107,7 +112,7 @@
   }
 
   .card {
-    width: 470px;
+    width: 450px;
   }
 }
 
@@ -115,6 +120,7 @@
   :root {
     --default-font-size: 1.125rem;
     --default-rem-size: 1.125rem;
+    --default-search-bar-w: 50ch;
   }
 
   .title-nav-container {
@@ -130,6 +136,11 @@
     width: 12rem;
     font-size: 1.25rem;
   }
+
+    .card {
+    width: 500px;
+  
+}
 
   .product-image {
     height: 10.5rem;

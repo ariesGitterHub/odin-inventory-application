@@ -24,11 +24,12 @@
   --border-radius-outer: 1rem;
   --border-radius-inner: 0.5rem;
 
-  --default-fun-title: 1.25rem;
-  --default-text-title: 1.025rem;
-  --default-font-size: 1rem;
-  --default-rem-size: 0.65rem;
-  --default-search-filter-w: 30ch;
+  --default-fun-title: 1.125rem;
+  --default-text-title: 1rem;
+  --default-font-size: 0.9rem;
+  --default-rem-size: 0.4rem;
+  --default-logo-size: 3rem;
+  --default-search-bar-w: 17ch;
 
   --box-shadow: 0 1px 5px var(--frog-black);
 }

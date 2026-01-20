@@ -14,6 +14,10 @@
   padding: var(--default-rem-size);
 }
 
+.main-data {
+  width: 100%;
+}
+
 .main-data h1 {
   margin-bottom: -0.875rem;
   text-transform: uppercase;
@@ -120,7 +124,7 @@
 
 .inventory-notifications h2,
 .product-tags h2 {
-  font-size: 0.95rem;
+  font-size: var(--default-font-size);
   margin: 0;
 }
 
@@ -239,7 +243,7 @@
 .cancel-button,
 .show-inventory-type-button,
 .tag-cloud-item-button {
-  padding: 0.25rem;
+  padding: 0.125rem;
 }
 
 .card-button1,
@@ -273,7 +277,7 @@
 .submit-button,
 .cancel-button {
   height: 2rem;
-  width: 8rem;
+  width: 6rem;
 }
 
 .submit-button:hover,
@@ -307,7 +311,9 @@
   height: 1.75rem;
   width: fit-content;
   font-family: var(--font-text);
-  font-size: var(--default-rem-size);
+  font-size: var(--default-font-size);
+    padding: 0 0.25rem;
+  text-transform: lowercase;
 }
 
 .tag-cloud-item-button:hover {
@@ -366,7 +372,7 @@ input {
 }
 
 .currency-backdrop {
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -451,19 +457,25 @@ input {
 }
 
 /* SEARCH and FILTER */
-.search-container,
-.filter-container {
-  width: var(--default-search-filter-w);
+.search-filter-container {
+  min-width: 300px;
+  margin: auto 0;
 }
 
+/* .search-container,
+.filter-container {
+  min-width: 325px;
+} */
+
 .search-container {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--default-rem-size);
   font-family: var(--font-text);
-  font-size: var(--default-font-size);
-  margin: var(--default-rem-size);
+  /* font-size: var(--default-font-size); */
+  margin-bottom: 0.125rem;
 }
 
 .filter-container {
@@ -474,12 +486,13 @@ input {
   justify-content: center;
   gap: var(--default-rem-size);
   color: var(--white);
-  font-size: var(--default-font-size);
-  padding: var(--default-rem-size);
+  /* font-size: var(--default-font-size); */
+  /* padding: var(--default-rem-size); */
 }
 
 .search-bar {
   height: 2rem;
+  width: var(--default-search-bar-w);
 }
 
 fieldset {
@@ -543,7 +556,7 @@ fieldset {
 .range-fieldset label input {
   height: 2rem;
   width: 6ch;
-  font-size: var(--default-font-size);
+  /* font-size: var(--default-font-size); */
 }
 
 /* ERROR COMPONENTS */
@@ -614,7 +627,7 @@ ul {
   border-radius: none;
   box-shadow: none;
   cursor: pointer;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .close-button:hover {

@@ -77,7 +77,6 @@ app.post("/auth/admin", (req, res) => {
   res.sendStatus(401);
 });
 
-
 // 6. Method override (BEFORE routes) - NOT USED
 // app.use(methodOverride('_method'));
 
