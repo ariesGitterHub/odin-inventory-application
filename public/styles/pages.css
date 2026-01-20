@@ -543,6 +543,10 @@ fieldset {
   flex-wrap: nowrap;
 }
 
+.range-fieldset legend {
+  margin-bottom: -0.7rem;
+}
+
 .range-fieldset label {
   height: fit-content;
   width: fit-content;
