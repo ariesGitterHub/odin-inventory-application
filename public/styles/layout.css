@@ -127,6 +127,7 @@ footer {
   color: var(--white);
   padding: var(--default-rem-size);
   background-color: var(--frog-dk);
+  margin-top: var(--default-rem-size);
   padding: var(--default-rem-size);
   text-align: center;
 }
