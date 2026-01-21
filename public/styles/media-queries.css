@@ -2,20 +2,20 @@
 @media (min-width: 400px) {
   :root {
     --default-text-title: 1.25rem;
-    --default-search-bar-w: 23.5ch;
+    --default-search-bar-w: 27ch;
   }
 
   nav .short img {
     height: 1.5rem;
     width: auto;
   }
-
-  /* .card {
-    width: 350px;
-  } */
 }
 
 @media (min-width: 450px) {
+  header {
+    gap: var(--default-rem-size); 
+  }
+  
   .card {
     width: 410px;
   }
@@ -26,8 +26,8 @@
     --default-fun-title: 1.5rem;
     --default-text-title: 1.25rem;
     --default-font-size: 1rem;
-    --default-rem-size: 0.7rem;
-    --default-search-bar-w: 40.5ch;
+    --default-rem-size: 0.6rem;
+    --default-search-bar-w: 37ch;
   }
 
   .logo-button {
@@ -42,7 +42,6 @@
     height: 2rem;
     width: auto;
   }
-
 
   .col-row-adjustable {
     flex-direction: row;
@@ -66,12 +65,13 @@
     border-radius: var(--border-radius-inner);
   }
 }
+
 @media (min-width: 572px) {
   .brand-fieldset {
     width: fit-content;
   }
 
-    .range-fieldset {
+  .range-fieldset {
     width: fit-content;
   }
 }
@@ -81,7 +81,7 @@
     --default-fun-title: 1.75rem;
     --default-text-title: 1.45rem;
     --default-logo-size: 4rem;
-    --default-rem-size: 1rem;
+    --default-rem-size: 0.7rem;
   }
 
   nav .wide {
@@ -119,7 +119,7 @@
 @media (min-width: 1950px) {
   :root {
     --default-font-size: 1.125rem;
-    --default-rem-size: 1.125rem;
+    --default-rem-size: 0.8rem;
     --default-search-bar-w: 50ch;
   }
 
@@ -137,10 +137,9 @@
     font-size: 1.25rem;
   }
 
-    .card {
+  .card {
     width: 500px;
-  
-}
+  }
 
   .product-image {
     height: 10.5rem;

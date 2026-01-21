@@ -1,4 +1,11 @@
 /* CSS FROM QUICK-VIEW, CREATE_ITEM, and UPDATE-ITEM */
+.main-quick-view {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--default-rem-size);
+  margin-bottom: var(--default-rem-size);
+}
+
 .card {
   height: fit-content;
   width: 96%;
@@ -59,7 +66,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .product-image {
@@ -206,29 +213,13 @@
 }
 
 /* BUTTON-CONTAINERS for all pages */
-.button-container1,
-.button-container2,
-.button-container3 {
+.button-container{
   display: flex;
   flex-direction: row;
   align-items: center;
-}
-
-.button-container1 {
   justify-content: space-evenly;
-  margin: var(--default-rem-size) 0;
-}
-
-.button-container2 {
-  justify-content: center;
   gap: var(--default-rem-size);
-  margin: var(--default-rem-size) 0;
-}
-
-.button-container3 {
-  width: 100%;
-  justify-content: space-evenly;
-  margin-top: 1rem;
+  margin: var(--default-rem-size);
 }
 
 /* PAGE SPECIFIC BUTTONS for all pages */
@@ -278,6 +269,7 @@
 .cancel-button {
   height: 2rem;
   width: 6rem;
+  background-color: var(--frog-lt);
 }
 
 .submit-button:hover,
@@ -312,27 +304,13 @@
   width: fit-content;
   font-family: var(--font-text);
   font-size: var(--default-font-size);
-    padding: 0 0.25rem;
+  padding: 0 0.25rem;
   text-transform: lowercase;
 }
 
 .tag-cloud-item-button:hover {
   background-color: var(--frog-black);
   color: var(--gold);
-}
-
-/* FORM ELEMENTS */
-label {
-  font-weight: 600;
-  text-transform: capitalize;
-}
-
-input {
-  height: 1.75rem;
-  width: 100%;
-  border-radius: var(--border-radius-inner);
-  font-weight: 600;
-  padding: 0.25rem;
 }
 
 /* VISUAL FLAIR */
@@ -372,7 +350,7 @@ input {
 }
 
 .currency-backdrop {
-  width: 80%;
+  width: 65%;
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -401,7 +379,6 @@ input {
 }
 
 /* FULL VIEW is toggled */
-
 .card.expanded {
   background: linear-gradient(05deg, var(--frog-dk), var(--frog-lt));
 }
@@ -459,14 +436,8 @@ input {
 /* SEARCH and FILTER */
 .search-filter-container {
   min-width: 300px;
-  /* margin: auto 0; */
   padding: 0.25rem;
 }
-
-/* .search-container,
-.filter-container {
-  min-width: 325px;
-} */
 
 .search-container {
   width: 100%;
@@ -475,7 +446,6 @@ input {
   justify-content: center;
   gap: var(--default-rem-size);
   font-family: var(--font-text);
-  /* font-size: var(--default-font-size); */
   margin-bottom: 0.25rem;
 }
 
@@ -487,8 +457,6 @@ input {
   justify-content: center;
   gap: var(--default-rem-size);
   color: var(--white);
-  /* font-size: var(--default-font-size); */
-  /* padding: var(--default-rem-size); */
 }
 
 .search-bar {
@@ -520,7 +488,7 @@ fieldset {
   gap: 0.25rem;
   background-color: var(--rose-dk);
   border-radius: var(--border-radius-inner);
-  padding: var(--default-rem-size);
+  padding: 0.25rem;
   white-space: nowrap;
   word-break: keep-all;
 }
@@ -561,12 +529,11 @@ fieldset {
 .range-fieldset label input {
   height: 2rem;
   width: 6ch;
-  /* font-size: var(--default-font-size); */
 }
 
 /* ERROR COMPONENTS */
-/* Not used */
-.errors,
+/* Not used but keep for possible future use */
+/* .errors,
 ul {
   height: fit-content;
   display: flex;
@@ -581,7 +548,7 @@ ul {
   color: var(--red-dk);
   font-weight: 600;
   margin-bottom: 0.25rem;
-}
+} */
 
 /* ADMIN PASSWORD MODAL */
 .modal {

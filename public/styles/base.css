@@ -27,7 +27,7 @@
   --default-fun-title: 1.125rem;
   --default-text-title: 1rem;
   --default-font-size: 0.9rem;
-  --default-rem-size: 0.4rem;
+  --default-rem-size: 0.5rem;
   --default-logo-size: 3rem;
   --default-search-bar-w: 17ch;
 
@@ -35,7 +35,6 @@
 }
 
 /* PRESETS & RESETS */
-
 *,
 *::before,
 *::after {
@@ -85,7 +84,6 @@ a:focus-visible {
 
 html,
 body {
-  flex: 1; /* Always a good reminder: this pushes the footer down */
   min-height: 100vh;
   margin: 0;
   padding: 0;

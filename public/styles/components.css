@@ -27,6 +27,20 @@ button:active {
   transform: scale(0.9);
 }
 
+/* (GENERIC) FORM ELEMENTS */
+label {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+input {
+  height: 1.75rem;
+  width: 100%;
+  border-radius: var(--border-radius-inner);
+  font-weight: 600;
+  padding: 0.25rem;
+}
+
 /* TOOLTIPS FOR NAV BUTTONS IN SMALLER VIEWPORTS */
 /* Tooltip text */
 .nav-item-short .tooltiptext {

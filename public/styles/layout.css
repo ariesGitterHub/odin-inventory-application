@@ -1,6 +1,5 @@
 /* BODY */
 body {
-  flex: 1; /* Always a good reminder: this pushes the footer down - I don't know if this is working*/
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,11 +20,8 @@ header {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: var(--default-rem-size);
   background-color: var(--frog-dk);
-  /* margin-bottom: var(--default-rem-size); */
-  margin-bottom: 0.25rem;
-  /* padding: var(--default-rem-size); */
+  margin-bottom: var(--default-rem-size);
 }
 
 .title-nav-container {
@@ -34,6 +30,7 @@ header {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: var(--default-rem-size);
 }
 
 .logo {
@@ -114,13 +111,10 @@ nav h1 {
 
 /* MAIN */
 main {
+  flex: 1; /* Always a good reminder: this pushes the footer down (FUTURE NOTE TO ME - is this working in current set up?) */
   display: flex;
-  flex-direction: row;
-  align-items: start;
+  align-items: start;  
   justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--default-rem-size);
-  margin-bottom: var(--default-rem-size);
 }
 
 /* FOOTER */
